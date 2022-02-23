@@ -1,3 +1,3 @@
 <?php
 
-echo "fuck you all ";
+echo "i'm sorry ";
