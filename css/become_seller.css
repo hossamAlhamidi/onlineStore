@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+}
+header{
+    height: initial;
+}
+.heading{
+    max-width: 300px;
+}
+
+.header-img > img{
+    max-width: 80%;
+}

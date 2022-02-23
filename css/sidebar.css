@@ -1,0 +1,20 @@
+.slideout-sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .slideout-sidebar ul li {
+    cursor: pointer;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(244,244,244,0.4);
+    color: rgba(244,244,244,0.7);
+  }
+  
+  .slideout-sidebar ul li:last-child {
+    border-bottom: 0;
+  }
+  
+  .slideout-sidebar ul li:hover {
+    color: rgba(244,244,244,1);
+  }
