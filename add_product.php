@@ -2,46 +2,40 @@
 
 session_start();
 
-error_reporting(0);
+// error_reporting(0);
 
 
 include 'config.php';
 
-// $con = new PDO('mysql:host=localhost;dbname=onlineshoppingsystem', "root", "", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
-//$request = $con->query("SELECT * FROM product WHERE id = ". $_SESSION["id"]);
-
-// if ($request->rowCount() == 1) {
-// 	$info = $request->fetch();
-
-//     $old_prodname = $info["name"];
-//     $old_price = $info["price"];
-//     $old_desc = $info["description"];
-//     $old_id = $info["id"];
-// }else{
-//     $old_prodname = $info[""];
-//     $old_price = $info[""];
-//     $old_desc = $info[""];
-//     $old_id = $info[""];
-// }
-
-
 if (isset($_POST['submit'])) {
+
     $prodname = $_POST["name"];
 	$price = $_POST["price"];
 	$desc = $_POST['description'];
-    $img = "imgs/products/" . $_FILES['photo']["name"];
 
-    move_uploaded_file($_FILES['photo']["tmp_name"], $img);
+    $img_name = $_FILES['img']['name'];
+    $img_temp = $_FILES['img']['tmp_name'];
 
-    //$sql = "SELECT MAX(id) FROM product";
-    $em = $_SESSION["email"];
+    $img_ex = explode('.', $img_name);
+	$img_ex_acc = strtolower(end($img_ex));
+
+    $allowed_ex = array("jpg", "jpeg", "png"); 
+
+	if (in_array($img_ex_acc, $allowed_ex)) {
+		$new_img_name = uniqid("IMG-", true).'.'.$img_ex_acc;
+		$img_destination = 'imgs/products/'. $new_img_name;
+		move_uploaded_file($img_temp, $img_destination);
+    }
+
+    // $img_path = 'imgs/products/' . $img_name;
+    // move_uploaded_file($img_temp, $img_path);
+
+    $useremail = $_SESSION["email"];
 
     $sql = "INSERT INTO product (email, name, price, description, photo)
-    VALUES ('$em', '$prodname', '$price', '$desc', ' $img')";
+    VALUES ('$useremail', '$prodname', '$price', '$desc', '$img_destination')";
     $result = mysqli_query($conn, $sql);
 
-    //  $request = $con->query('INSERT INTO product (email, name, price, description, photo) VALUES ('.$_SESSION["email"].'","'.$prodname.'","'.$price.'","'.$desc.'","'.$img.'")');
 }
 
 ?>
@@ -58,7 +52,7 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
    <div class="container">
-       <form  class="form" id="form" method="post">
+       <form  class="form" id="form" method="post" action="add_product.php" enctype="multipart/form-data">
            <div class="header">
                <h2>Add Product</h2>
            </div>
@@ -89,7 +83,8 @@ if (isset($_POST['submit'])) {
 
        <div class="form-control ">
         <label for="img">image</label>
-        <input type="file" id="img" name="img" accept="image/*" >
+        <input type="file" id="img" name="img">
+        <!-- accept="image/*" -->
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small>error msg</small>
