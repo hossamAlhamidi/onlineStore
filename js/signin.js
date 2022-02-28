@@ -7,7 +7,7 @@ const submit_btn = document.getElementById("submit");
 let emailValid = false;
 let passwordValid = false;
 form.addEventListener("submit",(event)=>{
-    event.preventDefault()
+    
     checkInput()
     // if(!emailValid ||  !passwordValid ){
     // event.preventDefault();

@@ -9,6 +9,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/search.css">
     <title>Document</title>
 </head>
 <body>
@@ -19,7 +20,66 @@ session_start();
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav nav nav-tabs mx-auto">
+          
+              <div class=" search mx-auto mt-2">
+    <div class="wrapper   ">
+      <form method="post" action="search.php">
+        <input type="search" name="search" id="search"  placeholder="What are you looking for">
+        <button href="search.php" id="search-btn" name="submit" type = "submit" class="btn-custome btn "><i class="fas fa-search"></i></bu>
+      </form>
+
+     <div class = "results">
+    
+
+     </div>
+
+    </div>
+     
+    <div class="output text-center">
+
+
+    </div>
+    </div>
+              <div >
+             
+                <button class="btn">
+                  <i style="font-size:1.5rem" class="fa fa-shopping-cart"></i>
+                </button>
+                <a href="signin.php" class="btn">
+                  <i style="font-size:1.5rem" class="fas fa-user"></i>
+                </a>
+            
+                <?php
+            //    if(isset($_SESSION['email'])){
+            //     echo " <script> console.log('email')</script>";
+            //      if($_SESSION["type"] == "0"){
+            //       echo " <script> console.log('type 1')</script>";
+            //   echo '  <button class="btn">
+            //       <i class="fa fa-shopping-cart"></i>
+            //     </button>
+            //     <a href="signin.php" class="btn">
+            //       <i class="fas fa-user"></i>
+            //     </a>
+            // </div> ';}
+            //    }
+            //    else{
+            //     echo " <script> console.log('else')</script>";
+            //      echo ' <a href="become_seller.php" type="button" class="btn btn-outline-dark">Seller</a>
+            //      <button class="btn">
+            //        <i class="fa fa-shopping-cart"></i>
+            //      </button>
+            //      <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+            //        <i class="fas fa-user"></i>
+            //      </a>';
+            //    }
+            ?>
+          </div>
+        </div>
+            </div>
+          
+      </nav>
+      <nav>
+      <ul class=" nav nav-tabs mx-auto justify-content-center">
                 <li class="nav-item">
                   <a class="nav-link text-white " aria-current="page" href="#">Home</a>
                 </li>
@@ -29,32 +89,9 @@ session_start();
                 <li class="nav-item">
                   <a class="nav-link text-white" href="#">Categories</a>
                 </li>
+                
               
               </ul>
-              <div >
-                <?php
-               if(isset($_SESSION['email'])){
-                 if($_SESSION["type"] == "1")
-              echo '  <button class="btn">
-                  <i class="fa fa-shopping-cart"></i>
-                </button>
-                <a href="signin.php" class="btn">
-                  <i class="fas fa-user"></i>
-                </a>
-            </div> ';
-               }
-               else{
-                 echo ' <a href="become_seller.php" type="button" class="btn btn-outline-dark">Seller</a>
-                 <button class="btn">
-                   <i class="fa fa-shopping-cart"></i>
-                 </button>
-                 <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                   <i class="fas fa-user"></i>
-                 </a>';
-               }
-            ?>
-          </div>
-        </div>
       </nav>
 
       <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
@@ -86,5 +123,6 @@ session_start();
           </div> -->
         </div>
       </div>
+      <script src="./js/search.js"></script>
 </body>
 </html>
