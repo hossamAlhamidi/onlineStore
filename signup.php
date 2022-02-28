@@ -1,5 +1,7 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+
 include 'config.php';
 
 // error_reporting(0);
@@ -14,6 +16,7 @@ session_start();
     // if(isset($_SESSION['type']==1))
     //     header("Location: seller.php");
 // }
+
 
 
 if (isset($_POST["submit"])) {
@@ -32,8 +35,14 @@ if (isset($_POST["submit"])) {
 					VALUES ('$username', '$email', '$password', '$type', null, null, null, null)";
 			$result = mysqli_query($conn, $sql);
 			if ($result) {
-               
-				echo "<script>alert('Wow! User Registration Completed.')</script>";
+                // require_once("mail.php");
+                // $mail->setFrom('blue10wave@gmail.com',"hossam");
+                // $mail->addAddress('hossam@nrt.sa');
+                // $mail->Subject = 'trial';
+                // $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+                // $mail->send();
+           
+              echo "<script>alert('Wow! User Registration Completed.')</script>";
                 header("Location: signin.php");
 			} else {
 				echo "<script>alert('Woops! Something Wrong Went.')</script>";
@@ -66,8 +75,8 @@ if (isset($_POST["submit"])) {
            </div>
     <div class="padding">
     <div class="form-control ">
-     <label for="userName">User Name</label>
-     <input type="text" placeholder="Enter your User Name" id="userName" name="username" value="<?php echo $username; ?>" >
+     <label for="userName"> Name</label>
+     <input type="text" placeholder="Enter your Name" id="userName" name="username" value="<?php  echo $username; ?>" >
      <i class="fas fa-check-circle"></i>
      <i class="fas fa-exclamation-circle"></i>
      <small>error msg</small>

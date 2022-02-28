@@ -67,8 +67,8 @@ if (isset($_POST["submit"])) {
            </div>
     <div class="padding">
     <div class="form-control ">
-     <label for="userName">User Name</label>
-     <input type="text" placeholder="Enter your User Name" id="userName" name="username" value="<?php echo $username; ?>" >
+     <label for="userName"> Name</label>
+     <input type="text" placeholder="Enter your Name" id="userName" name="username" value="<?php echo $username; ?>" >
      <i class="fas fa-check-circle"></i>
      <i class="fas fa-exclamation-circle"></i>
      <small>error msg</small>

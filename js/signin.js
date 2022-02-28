@@ -1,14 +1,15 @@
 const form = document.getElementById("form");
-const userName = document.querySelector("#userName")
+const email = document.querySelector("#email")
 const password = document.querySelector("#password")
 const submit_btn = document.getElementById("submit");
 
 
+let emailValid = false;
+let passwordValid = false;
 form.addEventListener("submit",(event)=>{
-    let userValid = false;
-    let passwordValid = false;
+    event.preventDefault()
     checkInput()
-    // if(!userValid ||  !passwordValid ){
+    // if(!emailValid ||  !passwordValid ){
     // event.preventDefault();
     // }
 
@@ -16,14 +17,15 @@ form.addEventListener("submit",(event)=>{
 })
 
 function checkInput(){
-    if(userName.value.trim() == ""){
-        // userName.parentElement.classList.add("error");
-        // userName.parentElement.querySelector("small").textContent = "User Name can not be empty"
-        setError(userName,"User Name can not be empty")
+    if(email.value.trim()==""){
+        setError(email,"Email can not be empty")
+    }
+    else if(!validateEmail(email.value.trim())){
+         setError(email,"Email is not valid")
     }
     else{
-        setSuccess(userName);
-        userValid = true;
+       setSuccess(email);
+       emailValid = true
     }
 
   
