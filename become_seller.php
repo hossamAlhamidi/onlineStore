@@ -22,7 +22,8 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-light">
+<?php include('navbar.php'); ?>
+    <!-- <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Brand</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,11 +52,11 @@
             </div>
           </div>
         </div>
-      </nav>
+      </nav> -->
 
       <!-- sidebar -->
 
-      <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <!-- <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title text-white" id="offcanvasExampleLabel">Brand</h5>
           <button type="button" class="btn-close text-reset bg-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -69,21 +70,9 @@
                   <li><a href="logout.php">Logout</a></li>
                 </ul>
               </div>
-          <!-- <div>
-            Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-          </div> -->
-          <!-- <div class="dropdown mt-3">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-              Dropdown button
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </div> -->
+       
         </div>
-      </div>
+      </div> -->
 
 
 

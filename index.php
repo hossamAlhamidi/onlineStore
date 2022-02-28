@@ -11,7 +11,7 @@
     <title>store</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-light">
+    <!-- <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Brand</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,8 @@
             </div>
           </div>
         </div>
-      </nav>
+      </nav> -->
+      <?php include('navbar.php'); ?>
 
       <header>
       <h1>Pay Less Earn More</h1>
