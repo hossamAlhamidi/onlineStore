@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 ?>
 
 
@@ -33,7 +33,8 @@
               </ul>
               <div >
                 <?php
-               if(! isset($_SESSION['type'])){
+               if(isset($_SESSION['email'])){
+                 if($_SESSION["type"] == "1")
               echo '  <button class="btn">
                   <i class="fa fa-shopping-cart"></i>
                 </button>
