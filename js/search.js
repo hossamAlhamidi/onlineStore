@@ -13,4 +13,10 @@ search_input.addEventListener("keyup", function(event) {
     }
   });
 
+  search_btn.addEventListener("click",(event)=>{
+    if(search_input.value.trim() == ""){
+      event.preventDefault();
+     }
+  })
+
   
