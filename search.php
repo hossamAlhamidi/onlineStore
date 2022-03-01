@@ -20,7 +20,7 @@
 include 'config.php';
 if (isset($_POST["submit"])) {
 $search = $_POST['search'];
-$sql = "SELECT name FROM product WHERE name like '%$search%'";
+$sql = "SELECT * FROM product WHERE name like '%$search%'";
 		$result = mysqli_query($conn, $sql);
 
         if ($result->num_rows > 0) {
@@ -29,7 +29,26 @@ $sql = "SELECT name FROM product WHERE name like '%$search%'";
         {
 
     
-            echo  $row['name'];
+            echo  '<div class="card mb-3 p-3 id=""" >
+            <div class="row g-0">
+              <div class="col-md-3 text-center">
+                <img src="' .$row['photo'] . '"" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-6">
+                <div class="card-body">
+                  <h5 class="card-title">' . $row["name"]. '</h5>
+                  <p class="card-text">' . $row['description']. '</p>
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-3 text-center">
+                <h5 class="price"> ' . $row['price']. '$</h5>
+                
+                <button type="button" class="btn btn-primary w-75 my-3 ">Add to cart</button>
+              </div>
+            </div>
+          </div>';
+
 
     }
 
@@ -45,5 +64,6 @@ $sql = "SELECT name FROM product WHERE name like '%$search%'";
 
 
 ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </body>
 </html>
