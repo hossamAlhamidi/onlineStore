@@ -1,3 +1,6 @@
+<?php
+  // session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,18 +75,20 @@
 
         <?php 
 
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "onlineshoppingsystem";
+        // $servername = "localhost";
+        // $username = "root";
+        // $password = "";
+        // $dbname = "onlineshoppingsystem";
 
-        $con = new mysqli($servername , $username , $password , $dbname);
-        if(mysqli_connect_errno()){
-        echo "failed to connect to mySQL". mysqli_connect_error();
-        }
+        // $con = new mysqli($servername , $username , $password , $dbname);
+        // if(mysqli_connect_errno()){
+        // echo "failed to connect to mySQL". mysqli_connect_error();
+        // }
+
+        include 'config.php';
 
         $sql = "select * from product ";
-        $rs = mysqli_query($con, $sql);
+        $result = mysqli_query($conn, $sql);
         echo ' <div class="container p-5">
         <h5 class="title">New in</h5>
         <div class="horizontal-scroll position-relative">
@@ -92,7 +97,7 @@
         <div class="products top mb-5 story-container">
 
         ';
-        while($row = mysqli_fetch_array($rs))
+        while($row = mysqli_fetch_array($result))
         {
 
     // echo   $row['IDProduct'] ;
@@ -102,7 +107,7 @@
     echo '<div class=" item  p-3" id="' . $row['id']. '"' . '  > 
 
     <div class=" text-center item-img">' .
-     ' <img class="rounded-start" src="data:image/jpeg;base64,'.base64_encode($row['photo']).'"/> ' .
+     ' <img class="rounded-start" src="' . $row['photo'] . '"/> ' .
     '  <h6 class="price mt-3">'. $row['price'] . '$</h6>
   </div>
 </div>';
@@ -115,7 +120,7 @@
    </div>
    </div>
    </div>';
-    mysqli_close($con);
+    mysqli_close($conn);
 
 
 
