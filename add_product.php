@@ -7,34 +7,15 @@ error_reporting(0);
 
 include 'config.php';
 
-// $con = new PDO('mysql:host=localhost;dbname=onlineshoppingsystem', "root", "", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
-//$request = $con->query("SELECT * FROM product WHERE id = ". $_SESSION["id"]);
-
-// if ($request->rowCount() == 1) {
-// 	$info = $request->fetch();
-
-//     $old_prodname = $info["name"];
-//     $old_price = $info["price"];
-//     $old_desc = $info["description"];
-//     $old_id = $info["id"];
-// }else{
-//     $old_prodname = $info[""];
-//     $old_price = $info[""];
-//     $old_desc = $info[""];
-//     $old_id = $info[""];
-// }
-
-
 if (isset($_POST['submit'])) {
     $prodname = $_POST["name"];
 	$price = $_POST["price"];
 	$desc = $_POST['description'];
-    $img = "imgs/products/" . $_FILES['photo']["name"];
 
-    move_uploaded_file($_FILES['photo']["tmp_name"], $img);
+    $img = "imgs/products/" . $_FILES['img']["name"];
 
-    //$sql = "SELECT MAX(id) FROM product";
+    move_uploaded_file($_FILES['img']["tmp_name"], $img);
+
     $em = $_SESSION["email"];
 
     $sql = "INSERT INTO product (email, name, price, description, photo)
@@ -58,7 +39,7 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
    <div class="container">
-       <form  class="form" id="form" method="post">
+       <form  class="form" id="form" method="post" action="add_product.php" enctype="multipart/form-data">
            <div class="header">
                <h2>Add Product</h2>
            </div>
