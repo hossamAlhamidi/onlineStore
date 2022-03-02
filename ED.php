@@ -9,18 +9,17 @@ $_SESSION['id'] = $_GET['id'];
 }
 $IDP=$_SESSION['id'] ;
 if(isset($_SESSION['id'])){
-  // echo $IDP;
+ 
   $sql = "select * from product where id ='".$IDP."'";
   $result = mysqli_query($conn, $sql);
   if($row = mysqli_fetch_array($result)){
-    // echo $IDP.'1';
-    // $NewID = $row["id"];
+ 
     $prodname = $row["name"];
     $price = $row["price"];
     $desc = $row["description"];
     $img = $row["photo"];
     if (isset($_POST['submit'])) {
-      echo $IDP.'0';
+      
 
       $prodname = $_POST["name"];
     $price = $_POST["price"];
@@ -32,7 +31,7 @@ if(isset($_SESSION['id'])){
       $sql = "UPDATE product SET  name = '$prodname', price = '$price', description ='$desc',photo = ' $img' where id = '$IDP'";
    
       $result = mysqli_query($conn, $sql);
-      // header("Location: manage_product.php");
+       header("Location: manage_product.php");
   }
   }
   

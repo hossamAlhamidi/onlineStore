@@ -7,6 +7,14 @@
   //     if(isset($_SESSION['type']==1))
   //         header("Location: seller.php");
   // }
+  if(isset($_GET['id'])){
+    $IDPD = $_GET['id'];
+    include 'config.php';
+    $request  = "DELETE FROM product WHERE id ='".$IDPD."'";
+    $result = mysqli_query($conn, $request);
+      // header("location: manage_product.php");
+    
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,7 +97,7 @@
   ' <div class="card-body">
      <h5 class="card-title">'. $row["name"].'</h5>
      <p class="card-text">'. $row["description"].'</p>
-     <a href="#" class="btn btn-danger">Delete</a>
+     <a href="manage_product.php? id='.$row["id"].'" class="btn btn-danger">Delete</a>
      <a href="ED.php? id='.$row["id"].'" class="btn btn-warning">Edit</a>
      </div>
  </div>';
