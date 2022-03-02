@@ -74,10 +74,41 @@
         </div>
       </div>
 
-      <section class="container">
-      <a href="add_product.php" class="btn btn-outline-dark my-5" type="button">Add product</a>
+      <div class="container">
+      <div class="row p-2 ">
+  <?php 
+ include 'config.php';
 
-      </section>
+ $sql = "select * from product where email ='".$_SESSION['email'] ."'";
+// $sql = "select * from product where price = 500";
+ $result = mysqli_query($conn, $sql);
+ while($row = mysqli_fetch_array($result))
+
+   {
+   echo '  <div class="card col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5  style=""" >'.
+   ' <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/> ' .
+  ' <div class="card-body">
+     <h5 class="card-title">'. $row["name"].'</h5>
+     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+     <a href="#" class="btn btn-danger">Delete</a>
+   </div>
+ </div>';
+ 
+
+   }
+ 
+  
+
+ 
+  ?>
+ 
+
+</div>
+<div class="d-flex">
+
+  <a href="add_product.php" class="btn btn-outline-dark my-5 mx-auto" type="button">Add product</a>
+</div>
+      </div>
 
  
 
