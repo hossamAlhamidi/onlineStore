@@ -3,35 +3,46 @@
 session_start();
 
 
-
-
 include 'config.php';
-$sql = "select * from product where id ='".$_SESSION['id'] ."'";
-$result = mysqli_query($conn, $sql);
-if($row = mysqli_fetch_array($result)){
-	$prodname = $row["name"];
-	$price = $row["price"];
-	$desc = $row["description"];
-	$img = $row["photo"];
-	$old_id = $row["id"];
+$IDP=$_GET['id'];
+if(isset($_GET['id'])){
+  $IDP=$_GET['id'];
+  // echo $IDP;
+  $sql = "select * from product where id ='".$IDP."'";
+  $result = mysqli_query($conn, $sql);
+  if($row = mysqli_fetch_array($result)){
+    // echo $IDP.'1';
+    // $NewID = $row["id"];
+    $prodname = $row["name"];
+    $price = $row["price"];
+    $desc = $row["description"];
+    $img = $row["photo"];
+    if (isset($_POST['submit'])) {
+      echo $IDP.'0';
+
+      $prodname = $_POST["name"];
+    $price = $_POST["price"];
+    $desc = $_POST['description'];
+  
+      $img = "imgs/products/" . $_FILES['img']["name"];
+  
+      move_uploaded_file($_FILES['img']["tmp_name"], $img);
+      $sql = "UPDATE product SET  name = '$prodname', price = '$price', description ='$desc',photo = ' $img' where id = '$IDP'";
+   
+      $result = mysqli_query($conn, $sql);
+      // header("Location: manage_product.php");
+  }
+  }
+  
+ 
+}else{
+  echo $IDP.'2';
+  echo "bye";
 }
-?>
-<?php if (isset($_POST['submit'])) {
-    $prodname = $_POST["name"];
-	$price = $_POST["price"];
-	$desc = $_POST['description'];
 
-    $img = "imgs/products/" . $_FILES['img']["name"];
 
-    move_uploaded_file($_FILES['img']["tmp_name"], $img);
 
-    $em = $_SESSION["email"];
-
-    $sql = "INSERT INTO product (email, name, price, description, photo)
-    VALUES ('$em', '$prodname', '$price', '$desc', ' $img')";
-    $result = mysqli_query($conn, $sql);
-
-}
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +59,7 @@ if($row = mysqli_fetch_array($result)){
 <body >
     
    <div class="container-css">
-       <form  class="form" id="form" method="post" action="EditProduct.php" enctype="multipart/form-data">
+       <form  class="form" id="form" method="post" action="ED.php" enctype="multipart/form-data">
            <div class="header">
                <h2>Edit Product</h2>
            </div>
@@ -72,7 +83,10 @@ if($row = mysqli_fetch_array($result)){
 
        <div class="form-control-css ">
         <label for="img">image</label>
-        <input type="file" id="img" name="img" accept="image/*" value="<?php echo $img; ?>" >
+        <br>
+        <img src="<?php echo $img; ?>" alt="Pic" width = 200px heigth= 200px style = "margin-left: 50px;"> 
+        <input type="file" id="img" name="img" accept="image/*" >
+        
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small>error msg</small>
