@@ -80,18 +80,18 @@
  include 'config.php';
 
  $sql = "select * from product where email ='".$_SESSION['email'] ."'";
-// $sql = "select * from product where price = 500";
  $result = mysqli_query($conn, $sql);
  while($row = mysqli_fetch_array($result))
 
    {
-   echo '  <div class="card col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5  style=""" >'.
+   echo '  <div class="card col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5  style=""" id='.$row["id"].' >'.
    ' <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/> ' .
   ' <div class="card-body">
      <h5 class="card-title">'. $row["name"].'</h5>
-     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+     <p class="card-text">'. $row["description"].'</p>
      <a href="#" class="btn btn-danger">Delete</a>
-   </div>
+     <a href="ED.php" class="btn btn-warning">Edit</a>
+     </div>
  </div>';
  
 
