@@ -4,9 +4,11 @@ session_start();
 
 
 include 'config.php';
-$IDP=$_GET['id'];
 if(isset($_GET['id'])){
-  $IDP=$_GET['id'];
+$_SESSION['id'] = $_GET['id'];
+}
+$IDP=$_SESSION['id'] ;
+if(isset($_SESSION['id'])){
   // echo $IDP;
   $sql = "select * from product where id ='".$IDP."'";
   $result = mysqli_query($conn, $sql);
