@@ -7,6 +7,14 @@
   //     if(isset($_SESSION['type']==1))
   //         header("Location: seller.php");
   // }
+  if(isset($_GET['id'])){
+    $IDPD = $_GET['id'];
+    include 'config.php';
+    $request  = "DELETE FROM product WHERE id ='".$IDPD."'";
+    $result = mysqli_query($conn, $request);
+      // header("location: manage_product.php");
+    
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,10 +82,41 @@
         </div>
       </div>
 
-      <section class="container">
-      <a href="add_product.php" class="btn btn-outline-dark my-5" type="button">Add product</a>
+      <div class="container">
+      <div class="row p-2 ">
+  <?php 
+ include 'config.php';
 
-      </section>
+ $sql = "select * from product where email ='".$_SESSION['email'] ."'";
+ $result = mysqli_query($conn, $sql);
+ while($row = mysqli_fetch_array($result))
+
+   {
+   echo '  <div class="card col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5  style="""  >'.
+   ' <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/> ' .
+  ' <div class="card-body">
+     <h5 class="card-title">'. $row["name"].'</h5>
+     <p class="card-text">'. $row["description"].'</p>
+     <a href="manage_product.php? id='.$row["id"].'" class="btn btn-danger">Delete</a>
+     <a href="ED.php? id='.$row["id"].'" class="btn btn-warning">Edit</a>
+     </div>
+ </div>';
+ 
+
+   }
+ 
+  
+
+ 
+  ?>
+ 
+
+</div>
+<div class="d-flex">
+
+  <a href="add_product.php" class="btn btn-outline-dark my-5 mx-auto" type="button">Add product</a>
+</div>
+      </div>
 
  
 

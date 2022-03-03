@@ -5,7 +5,7 @@ const price = document.querySelector("#price")
 const img = document.querySelector("#img")
 
 const submit_btn = document.getElementById("submit");
-
+console.log(document.querySelector('#modal'))
 // console.log(name,description,price,confirmprice)
 
 let nameValid = false;
@@ -13,6 +13,7 @@ let descriptionValid = false;
 let priceValid = false;
 let confirmValid = false;
 form.addEventListener("submit",(event)=>{
+    
     console.log("yes")
     checkInput()
     console.log(nameValid,descriptionValid,priceValid,confirmValid)
