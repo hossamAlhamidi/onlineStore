@@ -26,10 +26,23 @@ if(isset($_SESSION['id'])){
       $price = $_POST["price"];
       $desc = $_POST['description'];
   
-      $img = "imgs/products/" . $_FILES['img']["name"];
-  
-      move_uploaded_file($_FILES['img']["tmp_name"], $img);
-      $sql = "UPDATE product SET  name = '$prodname', price = '$price', description ='$desc',photo = ' $img' where id = '$IDP'";
+      // $img = "imgs/products/" . $_FILES['img']["name"];
+      // move_uploaded_file($_FILES['img']["tmp_name"], $img);
+      $img_name = $_FILES['img']['name'];
+      $img_temp = $_FILES['img']['tmp_name'];
+
+      $img_ex = explode('.', $img_name);
+	    $img_ex_acc = strtolower(end($img_ex));
+
+      $allowed_ex = array("jpg", "jpeg", "png"); 
+
+	    if (in_array($img_ex_acc, $allowed_ex)) {
+		    $new_img_name = uniqid("IMG-", true).'.'.$img_ex_acc;
+		    $img_destination = 'imgs/products/'. $new_img_name;
+		    move_uploaded_file($img_temp, $img_destination);
+      }
+
+      $sql = "UPDATE product SET  name = '$prodname', price = '$price', description ='$desc',photo = '$img_destination' where id = '$IDP'";
    
       $result = mysqli_query($conn, $sql);
        header("Location: manage_product.php");
