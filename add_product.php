@@ -27,9 +27,6 @@ if (isset($_POST['submit'])) {
 		move_uploaded_file($img_temp, $img_destination);
     }
 
-    // $img_path = 'imgs/products/' . $img_name;
-    // move_uploaded_file($img_temp, $img_path);
-
     $useremail = $_SESSION["email"];
 
     $sql = "INSERT INTO product (email, name, price, description, photo)

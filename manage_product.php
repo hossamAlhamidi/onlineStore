@@ -7,6 +7,7 @@
   //     if(isset($_SESSION['type']==1))
   //         header("Location: seller.php");
   // }
+
   if(isset($_GET['id'])){
     $IDPD = $_GET['id'];
     include 'config.php';
@@ -15,7 +16,9 @@
       // header("location: manage_product.php");
     
   }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,29 +88,26 @@
       <div class="container">
       <div class="row p-2 ">
   <?php 
- include 'config.php';
+    include 'config.php';
 
- $sql = "select * from product where email ='".$_SESSION['email'] ."'";
- $result = mysqli_query($conn, $sql);
- while($row = mysqli_fetch_array($result))
+    $sql = "select * from product where email ='".$_SESSION['email'] ."'";
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_array($result))
 
-   {
-   echo '  <div class="card col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5  style="""  >'.
-   ' <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/> ' .
-  ' <div class="card-body">
-     <h5 class="card-title">'. $row["name"].'</h5>
-     <p class="card-text">'. $row["description"].'</p>
-     <a href="manage_product.php? id='.$row["id"].'" class="btn btn-danger">Delete</a>
-     <a href="ED.php? id='.$row["id"].'" class="btn btn-warning">Edit</a>
-     </div>
- </div>';
+    {
+      echo '  <div class="card col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5  style="""  >'.
+      ' <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/> ' .
+      ' <div class="card-body">
+      <h5 class="card-title">'. $row["name"].'</h5>
+      <p class="card-text">'. $row["description"].'</p>
+      <a href="manage_product.php? id='.$row["id"].'" class="btn btn-danger">Delete</a>
+      <a href="ED.php? id='.$row["id"].'" class="btn btn-warning">Edit</a>
+      </div>
+      </div>';
  
 
-   }
- 
-  
+    }
 
- 
   ?>
  
 

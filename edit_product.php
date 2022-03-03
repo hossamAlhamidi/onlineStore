@@ -2,8 +2,9 @@
 
 session_start();
 
-
 include 'config.php';
+
+
 if(isset($_GET['id'])){
 $_SESSION['id'] = $_GET['id'];
 }
@@ -22,8 +23,8 @@ if(isset($_SESSION['id'])){
       
 
       $prodname = $_POST["name"];
-    $price = $_POST["price"];
-    $desc = $_POST['description'];
+      $price = $_POST["price"];
+      $desc = $_POST['description'];
   
       $img = "imgs/products/" . $_FILES['img']["name"];
   
@@ -36,10 +37,11 @@ if(isset($_SESSION['id'])){
   }
   
  
-}else{
-  echo $IDP.'2';
-  echo "bye";
 }
+// else{
+//   echo $IDP.'2';
+//   echo "bye";
+// }
 
 
 

@@ -70,16 +70,6 @@
 
       <?php 
 
-      // $servername = "localhost";
-      // $username = "root";
-      // $password = "";
-      // $dbname = "onlineshoppingsystem";
-
-      // $con = new mysqli($servername , $username , $password , $dbname);
-      // if(mysqli_connect_errno()){
-      // echo "failed to connect to mySQL". mysqli_connect_error();
-      // }
-
       include 'config.php';
 
       $sql = "select * from product ";
@@ -95,21 +85,13 @@
       while($row = mysqli_fetch_array($result))
       {
 
-      // echo  $row['IDProduct'] ;
-      // echo  $row['ProductName'] ;
-      // echo  $row['Description'] ;
-      // echo  $row['photo'] ;
       echo '<div class=" item  p-3" id="' . $row['id']. '"' . '  > 
 
       <div class=" text-center item-img">'; 
-      // '<img class="rounded-start" src="data:imag/jpeg;base64,'.base64_encode($row['photo']).'"/> ' imgs/products/ 
       echo '<img class="rounded-start" src="'. $row['photo'] .'">';
       echo '<h6 class="price mt-3">'. $row['price'] . '$</h6>
       </div>
       </div>';
-      // echo '<img src="data:image/jpeg;base64,'.base64_encode($row['photo']).'"/>';
-      // echo  $row['price'] ;
-
       }
 
     echo ' </div>
@@ -117,9 +99,6 @@
     </div>
     </div>';
     mysqli_close($conn);
-
-
-
 
     ?>
     </section>
