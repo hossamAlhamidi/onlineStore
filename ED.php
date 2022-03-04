@@ -1,8 +1,14 @@
 <?php 
+include 'config.php';
 
 session_start();
 
-include 'config.php';
+
+
+if (!isset($_SESSION['name']))
+        header("LOCATION: signin.php");
+else if ($_SESSION["type"] == 0)
+        header("LOCATION: user.php");
 
 
 if(isset($_GET['id'])){

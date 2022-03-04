@@ -1,5 +1,10 @@
 <?php
   	session_start();
+
+    if (!isset($_SESSION['name']))
+        header("LOCATION: signin.php");
+    else if ($_SESSION["type"] == 1)
+        header("LOCATION: seller.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +20,7 @@
     <title>store</title>
 </head>
 <body>
-  <!-- <?php include('navbar.php')  ?> -->
+  <?php //include('navbar.php')  ?> 
     <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Brand</a>

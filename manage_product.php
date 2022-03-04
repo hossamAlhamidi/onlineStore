@@ -1,6 +1,11 @@
 <?php
   	session_start();
 
+    if (!isset($_SESSION['name']))
+        header("LOCATION: signin.php");
+    else if ($_SESSION["type"] == 0)
+        header("LOCATION: user.php");
+
   //   if (isset($_SESSION['username'])) {
   //     if(isset($_SESSION['type']==0))
   //         header("Location: user.php");

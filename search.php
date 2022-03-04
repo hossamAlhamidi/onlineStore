@@ -1,5 +1,6 @@
+<?php
 
-
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +15,8 @@
     <title>Document</title>
 </head>
 <body>
-<?php include('navbar.php'); ?>
-<?php 
+<?php include('navbar.php'); 
+ 
 // session_start();
 include 'config.php';
 if (isset($_POST["submit"])) {
@@ -50,14 +51,8 @@ $sql = "SELECT * FROM product WHERE name like '%$search%'";
           </div>';
 
 
-    }
-
-  
-    
-             
-            
+    }           
 		}
-
         else
         echo"no item";
 }

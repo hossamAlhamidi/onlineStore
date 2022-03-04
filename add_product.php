@@ -1,11 +1,15 @@
 <?php 
+  include 'config.php';
 
-session_start();
+  session_start();
 
-error_reporting(0);
+  error_reporting(0);
 
+  if (!isset($_SESSION['name']))
+      header("LOCATION: signin.php");
+  else if ($_SESSION["type"] == 0)
+      header("LOCATION: user.php");
 
-include 'config.php';
 
 if (isset($_POST['submit'])) {
 

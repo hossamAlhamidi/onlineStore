@@ -1,3 +1,19 @@
+<?php
+  	session_start();
+
+    if (isset($_SESSION['name'])) {
+      //header("Location: user.php");
+      if ($_SESSION["type"] == 0){
+          //echo "if2";
+          header("Location: user.php");}
+  //  if ($_SESSION["type"] == 0)
+  //       header("LOCATION: user.php");
+    // else if ($_SESSION["type"] == 1)
+    //     header("LOCATION: seller.php"); 
+    
+   }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +27,8 @@
     <title>store</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-light">
+    <?php include 'navbar.php'; ?>
+    <!-- <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Brand</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +57,7 @@
             </div>
           </div>
         </div>
-      </nav>
+      </nav> -->
 
       <header>
       <h1>Pay Less Earn More</h1>

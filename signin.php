@@ -1,18 +1,21 @@
 <?php
 
-// include 'config.php';
+ include 'config.php';
 
 session_start();
 
 
-if (isset($_SESSION['username'])) {
-    if ($_SESSION["type"] == 0)
-        header("Location: user.php");
-    // if(isset($_SESSION['type']==0))
-    //     header("Location: user.php");
-    // if(isset($_SESSION['type']==1))
-    //     header("Location: seller.php");
+if (isset($_SESSION['name'])) {
+    //header("Location: user.php");
+    if ($_SESSION["type"] == 0){
+        //echo "if2";
+        header("Location: user.php");}
+    else if ($_SESSION["type"] == 1){
+    //else{
+        //echo "if3";
+        header("Location: seller.php");}
 }
+
 
  
 $e = false;
@@ -32,7 +35,7 @@ if (isset($_POST["submit"])) {
 	if ($request->rowCount() == 1) {
 		$info = $request->fetch();
 
-		$_SESSION["id"] = $info["id"];
+		//$_SESSION["id"] = $info["id"];
 		$_SESSION["name"] = $info["name"];
 		$_SESSION["email"] = $info["email"];
 		$_SESSION["type"] = $info["type"];

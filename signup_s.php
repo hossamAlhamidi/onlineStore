@@ -2,18 +2,17 @@
 
 include 'config.php';
 
-error_reporting(0);
+// error_reporting(0);
 
 session_start();
 
-// if (isset($_SESSION['username'])) {
-//     if ($_SESSION["type"] == 0)
-//         header("Location: user.php");
-    // if(isset($_SESSION['type']==0))
-    //     header("Location: user.php");
-    // if(isset($_SESSION['type']==1))
-    //     header("Location: seller.php");
-// }
+
+
+
+// if (isset($_SESSION['name'])) {
+//     if ($_SESSION["type"] == 1)
+//         header("Location: seller.php");
+
 
 
 if (isset($_POST["submit"])) {
@@ -123,5 +122,18 @@ if (isset($_POST["submit"])) {
 
    </div> 
    <script  src="./js/signup.js"></script>
+
+    <?php
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if (isset($_SESSION['name'])){
+                echo "In session";
+                if ($_SESSION["type"] == 0){
+                    echo "Im user";
+                    session_destroy();
+                }    
+            }
+        } 
+    ?>
+
 </body>
 </html>

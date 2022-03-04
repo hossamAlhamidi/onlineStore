@@ -1,5 +1,11 @@
 <?php
   	session_start();
+
+    if (!isset($_SESSION['name']))
+        header("LOCATION: signin.php");
+    else if ($_SESSION["type"] == 0)
+        header("LOCATION: user.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +66,7 @@
                   <li>Account</li>
                   <li>Payment</li>
                   <li>Wishlist</li>
-                  <li>Logout</li>
+                  <li><a href="logout.php">Logout</a></li>
                 </ul>
               </div>
           <!-- <div>
