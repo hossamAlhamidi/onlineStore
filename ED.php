@@ -41,10 +41,16 @@ if(isset($_SESSION['id'])){
 		    $img_destination = 'imgs/products/'. $new_img_name;
 		    move_uploaded_file($img_temp, $img_destination);
       }
+      if(isset($img_destination)){
+        echo "yes";
+      $sql = "UPDATE product SET  name = '$prodname', price = '$price', description ='$desc',photo = '$img_destination' where id = '$IDP'";}
+      else {
 
-      $sql = "UPDATE product SET  name = '$prodname', price = '$price', description ='$desc',photo = '$img_destination' where id = '$IDP'";
+        $sql = "UPDATE product SET  name = '$prodname', price = '$price', description ='$desc' where id = '$IDP'";
+      }
    
       $result = mysqli_query($conn, $sql);
+      
        header("Location: manage_product.php");
   }
   }
