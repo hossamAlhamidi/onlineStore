@@ -5,7 +5,7 @@ const password = document.querySelector("#password")
 const confirmPassword = document.querySelector("#confirm-password")
 const submit_btn = document.getElementById("submit");
 
-console.log(userName,email,password,confirmPassword)
+
 
 let userValid = false;
 let emailValid = false;

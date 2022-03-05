@@ -188,6 +188,7 @@ if (isset($_POST['submit'])) {
             document.querySelector('#modal').style.display = 'none';
            });
            </script>";
+          //  header("LOCATION: manage_product.php");
          } 
          
           

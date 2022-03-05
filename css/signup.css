@@ -64,7 +64,7 @@ body{
     position:absolute;
     right:5px;
     /* top: 50%; */
-    top:40px;
+    top:47px;
     visibility:hidden;
 }
 
@@ -133,4 +133,9 @@ div.radio  input[type='radio']{
 
 .signup{
     margin-bottom: 2em;
+}
+
+.container-css > a {
+    text-decoration: none;
+    color:black;
 }

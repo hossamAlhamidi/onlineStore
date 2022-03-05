@@ -17,7 +17,85 @@ session_start();
     //     header("Location: seller.php");
 // }
 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/signup.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>Sign up</title>
+</head>
+<body>
+   <div class="container-css flex-column">
+   <a href="index.php" class="my-3 text-bold ">Brand</a>
+       <form  class="form" id="form" action="" method="POST">
+           <div class="header">
+               <h2>Create Account</h2>
+           </div>
+    <div class="padding">
+    <div class="form-control-css ">
+     <label for="userName"> Name</label>
+     <input type="text" placeholder="Enter your Name" id="userName" name="username" <?php if(isset($_POST['username'])) echo ' value = "'.$_POST['username'].'"'  ?> >
+     <i class="fas fa-check-circle"></i>
+     <i class="fas fa-exclamation-circle"></i>
+     <small>error msg</small>
+    </div>
 
+    <div class="form-control-css  ">
+        <label for="email"> Email</label>
+        <input type="text" placeholder="Enter your email" id="email" name="email" <?php if(isset($_POST['email'])) echo ' value = "'.$_POST['email'].'"'  ?>  >
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small id="email-msg">error msg</small>
+       </div>
+
+       <div class="form-control-css ">
+        <label for="password">Password</label>
+        <input type="password" placeholder="Enter your password" id="password" name="password" <?php if(isset($_POST['password'])) echo ' value = "'.$_POST['password'].'"'  ?> >
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>error msg</small>
+       </div>
+
+       <div class="form-control-css ">
+        <label for="confrim-password">Confirm Password</label>
+        <input type="password" placeholder="Confirm your password" id="confirm-password" name="cpassword" <?php if(isset($_POST['cpassword'])) echo ' value = "'.$_POST['cpassword'].'"'  ?> >
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small id="password-msg">error msg</small>
+       </div>
+
+       <!-- <div class="form-control-css radio ">
+           <p>Create as</p>
+         <div>
+             <input type="radio" name="role" id="customer" checked>
+             <label for="customer" > customer</label>
+            </div>  
+             
+            <div>
+
+                <input type="radio" name="role" id="seller">
+                <label for="seller"> seller</label>
+            </div>
+             
+        
+       </div> -->
+       <div>
+           <button id="submit" name="submit" type="submit">Create</button>
+
+       </div>
+    </form>
+</div>
+
+   </div> 
+   <script  src="./js/signup.js"></script>
+</body>
+</html>
+<?php
 
 if (isset($_POST["submit"])) {
 	$username = $_POST["username"];
@@ -48,87 +126,31 @@ if (isset($_POST["submit"])) {
 				echo "<script>alert('Woops! Something Wrong Went.')</script>";
 			}
 		} else {
-			echo "<script>alert('Woops! Email Already Exists.')</script>";
+			echo "<script>
+            // let div = document.createElement('div')
+            // div.textContent = '  Sorry we could not find your account!'
+            // div.classList.add('alert','alert-danger')
+            // div.setAttribute('role','alert')
+            // document.querySelector('.padding').prepend(div)
+           let msg =  document.querySelector('#email-msg')
+            console.log(msg.textContent)
+            msg.textContent = 'Email already exist'
+            msg.parentElement.classList.add('error')
+            </script>";
 		}	
 	} else {
-        echo "<script>alert('Password Not Matched.')</script>";
+        echo "<script>
+        // let div = document.createElement('div')
+        // div.textContent = '  Sorry we could not find your account!'
+        // div.classList.add('alert','alert-danger')
+        // div.setAttribute('role','alert')
+        // document.querySelector('.padding').prepend(div)
+       let msg =  document.querySelector('#password-msg')
+        console.log(msg.textContent)
+        msg.textContent = 'Password does not match'
+        msg.parentElement.classList.add('error')
+        </script>";
 	}
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/signup.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <title>Sign up</title>
-</head>
-<body>
-   <div class="container-css">
-       <form  class="form" id="form" action="" method="POST">
-           <div class="header">
-               <h2>Create Account</h2>
-           </div>
-    <div class="padding">
-    <div class="form-control-css ">
-     <label for="userName"> Name</label>
-     <input type="text" placeholder="Enter your Name" id="userName" name="username"  >
-     <i class="fas fa-check-circle"></i>
-     <i class="fas fa-exclamation-circle"></i>
-     <small>error msg</small>
-    </div>
-
-    <div class="form-control-css  ">
-        <label for="email"> Email</label>
-        <input type="text" placeholder="Enter your email" id="email" name="email"  >
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small>error msg</small>
-       </div>
-
-       <div class="form-control-css ">
-        <label for="password">Password</label>
-        <input type="password" placeholder="Enter your password" id="password" name="password" >
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small>error msg</small>
-       </div>
-
-       <div class="form-control-css ">
-        <label for="confrim-password">Confirm Password</label>
-        <input type="password" placeholder="Confirm your password" id="confirm-password" name="cpassword" >
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small>error msg</small>
-       </div>
-
-       <!-- <div class="form-control-css radio ">
-           <p>Create as</p>
-         <div>
-             <input type="radio" name="role" id="customer" checked>
-             <label for="customer" > customer</label>
-            </div>  
-             
-            <div>
-
-                <input type="radio" name="role" id="seller">
-                <label for="seller"> seller</label>
-            </div>
-             
-        
-       </div> -->
-       <div>
-           <button id="submit" name="submit" type="submit">Create</button>
-
-       </div>
-    </form>
-</div>
-
-   </div> 
-   <script  src="./js/signup.js"></script>
-</body>
-</html>

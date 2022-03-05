@@ -46,6 +46,7 @@ if (isset($_POST["submit"])) {
             header("location: seller.php");
 	}else {
 		$e = true;
+      
 	}
 }
 ?>
@@ -62,14 +63,21 @@ if (isset($_POST["submit"])) {
     <title>Sign in</title>
 </head>
 <body>
-   <div class="container-css">
+   <div class="container-css flex-column">
+       <a href="index.php" class="my-3 text-bold ">Brand</a>
        <form  class="form" id="form" action="" method="POST"> 
            <div class="header">
                <h2>Sign in</h2>
            </div>
     <div class="padding">
+    <?php if(isset($_POST["submit"])){
+        if(!isset($_SESSION['name']))
+          echo'<div class="alert alert-danger" role="alert">
+           Sorry we could not find your account!
+        </div>';
+    } ?>
     <div class="form-control-css ">
-     <label for="email">Email</label>
+     <!-- <label for="email">Email</label> -->
      <input type="text" placeholder="Enter your email" id="email" name="email">
      <i class="fas fa-check-circle"></i>
      <i class="fas fa-exclamation-circle"></i>
@@ -79,7 +87,7 @@ if (isset($_POST["submit"])) {
     
 
        <div class="form-control-css ">
-        <label for="password">Password</label>
+        <!-- <label for="password">Password</label> -->
         <input type="password" placeholder="Enter your password" id="password" name="password">
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
@@ -102,6 +110,6 @@ if (isset($_POST["submit"])) {
 </div>
 
    </div> 
-   <script  src="./js/signin.js"></script>
+   <!-- <script  src="./js/signin.js"></script> -->
 </body>
 </html>

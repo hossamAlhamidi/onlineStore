@@ -15,7 +15,11 @@
     <title>Document</title>
 </head>
 <body>
-<?php include('navbar.php'); 
+  <?php include('navbar.php'); ?>
+  <div class="container">
+        <div class="row p-2 ">
+
+<?php
  
 // session_start();
 include 'config.php';
@@ -30,25 +34,34 @@ $sql = "SELECT * FROM product WHERE name like '%$search%'";
         {
 
     
-            echo  '<div class="card mb-3 p-3 id=""" >
-            <div class="row g-0">
-              <div class="col-md-3 text-center">
-                <img src="' .$row['photo'] . '"" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-6">
-                <div class="card-body">
-                  <h5 class="card-title">' . $row["name"]. '</h5>
-                  <p class="card-text">' . $row['description']. '</p>
-                  </p>
-                </div>
-              </div>
-              <div class="col-md-3 text-center">
-                <h5 class="price"> ' . $row['price']. '$</h5>
+          //   echo  '<div class="card mb-3 p-3 id=""" >
+          //   <div class="row g-0">
+          //     <div class="col-md-3 text-center">
+          //       <img src="' .$row['photo'] . '"" class="img-fluid rounded-start" alt="...">
+          //     </div>
+          //     <div class="col-md-6">
+          //       <div class="card-body">
+          //         <h5 class="card-title">' . $row["name"]. '</h5>
+          //         <p class="card-text">' . $row['description']. '</p>
+          //         </p>
+          //       </div>
+          //     </div>
+          //     <div class="col-md-3 text-center">
+          //       <h5 class="price"> ' . $row['price']. '$</h5>
                 
-                <button type="button" class="btn btn-primary w-75 my-3 ">Add to cart</button>
-              </div>
-            </div>
-          </div>';
+          //       <button type="button" class="btn btn-primary w-75 my-3 ">Add to cart</button>
+          //     </div>
+          //   </div>
+          // </div>';
+          echo '  <div class="card col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5  style="""  >'.
+      ' <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/> ' .
+      ' <div class="card-body">
+      <h5 class="card-title">'. $row["name"].'</h5>
+      <p class="card-text">'. $row["description"].'</p>
+      <h5 class="card-text">'. $row["price"].'$</h5>
+      <button class="btn btn-primary">Add to cart</button>
+      </div>
+      </div>';
 
 
     }           
@@ -59,6 +72,8 @@ $sql = "SELECT * FROM product WHERE name like '%$search%'";
 
 
 ?>
+</div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </body>
 </html>

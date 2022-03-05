@@ -47,7 +47,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav nav nav-tabs mx-auto">
                 <li class="nav-item">
-                  <a class="nav-link text-white " aria-current="page" href="#">Home</a>
+                  <a class="nav-link text-white " aria-current="page" href="seller.php">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white" href="#">Hot Sale</a>

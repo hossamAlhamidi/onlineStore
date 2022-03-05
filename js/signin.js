@@ -8,9 +8,9 @@ let emailValid = false;
 let passwordValid = false;
 form.addEventListener("submit",(event)=>{
     checkInput()
-    // if(!emailValid ||  !passwordValid ){
-    // event.preventDefault();
-    // }
+    if(!emailValid ||  !passwordValid ){
+    event.preventDefault();
+    }
 
   
 })

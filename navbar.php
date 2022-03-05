@@ -81,7 +81,7 @@
       <nav>
       <ul class=" nav nav-tabs mx-auto justify-content-center">
                 <li class="nav-item">
-                  <a class="nav-link text-white " aria-current="page" href="#">Home</a>
+                  <a class="nav-link text-white " aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-white" href="#">Hot Sale</a>

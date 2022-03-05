@@ -97,7 +97,7 @@
       <div class ="heading">
           <h1 class="title">Become a seller</h1>
           <p class="text-muted">More than half the units sold in our stores are from independent sellers.</p>
-          <a <?php session_destroy(); ?> href="signup_s.php" class="btn btn-outline-dark">Sign Up</a>
+          <a <?php //session_destroy(); ?> href="signup_s.php" class="btn btn-outline-dark">Sign Up</a>
       </div>
 
       <div class="header-img">

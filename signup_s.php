@@ -13,39 +13,6 @@ session_start();
 //     if ($_SESSION["type"] == 1)
 //         header("Location: seller.php");
 
-
-
-if (isset($_POST["submit"])) {
-	$username = $_POST["username"];
-	$email = $_POST["email"];
-	$password = md5($_POST["password"]);
-	$cpassword = md5($_POST['cpassword']);
-	$type = 1;
-	
-
-	if ($password == $cpassword) {
-		$sql = "SELECT * FROM user WHERE email='$email'";
-		$result = mysqli_query($conn, $sql);
-		if (!$result->num_rows > 0) {
-			$sql = "INSERT INTO user (name, email, PWD, type, phone,  address_city, address, postcode)
-					VALUES ('$username', '$email', '$password', '$type', null, null, null, null)";
-			$result = mysqli_query($conn, $sql);
-			if ($result) {
-				echo "<script>alert('Wow! User Registration Completed.')</script>";
-                header("Location: signin.php");
-			} else {
-				echo "<script>alert('Woops! Something Wrong Went.')</script>";
-			}
-		} else {
-			echo "<script>alert('Woops! Email Already Exists.')</script>";
-		}	
-	} else {
-        echo "<script>alert('Password Not Matched.')</script>";
-	}
-
-  
-    
-}
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +27,8 @@ if (isset($_POST["submit"])) {
     <title>Sign up</title>
 </head>
 <body>
-   <div class="container-css">
+   <div class="container-css flex-column">
+   <a href="index.php" class="my-3 text-bold ">Brand</a>
        <form  class="form" id="form" action="" method="POST">
            <div class="header">
                <h2>Create Account</h2>
@@ -68,7 +36,7 @@ if (isset($_POST["submit"])) {
     <div class="padding">
     <div class="form-control-css ">
      <label for="userName"> Name</label>
-     <input type="text" placeholder="Enter your Name" id="userName" name="username" value="<?php echo $username; ?>" >
+     <input type="text" placeholder="Enter your Name" id="userName" name="username" <?php if(isset($_POST['username'])) echo ' value = "'.$_POST['username'].'"'  ?> >
      <i class="fas fa-check-circle"></i>
      <i class="fas fa-exclamation-circle"></i>
      <small>error msg</small>
@@ -76,26 +44,26 @@ if (isset($_POST["submit"])) {
 
     <div class="form-control-css  ">
         <label for="email"> Email</label>
-        <input type="text" placeholder="Enter your email" id="email" name="email" value="<?php echo $email; ?>" >
+        <input type="text" placeholder="Enter your email" id="email" name="email" <?php if(isset($_POST['email'])) echo ' value = "'.$_POST['email'].'"'  ?> >
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
-        <small>error msg</small>
+        <small id="email-msg">error msg</small>
        </div>
 
        <div class="form-control-css ">
         <label for="password">Password</label>
-        <input type="password" placeholder="Enter your password" id="password" name="password" >
+        <input type="password" placeholder="Enter your password" id="password" name="password" <?php if(isset($_POST['password'])) echo ' value = "'.$_POST['password'].'"'  ?> >
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
-        <small>error msg</small>
+        <small >error msg</small>
        </div>
 
        <div class="form-control-css ">
         <label for="confrim-password">Confirm Password</label>
-        <input type="password" placeholder="Confirm your password" id="confirm-password" name="cpassword" >
+        <input type="password" placeholder="Confirm your password" id="confirm-password" name="cpassword" <?php if(isset($_POST['cpassword'])) echo ' value = "'.$_POST['cpassword'].'"'  ?> >
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
-        <small>error msg</small>
+        <small id="password-msg">error msg</small>
        </div>
 
        <!-- <div class="form-control-css radio ">
@@ -137,3 +105,59 @@ if (isset($_POST["submit"])) {
 
 </body>
 </html>
+
+<?php
+
+if (isset($_POST["submit"])) {
+	$username = $_POST["username"];
+	$email = $_POST["email"];
+	$password = md5($_POST["password"]);
+	$cpassword = md5($_POST['cpassword']);
+	$type = 1;
+	
+
+	if ($password == $cpassword) {
+		$sql = "SELECT * FROM user WHERE email='$email'";
+		$result = mysqli_query($conn, $sql);
+		if (!$result->num_rows > 0) {
+			$sql = "INSERT INTO user (name, email, PWD, type, phone,  address_city, address, postcode)
+					VALUES ('$username', '$email', '$password', '$type', null, null, null, null)";
+			$result = mysqli_query($conn, $sql);
+			if ($result) {
+				echo "<script>alert('Wow! User Registration Completed.')</script>";
+                header("Location: signin.php");
+			} else {
+				echo "<script>alert('Woops! Something Wrong Went.')</script>";
+			}
+		} else {
+            echo "<script>
+            // let div = document.createElement('div')
+            // div.textContent = '  Sorry we could not find your account!'
+            // div.classList.add('alert','alert-danger')
+            // div.setAttribute('role','alert')
+            // document.querySelector('.padding').prepend(div)
+           let msg =  document.querySelector('#email-msg')
+            console.log(msg.textContent)
+            msg.textContent = 'Email already exist'
+            msg.parentElement.classList.add('error')
+            </script>";
+		}	
+	} else {
+        echo "<script>
+        // let div = document.createElement('div')
+        // div.textContent = '  Sorry we could not find your account!'
+        // div.classList.add('alert','alert-danger')
+        // div.setAttribute('role','alert')
+        // document.querySelector('.padding').prepend(div)
+       let msg =  document.querySelector('#password-msg')
+        console.log(msg.textContent)
+        msg.textContent = 'Password does not match'
+        msg.parentElement.classList.add('error')
+        </script>";
+	}
+
+  
+    
+}
+?>
+
