@@ -9,6 +9,9 @@ body{
     font-family: fira sans , sans-serif;
 }
 
+.btn{
+    box-shadow: none !important;
+}
 nav{
     background-color: #7C9473;
    
@@ -25,18 +28,24 @@ header h1{
     font-weight: bold;
 }
 .shopping{
-    background-color: #E8EAE6;
+    /* background-color: #E8EAE6; */
 }
 div.item{
-    min-width: 120px;
-    height:170px;
-    line-height: 110px;
+    min-width: 250px;
+    min-height:180px;
+    /* line-height: 110px; */
     text-align: center;
     margin-right: 5px;
 }
 
+div.item.item-categories{
+    min-width: 170px;
+    min-height:120px;
+    margin-right: 10px;
+}
+
 .horizontal-scroll{
-    max-width: 1000px;
+    /* max-width: 1000px; */
     margin: auto;
 }
 .products{
@@ -55,6 +64,8 @@ div.item{
 .item-img > img{
     width: 100px;
     height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .btn-scroll-left {
@@ -84,6 +95,44 @@ div.item{
 }
 
 .item:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
    
+}
+div.card{
+    border:none;
+
+}
+div.button > a.edit , div.button > a.delete{
+  width: 6.25rem;
+  max-width: 100%;
+}
+p.description{ 
+        /* display: inline-block; */
+        /* height: 70px; */
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+    
+}
+
+
+@media screen and (max-width:500px) {
+    html{
+        font-size: 0.75rem;
+    }
+    div.item{
+        min-width: 200px;
+    }
+  
+}
+
+@media screen and (max-width:800px){
+    .btn-scroll-left {
+       
+        left: -10%;
+    }
+     .btn-scroll-right{
+      
+        right:-10%;
+    }
 }

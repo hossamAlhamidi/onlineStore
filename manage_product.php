@@ -100,13 +100,15 @@
     while($row = mysqli_fetch_array($result))
 
     {
-      echo '  <div class="card col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5  style="""  >'.
+      echo '  <div class="card text-center col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5  style="""  >'.
       ' <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/> ' .
       ' <div class="card-body">
       <h5 class="card-title">'. $row["name"].'</h5>
-      <p class="card-text">'. $row["description"].'</p>
-      <a href="manage_product.php? id='.$row["id"].'" class="btn btn-danger">Delete</a>
-      <a href="ED.php? id='.$row["id"].'" class="btn btn-warning">Edit</a>
+      <p class="card-text description ">'. $row["description"].'</p>
+      </div>
+      <div class="button">
+      <a href="manage_product.php? id='.$row["id"].'" class="btn btn-danger delete ">Delete</a>
+      <a href="ED.php? id='.$row["id"].'" class="btn btn-warning edit">Edit</a>
       </div>
       </div>';
  
@@ -127,6 +129,8 @@
 
     
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+ <script>
  
+ </script>
 </body>
 </html>
