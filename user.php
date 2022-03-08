@@ -21,9 +21,9 @@
     <title>store</title>
 </head>
 <body>
-  <?php //include('navbar.php')  ?> 
+  <?php include('navbar.php')  ?> 
 
-  <nav class="navbar navbar-expand-sm navbar-light">
+  <!-- <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Brand</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,7 +77,7 @@
                 
               
               </ul>
-      </nav>
+      </nav> -->
 
 
     <!-- <nav class="navbar navbar-expand-sm navbar-light">
@@ -114,7 +114,7 @@
 
       <!-- sidebar -->
 
-      <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <!-- <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title text-white" id="offcanvasExampleLabel">Brand</h5>
           <button type="button" class="btn-close text-reset bg-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -130,7 +130,7 @@
               </div>
          
         </div>
-      </div>
+      </div> -->
 
       <header>
       <h1>Pay Less Earn More</h1>

@@ -121,7 +121,7 @@ p.description , h5.card-title{
 
 @media screen and (max-width:500px) {
     html{
-        font-size: 0.75rem;
+        font-size: 0.65rem;
     }
     div.item{
         min-width: 200px;
@@ -132,10 +132,10 @@ p.description , h5.card-title{
 @media screen and (max-width:800px){
     .btn-scroll-left {
        
-        left: -10%;
+        left: -7%;
     }
      .btn-scroll-right{
       
-        right:-10%;
+        right:-7%;
     }
 }

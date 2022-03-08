@@ -124,6 +124,12 @@ if (isset($_POST["submit"])) {
 					VALUES ('$username', '$email', '$password', '$type', null, null, null, null)";
 			$result = mysqli_query($conn, $sql);
 			if ($result) {
+                require_once("mail.php");
+                $mail->setFrom('WebProject9091@gmail.com',"hossam");
+                $mail->addAddress($email);
+                $mail->Subject = 'Register notification';
+                $mail->Body    = 'You have successfully registered ';
+                $mail->send();
 				echo "<script>alert('Wow! User Registration Completed.')</script>";
                 header("Location: signin.php");
 			} else {
