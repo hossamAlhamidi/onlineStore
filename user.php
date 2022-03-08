@@ -139,7 +139,7 @@
       <section class="shopping ">
 
         <div class="container p-5">
-          <h5 class="title">New in</h5>
+          <h5 class="title">Categories</h5>
           <div class="horizontal-scroll position-relative">
             <button  data="new" type="button" class="btn btn-scroll-left" ><i class="fas fa-chevron-left"></i></button>
             <button  data="new" type="button"  class="btn btn-scroll-right"><i class="fas fa-chevron-right"></i></button>
@@ -148,14 +148,14 @@
           </div>
         </div>
 
-        <h5 class="title">Popular</h5>
+        <!-- <h5 class="title">Popular</h5>
         <div class="horizontal-scroll position-relative">
           <button  data="popular" type="button" class="btn btn-scroll-left" ><i class="fas fa-chevron-left"></i></button>
           <button  data="popular" type="button"  class=" btn btn-scroll-right"><i class="fas fa-chevron-right"></i></button>
           <div class="products popular mb-5 story-container">
 
         </div>
-      </div>
+      </div> -->
       </div>
 
       <?php 
@@ -184,7 +184,7 @@ while($row = mysqli_fetch_array($result))
 // </div>';
 
 echo '  <div class=" card item  mx-1  style="""  >'.
-' <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/> ' .
+'<div class="img-height"> <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/></div> ' .
 ' <div class="card-body">
 <h5 class="card-title">'. $row["name"].'</h5>
 
@@ -192,7 +192,7 @@ echo '  <div class=" card item  mx-1  style="""  >'.
 
 
 </div>
-<h5 class="card-title">'. $row["price"].'sr</h5>
+<h5 class="price">'. $row["price"].'sr</h5>
 <a href="#? id='.$row["id"].'" class="btn btn-outline-primary  w-50 mx-auto my-3"> ADD TO CART</a>
 </div>';
 }

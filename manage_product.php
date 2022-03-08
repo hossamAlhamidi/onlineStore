@@ -101,7 +101,7 @@
 
     {
       echo '  <div class="card text-center col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5  style="""  >'.
-      ' <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/> ' .
+      ' <div class="img-height"> <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/></div> ' .
       ' <div class="card-body">
       <h5 class="card-title">'. $row["name"].'</h5>
       <p class="card-text description ">'. $row["description"].'</p>

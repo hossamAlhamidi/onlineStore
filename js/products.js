@@ -140,7 +140,7 @@ const btn_scroll_left = document.querySelectorAll(".btn-scroll-left");
 function scrollLeft(wrapper){
   if(window. innerWidth <=500){
     console.log(window.innerWidth , "yes")
-    wrapper.scrollLeft += 300;
+    wrapper.scrollLeft += 200;
   }
   else
   wrapper.scrollLeft += 500;
@@ -148,7 +148,7 @@ function scrollLeft(wrapper){
 
 function scrollRight(wrapper){
   if(window. innerWidth <=500){
-    wrapper.scrollLeft -=300;
+    wrapper.scrollLeft -=200;
   }
   else
   wrapper.scrollLeft -=500;

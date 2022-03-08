@@ -54,10 +54,10 @@ $sql = "SELECT * FROM product WHERE name like '%$search%'";
           //   </div>
           // </div>';
           echo '  <div class="card col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5  style="""  >'.
-      ' <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/> ' .
+      ' <div class="img-height"> <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/></div> ' .
       ' <div class="card-body">
       <h5 class="card-title">'. $row["name"].'</h5>
-      <p class="card-text">'. $row["description"].'</p>
+      <p class="card-text description">'. $row["description"].'</p>
       <h5 class="card-text">'. $row["price"].'$</h5>
       <button class="btn btn-primary">Add to cart</button>
       </div>

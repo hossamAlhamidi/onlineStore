@@ -111,7 +111,7 @@
       // </div>';
 
       echo '  <div class=" card item  mx-1  style="""  >'.
-      ' <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/> ' .
+      '<div class="img-height"> <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/></div> ' .
       ' <div class="card-body">
       <h5 class="card-title">'. $row["name"].'</h5>
     
@@ -119,7 +119,7 @@
       
       
       </div>
-      <h5 class="card-title">'. $row["price"].'sr</h5>
+      <h5 class="price">'. $row["price"].'sr</h5>
       <a href="#? id='.$row["id"].'" class="btn btn-outline-primary  w-50 mx-auto my-3"> ADD TO CART</a>
       </div>';
       }

@@ -67,6 +67,9 @@ div.item.item-categories{
     border-radius: 50%;
     object-fit: cover;
 }
+div.img-height , div.img-height img{
+    height: 100%;
+}
 
 .btn-scroll-left {
     position: absolute;
@@ -106,7 +109,7 @@ div.button > a.edit , div.button > a.delete{
   width: 6.25rem;
   max-width: 100%;
 }
-p.description{ 
+p.description , h5.card-title{ 
         /* display: inline-block; */
         /* height: 70px; */
         white-space: nowrap;
