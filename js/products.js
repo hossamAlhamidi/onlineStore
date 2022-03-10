@@ -147,6 +147,7 @@ function scrollLeft(wrapper){
 }
 
 function scrollRight(wrapper){
+  
   if(window. innerWidth <=500){
     wrapper.scrollLeft -=200;
   }
