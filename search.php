@@ -53,12 +53,15 @@ $sql = "SELECT * FROM product WHERE name like '%$search%'";
           //     </div>
           //   </div>
           // </div>';
-          echo '  <div class="card col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5  style="""  >'.
-      ' <div class="img-height"> <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/></div> ' .
+          echo '  <div class=" clickable card col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5"  id="' .$row['id'] .'"  >'.
+      ' <div class="img-height"> 
+      <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/>
+      <button  type="button" id='.$row["id"].'" class="btn text-danger btn-favorite  "> <i class=" far fa-light fa-heart display-6"></i></button>
+      </div> ' .
       ' <div class="card-body">
       <h5 class="card-title">'. $row["name"].'</h5>
       <p class="card-text description">'. $row["description"].'</p>
-      <h5 class="card-text">'. $row["price"].'$</h5>
+      <h5 class="card-text">'. $row["price"].'SR</h5>
       <button class="btn btn-primary">Add to cart</button>
       </div>
       </div>';
@@ -75,5 +78,34 @@ $sql = "SELECT * FROM product WHERE name like '%$search%'";
 </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+<script>
+    let products_container = document.querySelectorAll(".clickable");
+    for(let product of products_container){
+        product.addEventListener("click",(event)=>{
+            console.log(event.currentTarget.id,event.target)
+            if(event.target.tagName.toLowerCase()!= "a" && event.target.tagName.toLowerCase()!= "button")
+            if(event.target.tagName.toLowerCase()!="i" )
+            window.location.href = `product_details.php?id=${event.currentTarget.id}`
+        })
+    }
+</script>
+
+<script>
+      btn_favorite = document.querySelectorAll(".btn-favorite");
+
+      for(let btn of btn_favorite){
+      btn.addEventListener("click",()=>{
+        if(event.currentTarget.children[0].classList.contains("far"))
+        event.currentTarget.children[0].className = "fa fa-light fa-heart display-6 "
+        else{
+          event.currentTarget.children[0].classList.remove("fa")
+          event.currentTarget.children[0].classList.add("far")
+        }
+        
+      }
+      )
+    }
+    </script>
 </body>
 </html>
