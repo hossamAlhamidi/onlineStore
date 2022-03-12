@@ -188,7 +188,7 @@
                 <ul>
                   <li>Account</li>
                   <li>Payment</li>
-                  <li>Wishlist</li>
+                  <li><a href="wishlist.php">WishList</a></li>
                   <li><a href="logout.php">Logout</a></li>
                 </ul>
               </div>
