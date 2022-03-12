@@ -3,10 +3,14 @@ session_start();
 include 'config.php';
 
 if(isset($_POST['id'])){
+  echo 'yeeeeeeeeeees ';
     $id = $_POST['id'];
     $_SESSION['wishlist_pid'] = $id;
     $email = $_SESSION['email'];
-    $select = "select pID from wishlist where pID = $id";
+    echo $id;
+    echo $email;
+    
+    $select = "select pID from wishlist where email = '$email' AND pID = $id";
     $result_select = mysqli_query($conn,$select);
     if(mysqli_num_rows($result_select)!=0){
         $delete = "DELETE FROM wishlist where pID = $id";

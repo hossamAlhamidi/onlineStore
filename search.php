@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +12,7 @@ session_start();
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/2534293444.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/sidebar.css">
     <title>Search</title>
 </head>
@@ -22,7 +24,7 @@ session_start();
 <?php
  
 
-include 'config.php';
+
 if (isset($_POST["submit"])) {
 $search = $_POST['search'];
 $sql = "SELECT * FROM product WHERE name like '%$search%'";
@@ -53,18 +55,74 @@ $sql = "SELECT * FROM product WHERE name like '%$search%'";
           //     </div>
           //   </div>
           // </div>';
-          echo '  <div class=" clickable card col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5"  id="' .$row['id'] .'"  >'.
-      ' <div class="img-height"> 
-      <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/>
-      <button  type="button" id='.$row["id"].'" class="btn text-danger btn-favorite  "> <i class=" far fa-light fa-heart display-6"></i></button>
-      </div> ' .
-      ' <div class="card-body">
-      <h5 class="card-title">'. $row["name"].'</h5>
-      <p class="card-text description">'. $row["description"].'</p>
-      <h5 class="card-text">'. $row["price"].'SR</h5>
-      <button class="btn btn-primary">Add to cart</button>
-      </div>
-      </div>';
+    //       echo '  <div class=" clickable card col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5"  id="' .$row['id'] .'"'.'>'.
+    //   ' <div class="img-height"> 
+    //   <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/>
+    //   <button  type="button" id="'.$row["id"].'" class="btn text-danger btn-favorite  ">'. 
+    //   <i class=" far fa-light fa-heart display-6"></i>
+      
+    // '  </button>
+    //   </div> ' .
+    //   ' <div class="card-body">
+    //   <h5 class="card-title">'. $row["name"].'</h5>
+    //   <p class="card-text description">'. $row["description"].'</p>
+    //   <h5 class="card-text">'. $row["price"].'SR</h5>
+    //   <button class="btn btn-primary">Add to cart</button>
+    //   </div>
+    //   </div>';
+    echo '  <div class=" clickable card col-lg-3 col-6  mx-sm-0 my-5"  id="' .$row['id'] .'"'.'>'.
+    ' <div class="img-height"> 
+    <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/>
+    <button  type="button" id="'.$row["id"].'" class="btn text-danger btn-favorite  ">';
+    if(isset($_SESSION['name'])){
+      $email = $_SESSION['email'];
+    $sql1 = "select pID from wishlist where email ='$email' AND pID =". $row['id'];
+     $result1 = mysqli_query($conn, $sql1);
+    if(mysqli_num_rows($result1) != 0){
+    while($row1 = mysqli_fetch_array($result1))
+    {
+    if($row['id']==$row1['pID']){
+      echo ' <i class=" fa fa-light fa-heart display-6"></i>';
+      // $isPrinted =true;
+    }
+    
+    // else if(!$isPrinted) {
+    
+    // echo ' <i class=" far fa-light fa-heart display-6"></i>1';
+    // $isPrinted = true;
+    // // echo "<script>
+    // // console.log( document.querySelectorAll('.btn-favorite')  )
+    // // for(let element of document.querySelectorAll('.btn-favorite')){
+    // //   console.log(element.children.length,'length')
+    // //   if(element.children.length ==2){
+    // //     console.log(element.id,'element')
+    // //     var id = element.id
+    // //     document.querySelector('#'+id).remove()
+    // //   }
+    // // }
+    
+    // // </script>";
+    // }
+    }
+    
+    }
+    else {
+      echo ' <i class=" far fa-light fa-heart display-6"></i>';
+    }
+    }
+    else {
+      echo ' <i class=" far fa-light fa-heart display-6"></i>';
+    }
+    
+echo  '  </button>
+    </div> ' .
+    ' <div class="card-body">
+    <h5 class="card-title">'. $row["name"].'</h5>
+    <p class="card-text description">'. $row["description"].'</p>
+    <h5 class="card-text">'. $row["price"].'SR</h5>
+    <button class="btn btn-primary">Add to cart</button>
+    </div>
+    </div>';
 
 
     }           
@@ -83,7 +141,7 @@ $sql = "SELECT * FROM product WHERE name like '%$search%'";
     let products_container = document.querySelectorAll(".clickable");
     for(let product of products_container){
         product.addEventListener("click",(event)=>{
-            console.log(event.currentTarget.id,event.target)
+            // console.log(event.currentTarget.id,event.target)
             if(event.target.tagName.toLowerCase()!= "a" && event.target.tagName.toLowerCase()!= "button")
             if(event.target.tagName.toLowerCase()!="i" )
             window.location.href = `product_details.php?id=${event.currentTarget.id}`
@@ -91,21 +149,7 @@ $sql = "SELECT * FROM product WHERE name like '%$search%'";
     }
 </script>
 
-<script>
-      btn_favorite = document.querySelectorAll(".btn-favorite");
 
-      for(let btn of btn_favorite){
-      btn.addEventListener("click",()=>{
-        if(event.currentTarget.children[0].classList.contains("far"))
-        event.currentTarget.children[0].className = "fa fa-light fa-heart display-6 "
-        else{
-          event.currentTarget.children[0].classList.remove("fa")
-          event.currentTarget.children[0].classList.add("far")
-        }
-        
-      }
-      )
-    }
-    </script>
+    <script src="./js/favorite.js"></script>
 </body>
 </html>
