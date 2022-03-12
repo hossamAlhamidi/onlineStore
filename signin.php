@@ -62,7 +62,7 @@ if (isset($_POST["submit"])) {
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <title>Sign in</title>
 </head>
-<body>
+<body id="body">
    <div class="container-css flex-column">
        <a href="index.php" class="my-3 text-bold ">Brand</a>
        <form  class="form" id="form" action="" method="POST"> 

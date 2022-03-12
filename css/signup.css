@@ -2,7 +2,7 @@
 *{
     box-sizing: border-box;
 }
-body{
+#body{
     margin: 0;
     background-color: #7C9473 !important;
     font-family: fira sans , sans-serif !important;

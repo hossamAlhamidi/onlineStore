@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/signup.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/2534293444.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -30,36 +31,51 @@
 </head>
 <body>
     <?php include 'navbar.php'; ?>
-    <!-- <nav class="navbar navbar-expand-sm navbar-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Brand</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav nav nav-tabs mx-auto">
-                <li class="nav-item">
-                  <a class="nav-link text-white " aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Hot Sale</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Categories</a>
-                </li>
-              
-              </ul>
-              <div >
-                <button class="btn">
-                  <i class="fa fa-shopping-cart"></i>
-                </button>
-                <a href="signin.php" class="btn">
-                  <i class="fas fa-user"></i>
-                </a>
-            </div>
-          </div>
+    <div id="modal" class="modal " tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered container px-5 " role="document">
+    <div class="modal-content mx-auto container">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button id="close-btn" type="button" class="close btn " data-dismiss="modal" aria-label="Close" style="font-size:2rem;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+      <div class="modal-body">
+      <h2 class="modal-title my-5 text-center">Sign in</h5>
+      <form   id="form" action="" method="POST">
+      <div class="form-control-css ">
+     <!-- <label for="email">Email</label> -->
+     <input type="text" placeholder="Enter your email" id="email" name="email">
+     <i class="fas fa-check-circle"></i>
+     <i class="fas fa-exclamation-circle"></i>
+     <small>error msg</small>
+    </div>
+
+    
+
+       <div class="form-control-css ">
+        <!-- <label for="password">Password</label> -->
+        <input type="password" placeholder="Enter your password" id="password" name="password">
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>error msg</small>
+       </div>
+       <div class="forgot  ">
+           <a href="#"> Forgot Password? </a>
         </div>
-      </nav> -->
+
+        <div class="signup  ">
+            <span> don't have an account?</span> <a href="signup.php">sign up</a>
+         </div>
+      </div>
+  </form>
+      <div class="modal-footer">
+        <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </div>
+    </div>
+  </div>
+</div>
 
       <header>
       <h1>Pay Less Earn More</h1>
@@ -141,5 +157,6 @@
     
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
   <script src="./js/products.js"></script>
+  <script src="./js/signin_popup.js"></script>
 </body>
 </html>

@@ -41,23 +41,7 @@ if($row['id']==$row1['pID']){
   // $isPrinted =true;
 }
 
-// else if(!$isPrinted) {
 
-// echo ' <i class=" far fa-light fa-heart display-6"></i>1';
-// $isPrinted = true;
-// // echo "<script>
-// // console.log( document.querySelectorAll('.btn-favorite')  )
-// // for(let element of document.querySelectorAll('.btn-favorite')){
-// //   console.log(element.children.length,'length')
-// //   if(element.children.length ==2){
-// //     console.log(element.id,'element')
-// //     var id = element.id
-// //     document.querySelector('#'+id).remove()
-// //   }
-// // }
-
-// // </script>";
-// }
 }
 
 }
@@ -67,6 +51,18 @@ else {
 }
 else {
   echo ' <i class=" far fa-light fa-heart display-6"></i>';
+  // this is a new way to write strings without escaping "" , its calles heredoc
+//   echo <<<END
+//      <script>
+//      var btn_favorite = document.querySelectorAll('.btn-favorite');
+//      for(let btn of btn_favorite){
+//        btn.addEventListener("click",()=>{
+//          console.log('yes')
+//        })
+//      }
+     
+//      </script>
+// END;
 }
  echo '</button>
 </div> ' .
