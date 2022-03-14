@@ -2,16 +2,11 @@
   	session_start();
 
     if (isset($_SESSION['name'])) {
-      //header("Location: user.php");
-      if ($_SESSION["type"] == 0){
-          //echo "if2";
-          header("Location: user.php");}
-  //  if ($_SESSION["type"] == 0)
-  //       header("LOCATION: user.php");
-    // else if ($_SESSION["type"] == 1)
-    //     header("LOCATION: seller.php"); 
-    
-   }
+      if ($_SESSION["type"] == 0)
+          header("Location: user.php");
+      else if ($_SESSION["type"] == 1)
+          header("Location: seller.php");
+  }
 ?>
 
 <!DOCTYPE html>
