@@ -42,7 +42,7 @@
       </div> -->
       <div class="modal-body">
       <h2 class="modal-title my-5 text-center">Sign in</h5>
-      <form   id="form" action="" method="POST">
+      <form   id="form" action="logging.php" method="POST">
       <div class="form-control-css ">
      <!-- <label for="email">Email</label> -->
      <input type="text" placeholder="Enter your email" id="email" name="email">
@@ -68,11 +68,11 @@
             <span> don't have an account?</span> <a href="signup.php">sign up</a>
          </div>
       </div>
-  </form>
       <div class="modal-footer">
         <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="submit" class="btn btn-primary" name="submit">Sign in</button>
       </div>
+  </form>
     </div>
   </div>
 </div>

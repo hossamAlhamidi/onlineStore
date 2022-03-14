@@ -17,38 +17,27 @@ if (isset($_SESSION['name'])) {
 }
 
 
- 
-$e = false;
+// $e = false;
+// if (isset($_POST["submit"])) {
+// 	$email = $_POST["email"];
+// 	$password = md5($_POST["password"]);
+// 	$con = new PDO('mysql:host=localhost;dbname=onlineshoppingsystem', "root", "", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+// 	$request = $con->query("SELECT * FROM user WHERE email = '".$email."' AND PWD = '".$password."'");
+// 	if ($request->rowCount() == 1) {
+// 		$info = $request->fetch();
+// 		//$_SESSION["id"] = $info["id"];
+// 		$_SESSION["name"] = $info["name"];
+// 		$_SESSION["email"] = $info["email"];
+// 		$_SESSION["type"] = $info["type"];
+//         if($_SESSION["type"] == 0)
+// 		    header("location: user.php");
+//         if($_SESSION["type"] == 1)
+//             header("location: seller.php");
+// 	}else {
+// 		$e = true;    
+// 	}
+// }
 
-if (isset($_POST["submit"])) {
-
-
-	$email = $_POST["email"];
-	$password = md5($_POST["password"]);
-
-	$con = new PDO('mysql:host=localhost;dbname=onlineshoppingsystem', "root", "", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
-	$request = $con->query("SELECT * FROM user WHERE email = '".$email."' AND PWD = '".$password."'");
-
-
-
-	if ($request->rowCount() == 1) {
-		$info = $request->fetch();
-
-		//$_SESSION["id"] = $info["id"];
-		$_SESSION["name"] = $info["name"];
-		$_SESSION["email"] = $info["email"];
-		$_SESSION["type"] = $info["type"];
-
-        if($_SESSION["type"] == 0)
-		    header("location: user.php");
-        if($_SESSION["type"] == 1)
-            header("location: seller.php");
-	}else {
-		$e = true;
-      
-	}
-}
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +54,7 @@ if (isset($_POST["submit"])) {
 <body id="body">
    <div class="container-css flex-column">
        <a href="index.php" class="my-3 text-bold ">Brand</a>
-       <form  class="form" id="form" action="" method="POST"> 
+       <form  class="form" id="form" action="logging.php" method="POST"> 
            <div class="header">
                <h2>Sign in</h2>
            </div>
