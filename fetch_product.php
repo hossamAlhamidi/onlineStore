@@ -111,37 +111,29 @@ echo ' </div>
         })
     }
 
-    let btn_cart = document.querySelectorAll('.btn-cart');
-    for(let btn of btn_cart){
-      btn.addEventListener("click",()=>{
-        var email = '<?= $_SESSION['email'] ?>';
-        $.post(`insert_cart.php`,{id:event.currentTarget.id,email:email},function(data,status,xhr){
-        console.log(data,"data");     
-        let nav = document.querySelector('#cart-num');
-        nav.textContent = parseInt(nav.textContent)+1;
-      //   $("#cart-num").load("fetch_cart_number.php",function(responseTxt, statusTxt, xhr){
-      //     if(statusTxt == "error")
-      // alert("Cart num cannot load!");
-      //   })
-
-})
-// $.post(`fetch_cart_number.php`,function(data,status,xhr){
-//   console.log(data,"fetch cart")
-//         if(status=='error'){
-//           alert('error navbar cart');
-//         }
+//     let btn_cart = document.querySelectorAll('.btn-cart');
+//     for(let btn of btn_cart){
+//       btn.addEventListener("click",()=>{
+//         var email = '<?= $_SESSION['email'] ?>';
+//         $.post(`insert_cart.php`,{id:event.currentTarget.id,email:email},function(data,status,xhr){
+//         console.log(data,"data");     
+//         let nav = document.querySelector('#cart-num');
+//         nav.textContent = parseInt(nav.textContent)+1;
+//       //   $("#cart-num").load("fetch_cart_number.php",function(responseTxt, statusTxt, xhr){
+//       //     if(statusTxt == "error")
+//       // alert("Cart num cannot load!");
+//       //   })
 
 // })
 
-// $.ajax({method:"POST" ,url:'fetch_cart_number.php', async:false,success:function(data){console.log(data,"ajax")} })
-      })
-    }
+//       })
+//     }
 
 </script>
 
 
 <?php
-
+include 'addToCartAjax.php';
 
 mysqli_close($conn);
 ?>

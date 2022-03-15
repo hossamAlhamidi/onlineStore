@@ -55,7 +55,7 @@ while($row = mysqli_fetch_array($result))
          <h5 class="card-title">' .$row['price']. 'SR</h5>
          <div class="d-flex justify-content-center">
          
-         <a href="#? id='.$row["id"].'" class="btn btn-outline-primary   my-3 mx-2"> ADD TO CART</a>
+         <a  id="'.$row["id"].'" class="btn btn-outline-primary btn-cart  my-3 mx-2"> ADD TO CART</a>
          <button  type="button" id="'.$row["id"].'" class="btn text-danger btn-favorite  ">';
 
          if(isset($_SESSION['name'])){
@@ -120,17 +120,8 @@ echo ' </div>
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
-    <!-- <script>
-      btn_favorite = document.querySelector(".btn-favorite");
-      btn_favorite.addEventListener("click",()=>{
-        if(event.currentTarget.children[0].classList.contains("far"))
-        event.currentTarget.children[0].className = "fa fa-light fa-heart display-6 "
-        else{
-          event.currentTarget.children[0].classList.remove("fa")
-          event.currentTarget.children[0].classList.add("far")
-        }
-      })
-    </script> -->
+
     <script src="./js/favorite.js"></script>
+    <?php include 'addToCartAjax.php'; ?>
 </body>
 </html>
