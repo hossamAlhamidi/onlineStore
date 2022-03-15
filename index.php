@@ -62,13 +62,15 @@
         <div class="signup  ">
             <span> don't have an account?</span> <a href="signup.php">sign up</a>
          </div>
-      </div>
+
+      
+
       <div class="modal-footer">
         <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Sign in</button>
-      </form>
+        <button type="submit" name="submit" class="btn btn-primary">Sign in</button>
       </div>
-  </form>
+    </form>
+    </div>
     </div>
   </div>
 </div>
