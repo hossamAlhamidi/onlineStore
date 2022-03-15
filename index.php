@@ -2,16 +2,11 @@
   	session_start();
 
     if (isset($_SESSION['name'])) {
-      //header("Location: user.php");
-      if ($_SESSION["type"] == 0){
-          //echo "if2";
-          header("Location: user.php");}
-  //  if ($_SESSION["type"] == 0)
-  //       header("LOCATION: user.php");
-    // else if ($_SESSION["type"] == 1)
-    //     header("LOCATION: seller.php"); 
-    
-   }
+      if ($_SESSION["type"] == 0)
+          header("Location: user.php");
+      else if ($_SESSION["type"] == 1)
+          header("Location: seller.php");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +37,7 @@
       </div> -->
       <div class="modal-body">
       <h2 class="modal-title my-5 text-center">Sign in</h5>
-      <form   id="form" action="" method="POST">
+      <form   id="form" action="logging.php" method="POST">
       <div class="form-control-css ">
      <!-- <label for="email">Email</label> -->
      <input type="text" placeholder="Enter your email" id="email" name="email">
@@ -73,6 +68,7 @@
         <button type="submit" class="btn btn-primary">Sign in</button>
       </form>
       </div>
+  </form>
     </div>
   </div>
 </div>
