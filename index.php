@@ -68,10 +68,10 @@
             <span> don't have an account?</span> <a href="signup.php">sign up</a>
          </div>
       </div>
-  </form>
       <div class="modal-footer">
         <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Sign in</button>
+      </form>
       </div>
     </div>
   </div>

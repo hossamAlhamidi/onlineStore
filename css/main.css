@@ -127,7 +127,42 @@ div.img-height .btn-favorite{
 .clickable{
     cursor: pointer;
 }
+.img-cart{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.container-img-cart{
+    height:200px;
+}
+button.cart-remove{
+    position:absolute ;
+    bottom:0;
+    right:0;
+}
+.cart-btns select{
+    
+    position: absolute;
+    bottom: 7px;
+    padding:0.25em;
 
+}
+#cart-num{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    /* right: -4px; */
+    left: 0.938rem;
+    top: -1.25rem;
+    background-color: #CFDAC8;
+    color: #7C9473;
+    border-radius: 50%;
+    /* padding: 5px; */
+    width: 1.563rem;
+    height: 1.563rem;
+    font-size:0.75rem;
+}
 @media screen and (max-width:500px) {
     html{
         font-size: 0.65rem;

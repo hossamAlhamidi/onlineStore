@@ -3,7 +3,7 @@ session_start();
 include 'config.php';
 
 if(isset($_POST['id'])){
-  echo 'yeeeeeeeeeees ';
+  echo'yess';
     $id = $_POST['id'];
     $_SESSION['wishlist_pid'] = $id;
     $email = $_SESSION['email'];

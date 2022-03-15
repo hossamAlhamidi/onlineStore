@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include 'config.php';
 
@@ -16,16 +16,16 @@ echo ' <div class="container px-5">
 while($row = mysqli_fetch_array($result))
 {
 
-// echo '<div class=" item  p-3" id="' . $row['id']. '"' . '  > 
+// echo '<div class=" item  p-3" id="' . $row['id']. '"' . '  >
 
-// <div class=" text-center item-img">'; 
+// <div class=" text-center item-img">';
 // echo '<img class="rounded-start" src="'. $row['photo'] .'">';
 // echo '<h6 class="price mt-3">'. $row['price'] . '$</h6>
 // </div>
 // </div>';
- 
- 
-//  $isPrinted = false; 
+
+
+//  $isPrinted = false;
 echo '<div class=" clickable card item  mx-1" id="'.$row['id'].'"'.'>'.
 '<div class="img-height position-relative mt-3"> <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/>
 <button  type="button" id="'.$row["id"].'" class="btn text-danger btn-favorite  ">' ;
@@ -60,10 +60,20 @@ else {
 //          console.log('yes')
 //        })
 //      }
-     
+
 //      </script>
 // END;
 }
+// $temp =  $row["description"];
+?>
+
+<!-- <script>
+ var d = '<?= $temp ?>';
+ console.log(d);
+</script> -->
+
+
+<?php
  echo '</button>
 </div> ' .
 
@@ -75,7 +85,7 @@ else {
 
 </div>
 <h5 class="price">'. $row["price"].'sr</h5>
-<a href="#? id='.$row["id"].'" class="btn btn-outline-primary  w-50 mx-auto my-3"> ADD TO CART</a>
+<a id="'.$row["id"].'" class="btn btn-outline-primary btn-cart  w-50 mx-auto my-3"> ADD TO CART</a>
 </div>';
 }  // big while
 
@@ -84,11 +94,11 @@ echo ' </div>
 </div>
 </div>';
 
-  
+
 
 ?>
 
-    
+
 
 <script>
     let products_container = document.querySelectorAll(".clickable");
@@ -100,10 +110,37 @@ echo ' </div>
             window.location.href = `product_details.php?id=${event.currentTarget.id}`
         })
     }
-</script>
- 
 
-<?php 
+    let btn_cart = document.querySelectorAll('.btn-cart');
+    for(let btn of btn_cart){
+      btn.addEventListener("click",()=>{
+        var email = '<?= $_SESSION['email'] ?>';
+        $.post(`insert_cart.php`,{id:event.currentTarget.id,email:email},function(data,status,xhr){
+        console.log(data,"data");     
+        let nav = document.querySelector('#cart-num');
+        nav.textContent = parseInt(nav.textContent)+1;
+      //   $("#cart-num").load("fetch_cart_number.php",function(responseTxt, statusTxt, xhr){
+      //     if(statusTxt == "error")
+      // alert("Cart num cannot load!");
+      //   })
+
+})
+// $.post(`fetch_cart_number.php`,function(data,status,xhr){
+//   console.log(data,"fetch cart")
+//         if(status=='error'){
+//           alert('error navbar cart');
+//         }
+
+// })
+
+// $.ajax({method:"POST" ,url:'fetch_cart_number.php', async:false,success:function(data){console.log(data,"ajax")} })
+      })
+    }
+
+</script>
+
+
+<?php
 
 
 mysqli_close($conn);

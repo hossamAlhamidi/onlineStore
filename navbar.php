@@ -135,9 +135,24 @@
 
              <?php 
              if(!isset($_SESSION['name']) || $_SESSION['type']==0){
-              echo '  <button class="btn">
-                  <i style="font-size:1.5rem" class="fa fa-shopping-cart"></i>
-                </button> ';
+              echo '  <a href="cart.php" class="btn">
+                  <i style="font-size:1.5rem" class=" position-relative fa fa-shopping-cart"><span id="cart-num"></span>';
+
+                  ?>
+         <script>
+                $(document).ready(function(){
+        var email = '<?= $_SESSION['email'] ?>';
+        $("#cart-num").load("fetch_cart_number.php",function(responseTxt, statusTxt, xhr){
+          console.log(responseTxt , "from navbar")
+          if(statusTxt == "error")
+      alert("Cart num cannot load!");
+        })
+      })
+     
+    </script>
+                  <?php
+                
+                    echo '</i> </a> ';
              }
              else if($_SESSION['type']==1){
                echo '<a href="manage_product.php" type="button" class="btn btn-outline-dark">Manage Product</a>';
