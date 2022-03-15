@@ -6,26 +6,13 @@ $result_select = mysqli_query($conn,$sql);
 if(mysqli_num_rows($result_select)!=0){
 while($row = mysqli_fetch_array($result_select))
 {
-// echo ' <div class="card mb-3 border" >
-// <div class="d-flex align-items-center g-0">
-//   <div class="col-3 com-sm-4 container-img-cart ">
-//     <img src="./imgs/products/IMG-622b4c3dc6e210.18353534.jpg" class="img-fluid img-cart rounded-start" alt="...">
-//   </div>
-//   <div class="col-md-8">
-//     <div class="card-body">
-//       <h5 class="card-title">Card title</h5>
-//       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-//       <h5 class="card-text">33</h5>
-//       <button class="btn text-muted">remove</button>
-//     </div>
-//   </div>
-// </div>
-// </div>';
+$quantity = $row['quantity'];
 $sql2 = "select * from product where id ='".$row['pID'] ."'";
 $result2 = mysqli_query($conn, $sql2);
 while($row2 = mysqli_fetch_array($result2))
 
 {
+  $id = $row2['id'];
 $photo = $row2['photo'];
 $name = $row2['name'];
 $description = $row2['description'];
@@ -44,8 +31,9 @@ echo <<<END
       <div class = "cart-btns">
       <button class="btn cart-remove text-muted "><i class="mx-2 fa fa-solid fa-trash"></i>remove</button>
       <form class="">
-      <select class=" form-select-sm" aria-label=".form-select-sm example">
-      <option selected value="1">1</option>
+      <select id="$id" value="$quantity" class=" select form-select-sm" aria-label=".form-select-sm example" onchange="selectValue(this.value)">
+      <option selected value="$quantity" hidden>$quantity</option>
+      <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
       </select>
@@ -66,6 +54,31 @@ else{
   echo 'your cart is empty';
 }
 
-
+function updateQuantity($val,$id){
+$sql = "UPDATE cart 
+SET quantity = quantity + $val 
+where pID = $id";
+}
 
 ?>
+<script>
+  let select = document.querySelector("#selectQuantity");
+
+  function selectValue(val){
+   let id = event.currentTarget.id;
+   $.post("updateQuantity.php",{val:val,id:id},function(data,status){
+     console.log(data)
+    $("#cart-num").load("fetch_cart_number.php",function(responseTxt, statusTxt, xhr){
+           if(statusTxt == "error")
+     alert("Cart num cannot load!");
+        })
+
+        var email = '<?= $email ?>';
+        $("#price").load("calc_price.php",{email:email})
+   })
+
+  //  $.post("calc_price.php",function(data,status){
+  //    $("#price").load("calc_price.php")
+  //  })
+  }
+</script>

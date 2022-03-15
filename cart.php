@@ -1,6 +1,7 @@
 <?php 
 session_start();
 include 'config.php';
+// error_reporting(0);
 ?>
 
 
@@ -93,12 +94,14 @@ include 'config.php';
 
 </div>
 
-<div  class="bg-light" style="width: 30rem;">
+<div  class="bg-light" style="width: 25rem;">
   <div id="checkout" class="card-body border text-center">
     <h2 class="card-title mb-5">Order Summery</h2>
     <div class="d-flex justify-content-between">
     <h3 class="card-subtitle mb-2 text-muted">Total</h3>
-    <h3 class="card-subtitle mb-2 text-muted">5333SR</h3>
+    <h3 id="price" class="card-subtitle mb-2 text-muted"><?php
+    include 'calc_price.php'
+    ?></h3>
     </div>
     <div class="d-flex">
   <a class="btn btn-lg btn-primary my-3 w-100" type="button">Checkout</a>

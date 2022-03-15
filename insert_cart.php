@@ -2,49 +2,40 @@
 include 'config.php';
 // session_start();
 
-// if(isset($_POST['id'])){  
-//   echo 'yesss'; 
-// $id = $_POST['id'];
-// echo $id;
-// $sql = "select * from product where id = $id";
-// $result = mysqli_query($conn,$sql);
-// while($row = mysqli_fetch_array($result))
-// {
-// echo ' <div class="card mb-3 border" >
-// <div class="d-flex align-items-center g-0">
-//   <div class="col-3 com-sm-4 container-img-cart ">
-//     <img src="./imgs/products/IMG-622b4c3dc6e210.18353534.jpg" class="img-fluid img-cart rounded-start" alt="...">
-//   </div>
-//   <div class="col-md-8">
-//     <div class="card-body">
-//       <h5 class="card-title">Card title</h5>
-//       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-//       <h5 class="card-text">33</h5>
-//       <button class="btn text-muted">remove</button>
-//     </div>
-//   </div>
-// </div>
-// </div>';
 
-// }
-
-// }
 
 if(isset($_POST['id'])){  
   echo 'insert cart yes';
-    $id = $_POST['id'];
-    $email = $_POST['email'];
+  $id = $_POST['id'];
+  $email = $_POST['email'];
+  $sql_price = "select price from product where id = $id";
+  $result_price = mysqli_query($conn,$sql_price);
+  $row_price = mysqli_fetch_array($result_price);
+  $price = $row_price['price'];
+
+
     // $select = "select pID from wishlist where email = '$email' AND pID = $id";
     // $result_select = mysqli_query($conn,$select);
     // if(mysqli_num_rows($result_select)!=0){
     //     $delete = "DELETE FROM wishlist where pID = $id";
     //     $result_select = mysqli_query($conn,$delete);
     // }
-    
-    $sql_insert= "INSERT INTO cart(pid,email) values('$id','$email')";
+    $sql_check = "SELECT COUNT(pID) num
+   FROM cart
+   WHERE email = '$email' AND pID = $id;";
+   $result_check = mysqli_query($conn,$sql_check);
+   $row = mysqli_fetch_array($result_check);
+   if($row['num']==0){
+    $sql_insert= "INSERT INTO cart(pid,email,price) values('$id','$email',$price)";
     $result = mysqli_query($conn, $sql_insert);
 
-
+   }
+   else {
+     $sql_update = "UPDATE cart
+     SET quantity = quantity + 1 ,price = price * 2
+     WHERE pID = $id;";
+     mysqli_query($conn,$sql_update);
+   }
 }
 
 
