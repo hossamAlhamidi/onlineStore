@@ -21,7 +21,8 @@ input[type='search']{
     outline: 0;
     width: 100%;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    height: 40px;
+    /* height: 40px; */
+    height:2.5rem;
     padding: 0 5px;
     
 }
@@ -61,7 +62,7 @@ div.search{
 @media screen and (max-width:576px){
     div.search{
         margin:initial !important;
-        margin-top:1em !important;
+        margin-top:0.51em !important;
     }
     div.navbar-collapse{
         display: flex;

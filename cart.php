@@ -65,7 +65,7 @@ include 'config.php';
     <div class='container-lg my-5'>
       <div class="d-flex g-2 justify-content-between direction ">
    <div id="cart" >
-   <?php //include 'fetch_cart.php'; ?>
+   <?php if(isset($_SESSION['email'])){ ?>
    <script> 
     $(document).ready(function(){
       var email = '<?= $_SESSION['email'] ?>';
@@ -73,7 +73,46 @@ include 'config.php';
     })
   </script>
 
+<?php } 
+ else {
+   ?>
+    <script> 
+  //   let cookie_object = document.cookie.split(";").map(cookie=> cookie.split("="))
+  // .reduce((accumlator,[key,value])=>({...accumlator, [key.trim()]: decodeURIComponent(value)}),{});
+  
+  let storage = localStorage.getItem("productid")
+  
+if(storage !=null){
+console.log(storage,"str")
+let arr_storage = storage.split(",");
+console.log(arr_storage)
+
  
+    // $.post("fetch_cart_index.php",{id:cookie_object.productid},function(data,status){
+      $(document).ready(function(){
+     
+     $("#cart").load("fetch_cart_index.php",{arr_id:arr_storage},function(data,status){
+       if(status == "success"){
+        let sum = 0;
+         let total = document.querySelectorAll(".price");
+         for(let price of total){
+           let quantity = document.querySelector(`#sel${price.id}`).value
+           
+            sum += parseInt(price.textContent) * quantity
+         }
+         document.querySelector("#price").textContent = sum;
+       }
+     })
+   })
+    // })
+  }
+  else {
+    document.querySelector("#cart").textContent = "your cart is empty"
+  }
+ 
+   
+  </script>
+ <?php }?>
     <!-- <div class="card mb-3 border" >
   <div class="d-flex align-items-center g-0">
     <div class="col-3 com-sm-4 container-img-cart ">
@@ -112,7 +151,20 @@ include 'config.php';
 </div>
 
 </div>
-
+<script>
+  // console.log(document.cookie.split(`; productid=`));
+//  let cookie_object = document.cookie.split(";").map(cookie=> cookie.split("="))
+//   .reduce((accumlator,[key,value])=>({...accumlator, [key.trim()]: decodeURIComponent(value)}),{});
+//   if(typeof cookie_object.productid !="undefined"){
+//     $.post("fetch_cart_index.php",{id:cookie_object.productid},function(data,status){
+//       console.log(data)
+//     })
+//   }
+//   else {
+//     console.log("no")
+//   }
+  
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -137,7 +137,7 @@
              if(!isset($_SESSION['name']) || $_SESSION['type']==0){
               echo '  <a href="cart.php" class="btn">
                   <i style="font-size:1.5rem" class=" position-relative fa fa-shopping-cart"><span id="cart-num"></span>';
-
+              if(isset($_SESSION['email'])){
                   ?>
          <script>
                 $(document).ready(function(){
@@ -151,7 +151,20 @@
      
     </script>
                   <?php
-                
+              }
+              else{
+                echo '<script> let cart_num = document.querySelector("#cart-num");
+                let temp = localStorage.getItem("productid")
+                if(temp != null){
+                  let length = temp.split(",").length;
+                cart_num.textContent = length;
+                }
+                else {
+                  cart_num.textContent = parseInt("0");
+                }
+              
+                </script>';
+              }
                     echo '</i> </a> ';
              }
              else if($_SESSION['type']==1){
@@ -193,7 +206,7 @@
               </ul>
       </nav>
 
-      <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title text-white" id="offcanvasExampleLabel">Brand</h5>
           <button type="button" class="btn-close text-reset bg-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>

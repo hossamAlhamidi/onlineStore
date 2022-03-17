@@ -1,3 +1,4 @@
+<?php if(isset($_SESSION['email'])){  ?>
 <script>
   let btn_cart = document.querySelectorAll('.btn-cart');
     for(let btn of btn_cart){
@@ -19,3 +20,5 @@
       })
     }
 </script>
+
+<?php }?>
