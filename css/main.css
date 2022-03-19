@@ -59,6 +59,9 @@ div.item.item-categories{
     width:0
     
 }
+.products{
+    scrollbar-width: none;
+}
 .title{
     color: #7C9473;
 }
