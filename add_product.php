@@ -11,6 +11,7 @@
       header("LOCATION: user.php");
 
 
+      
 if (isset($_POST['submit'])) {
 
   $prodname = $_POST["name"];
