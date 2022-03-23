@@ -2,7 +2,8 @@
 include 'config.php';
 $val = $_POST['val'];
 $id = $_POST['id'];
-$sql_quantity = "select quantity from cart where pID = $id";
+$email= $_POST['email'];
+$sql_quantity = "select quantity from cart where pID = $id and email = '$email'";
 $sql_price = "select price from product where id = $id";
 $result_quantity = mysqli_query($conn,$sql_quantity);
 $row = mysqli_fetch_array($result_quantity);
@@ -20,14 +21,14 @@ if($val >= $quantity ){
 
 $sql = "UPDATE cart 
 SET quantity =  $val , price = $price * $val
-where pID = $id";
+where pID = $id  and email = '$email'";
 
 mysqli_query($conn,$sql);
 }
 else {
     $sql = "UPDATE cart 
 SET   price = price - ((quantity-$val) * $price),quantity =  $val
-where pID = $id";
+where pID = $id  and email = '$email'";
 
 mysqli_query($conn,$sql);
 }

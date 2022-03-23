@@ -65,15 +65,16 @@ where pID = $id";
   let select = document.querySelector("#selectQuantity");
 
   function selectValue(val){
+    var email = '<?= $email ?>';
    let id = event.currentTarget.id;
-   $.post("updateQuantity.php",{val:val,id:id},function(data,status){
+   $.post("updateQuantity.php",{val:val,id:id,email:email},function(data,status){
      console.log(data)
     $("#cart-num").load("fetch_cart_number.php",function(responseTxt, statusTxt, xhr){
            if(statusTxt == "error")
      alert("Cart num cannot load!");
         })
 
-        var email = '<?= $email ?>';
+        // var email = '<?= $email ?>';
         $("#price").load("calc_price.php",{email:email})
    })
 

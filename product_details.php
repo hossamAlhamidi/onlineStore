@@ -122,6 +122,8 @@ echo ' </div>
 
 
     <script src="./js/favorite.js"></script>
-    <?php include 'addToCartAjax.php'; ?>
+    <?php include 'addToCartAjax.php';
+     include 'addToCart_non_user.php' ;
+    ?>
 </body>
 </html>

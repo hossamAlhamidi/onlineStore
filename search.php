@@ -120,7 +120,7 @@ echo  '  </button>
     <h5 class="card-title">'. $row["name"].'</h5>
     <p class="card-text description">'. $row["description"].'</p>
     <h5 class="card-text">'. $row["price"].'SR</h5>
-    <button class="btn btn-primary btn-cart">Add to cart</button>
+    <button id="' .$row['id'] . '" class="btn btn-primary btn-cart">Add to cart</button>
     </div>
     </div>';
 
@@ -151,6 +151,8 @@ echo  '  </button>
 
 
     <script src="./js/favorite.js"></script>
-    <?php include 'addToCartAjax.php'; ?>
+    <?php include 'addToCartAjax.php'; 
+     include 'addToCart_non_user.php' ;
+    ?>
 </body>
 </html>

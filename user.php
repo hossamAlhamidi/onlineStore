@@ -27,114 +27,7 @@
 <body>
   <?php include('navbar.php')  ?> 
 
-  <!-- <nav class="navbar navbar-expand-sm navbar-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Brand</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-          
-              <div class=" search mx-auto mt-2">
-    <div class="wrapper   ">
-      <form method="post" action="search.php">
-        <input type="search" name="search" id="search"  placeholder="What are you looking for">
-        <button href="search.php" id="search-btn" name="submit" type = "submit" class="btn-custome btn "><i class="fas fa-search"></i></bu>
-      </form>
-
-     <div class = "results">
-    
-
-     </div>
-
-    </div>
-     
-    <div class="output text-center">
-
-
-    </div>
-    </div>
-    <div >
-                <a href="become_seller.php" type="button" class="btn btn-outline-dark">Seller</a>
-                <button class="btn">
-                  <i class="fa fa-shopping-cart"></i>
-                </button>
-                <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                  <i class="fas fa-user"></i>
-                </a>
-            </div>
-        </div>
-            </div>
-          
-      </nav>
-      <nav>
-      <ul class=" nav nav-tabs mx-auto justify-content-center">
-                <li class="nav-item">
-                  <a class="nav-link text-white " aria-current="page" href="index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Hot Sale</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Categories</a>
-                </li>
-                
-              
-              </ul>
-      </nav> -->
-
-
-    <!-- <nav class="navbar navbar-expand-sm navbar-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Brand</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav nav nav-tabs mx-auto">
-                <li class="nav-item">
-                  <a class="nav-link text-white " aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Hot Sale</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Categories</a>
-                </li>
-              
-              </ul>
-              <div >
-                <a href="become_seller.php" type="button" class="btn btn-outline-dark">Seller</a>
-                <button class="btn">
-                  <i class="fa fa-shopping-cart"></i>
-                </button>
-                <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                  <i class="fas fa-user"></i>
-                </a>
-            </div>
-          </div>
-        </div>
-      </nav> -->
-
-      <!-- sidebar -->
-
-      <!-- <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title text-white" id="offcanvasExampleLabel">Brand</h5>
-          <button type="button" class="btn-close text-reset bg-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body ">
-            <div class="slideout-sidebar">
-                <ul>
-                  <li>Account</li>
-                  <li>Payment</li>
-                  <li>Wishlist</li>
-                  <li><a href="logout.php">Logout</a></li>
-                </ul>
-              </div>
-         
-        </div>
-      </div> -->
+ 
 
       <header>
       <h1>Pay Less Earn More</h1>
@@ -163,7 +56,8 @@
       </div>
 
       <?php 
-      include 'fetch_product.php'
+      include 'fetch_product.php';
+      include 'addToCartAjax.php';
 
 // include 'config.php';
 

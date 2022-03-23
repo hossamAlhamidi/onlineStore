@@ -114,7 +114,7 @@ echo ' </div>
 //     let btn_cart = document.querySelectorAll('.btn-cart');
 //     for(let btn of btn_cart){
 //       btn.addEventListener("click",()=>{
-//         var email = '<?= $_SESSION['email'] ?>';
+//         var email = '';
 //         $.post(`insert_cart.php`,{id:event.currentTarget.id,email:email},function(data,status,xhr){
 //         console.log(data,"data");     
 //         let nav = document.querySelector('#cart-num');
@@ -133,7 +133,7 @@ echo ' </div>
 
 
 <?php
-include 'addToCartAjax.php';
+// include 'addToCartAjax.php';
 
 mysqli_close($conn);
 ?>

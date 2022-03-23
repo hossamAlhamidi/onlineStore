@@ -6,11 +6,11 @@ include 'config.php';
         session_start(); 
     } 
 
-
+  if(isset($_SESSION['email'])){
   $email = $_SESSION['email'];
   $sql = "select SUM(price) s from cart where email = '$email' ";
 $result =  mysqli_query($conn,$sql);
   $row = mysqli_fetch_array($result);
   echo $row['s'] . "SR";
-
+  }
 ?>
