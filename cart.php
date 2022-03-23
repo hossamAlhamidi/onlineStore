@@ -26,16 +26,22 @@ include 'config.php';
       .card{
         max-width: 700px;
       }
+      .hide{
+        display:none;
+      }
       /* #checkout{
         position: sticky;
         top: 100px;
       }
        */
+      
+
       @media screen and (max-width:900px){
        .direction{
          flex-direction: column;
          align-items: center;
        }
+      
       }
     </style>
 </head>
@@ -119,13 +125,18 @@ console.log(arr_storage)
             sum += parseInt(price.textContent) * quantity
          }
          document.querySelector("#price").textContent = sum;
+         document.querySelector(".order-summery").classList.remove("hide");
        }
      })
    })
+   
+
+
+
     // })
   }
   else {
-    document.querySelector("#cart").textContent = "your cart is empty"
+    document.querySelector("#cart").innerHTML = "<h2 class='my-5'>your cart is empty</h2>"
   }
  
    
@@ -151,7 +162,7 @@ console.log(arr_storage)
 
 </div>
 
-<div  class="bg-light order-summery" style="width: 25rem;">
+<div  class="bg-light hide order-summery" style="width: 25rem;">
   <div id="checkout" class="card-body border text-center">
     <h2 class="card-title mb-5">Order Summery</h2>
     <div class="d-flex justify-content-between">
@@ -161,7 +172,7 @@ console.log(arr_storage)
     ?></h3>
     </div>
     <div class="d-flex">
-  <a class="btn btn-lg btn-primary my-3 w-100" type="button">Checkout</a>
+  <a id="checkout" class="btn btn-lg btn-primary my-3 w-100" type="button">Checkout</a>
 </div> 
   </div>
 </div>
@@ -170,6 +181,9 @@ console.log(arr_storage)
 
 </div>
 <?php 
+function check(){
+  header("LOCATION: signin.php");
+}
    include 'Footer.php'
   ?>
 
@@ -200,6 +214,13 @@ console.log(arr_storage)
 // removebtn.addEventListener("click",(event)=>{
 //   console.log("yes")
 // })
+
+let checkout_btn = document.querySelector("#checkout");
+checkout_btn.addEventListener("click",(event)=>{
+  console.log("yes")
+  // $.post("checkout_check.php");
+  window.location.href = "checkout_check.php"
+})
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </body>

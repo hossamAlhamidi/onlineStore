@@ -44,14 +44,27 @@ echo <<<END
 </div>
 </div>
 END;
+echo '<script> 
+document.querySelector(".order-summery").classList.remove("hide");
 
+</script>';
 }
 
 }
 
 }
 else{
-  echo 'your cart is empty';
+  echo '<div>
+  <h2 class="my-5">your cart is empty</h2>
+  </div>';
+  // echo '<script> 
+  // document.querySelector(".order-summery").style.display= "none";
+  
+  // </script>';
+  echo '<script> 
+document.querySelector(".order-summery").classList.add("hide");
+
+</script>';
 }
 
 function updateQuantity($val,$id){
