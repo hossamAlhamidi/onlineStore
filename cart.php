@@ -69,8 +69,23 @@ include 'config.php';
    <script> 
     $(document).ready(function(){
       var email = '<?= $_SESSION['email'] ?>';
-      $("#cart").load("fetch_cart.php",{email:email})
-    })
+      $("#cart").load("fetch_cart.php",{email:email},function(){
+
+      let cards =   document.querySelectorAll(".card");
+        for(let card of cards){
+         card.addEventListener("click",()=>{
+           console.log("yes yes")
+         })
+        }
+
+        
+      })
+
+
+
+    })  //ready
+
+    
   </script>
 
 <?php } 
@@ -133,7 +148,7 @@ console.log(arr_storage)
 
 </div>
 
-<div  class="bg-light" style="width: 25rem;">
+<div  class="bg-light order-summery" style="width: 25rem;">
   <div id="checkout" class="card-body border text-center">
     <h2 class="card-title mb-5">Order Summery</h2>
     <div class="d-flex justify-content-between">
@@ -163,7 +178,21 @@ console.log(arr_storage)
 //   else {
 //     console.log("no")
 //   }
-  
+// let remove_btn = document.querySelectorAll(".cart-remove");
+// for(let btn of remove_btn){
+//   btn.addEventListener("click",(event)=>{
+//     let id = event.currentTarget.id ; 
+//     console.log("yes")
+//     // $(document).ready(function(){
+//     //   $("#cart").load("remove_from_cart_user.php",{id:id})
+//     // })
+    
+//   })
+// }
+// let removebtn = document.querySelector(".cart-remove");
+// removebtn.addEventListener("click",(event)=>{
+//   console.log("yes")
+// })
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </body>

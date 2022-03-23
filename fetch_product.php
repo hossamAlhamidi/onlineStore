@@ -85,7 +85,7 @@ else {
 
 </div>
 <h5 class="price">'. $row["price"].'sr</h5>
-<a id="'.$row["id"].'" class="btn btn-outline-primary btn-cart  w-50 mx-auto my-3"> ADD TO CART</a>
+<a id="'.$row["id"].'" class="btn btn-outline-primary btn-cart  w-75 mx-auto my-3" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showInfo()"> ADD TO CART</a>
 </div>';
 }  // big while
 
@@ -98,7 +98,43 @@ echo ' </div>
 
 ?>
 
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered container">
+    <div class="modal-content  ">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body text-center  " style = "min-height:200px;">
 
+      <div class="modal-info">
+        <!-- <h3 class="text-success">Added to cart</h3> -->
+        
+      </div>
+      <div class="d-flex my-3 justify-content-center align-items-center">
+       <h5 class="text-success me-2">Added to cart</h5>
+       <i class="text-success fas fa-check-circle" style="font-size:1.5rem"></i>
+    </div>
+      <script>
+       function showInfo(){
+         let id = event.currentTarget.id;
+         console.log(id);
+        $(".modal-info").load("get_product_modal.php",{id:id})
+       
+       }
+       </script>
+       <div>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Contiune Shopping</button>
+        <a href="cart.php" type="button" class="btn btn-primary">Checkout</a>
+      </div>
+</div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Contiune Shopping</button>
+        <button type="button" class="btn btn-primary">Checkout</button>
+      </div> -->
+    </div>
+  </div>
+</div>
 
 <script>
     let products_container = document.querySelectorAll(".clickable");

@@ -29,7 +29,7 @@ echo <<<END
      
       <h3 class="card-text mb-5">$price SR</h3>
       <div class = "cart-btns">
-      <button class="btn cart-remove text-muted "><i class="mx-2 fa fa-solid fa-trash"></i>remove</button>
+      <button id="$id" class="btn cart-remove text-muted "><i class="mx-2 fa fa-solid fa-trash"></i>remove</button>
       <form class="">
       <select id="$id" value="$quantity" class=" select form-select-sm" aria-label=".form-select-sm example" onchange="selectValue(this.value)">
       <option selected value="$quantity" hidden>$quantity</option>
@@ -62,7 +62,7 @@ where pID = $id";
 
 ?>
 <script>
-  let select = document.querySelector("#selectQuantity");
+  // let select = document.querySelector("#selectQuantity");
 
   function selectValue(val){
     var email = '<?= $email ?>';
@@ -82,4 +82,27 @@ where pID = $id";
   //    $("#price").load("calc_price.php")
   //  })
   }
+
+  var remove_btn = document.querySelectorAll(".cart-remove");
+for(let btn of remove_btn){
+  btn.addEventListener("click",(event)=>{
+    let id = event.currentTarget.id ; 
+    console.log("yes")
+    $(document).ready(function(){
+      $("#cart").load("remove_from_cart_user.php",{id:id} ,function(data , status){
+        if(status=="success"){
+          console.log("yes he");
+          $("#cart-num").load("fetch_cart_number.php",function(responseTxt, statusTxt, xhr){
+           if(statusTxt == "error")
+     alert("Cart num cannot load!");
+        })
+
+        var email = '<?= $email ?>';
+        $("#price").load("calc_price.php",{email:email})
+        }
+      })
+    })
+    
+  })
+}
 </script>
