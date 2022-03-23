@@ -169,12 +169,10 @@ console.log(arr_storage)
 </div>
 
 </div>
-<<<<<<< HEAD
 <?php 
    include 'Footer.php'
   ?>
 
-=======
 <script>
   // console.log(document.cookie.split(`; productid=`));
 //  let cookie_object = document.cookie.split(";").map(cookie=> cookie.split("="))
@@ -203,7 +201,6 @@ console.log(arr_storage)
 //   console.log("yes")
 // })
 </script>
->>>>>>> 5b4dd28bfc1c1abb3a725f919a6f7319bb8d3ecf
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </body>
 </html>
