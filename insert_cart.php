@@ -32,7 +32,7 @@ if(isset($_POST['id'])){
    }
    else {
      $sql_update = "UPDATE cart
-     SET quantity = quantity + 1 ,price = price * 2
+     SET quantity = quantity + 1 ,price = price +$price
      WHERE pID = $id;";
      mysqli_query($conn,$sql_update);
    }

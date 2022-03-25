@@ -115,5 +115,26 @@
  <script src="./js/products.js"></script>
  <!-- <script src="./js/search.js"></script> -->
  <script src="./js/favorite.js"></script>
+ <script>
+   let str = localStorage.getItem("productid");
+  if(str!=null){
+    var arr = str.split(",");
+    var email = '<?= $_SESSION['email'] ?>';
+    for(let e of arr){
+      $.post(`insert_cart.php`,{id:e,email:email},function(data,status,xhr){
+          console.log(data)
+        let nav = document.querySelector('#cart-num');
+        nav.textContent = parseInt(nav.textContent)+1;
+        
+      //   $("#cart-num").load("fetch_cart_number.php",function(responseTxt, statusTxt, xhr){
+      //     if(statusTxt == "error")
+      // alert("Cart num cannot load!");
+      //   })
+      localStorage.removeItem("productid");
+
+})
+    }
+  }
+ </script>
 </body>
 </html>
