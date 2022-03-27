@@ -216,8 +216,8 @@
         <div class="offcanvas-body ">
             <div class="slideout-sidebar">
                 <ul>
-                  <li>Account</li>
-                  <li>Payment</li>
+                  <li><a href="account.php">Account</a></li>
+                  <li><a href="#">Payment</a></li>
                   <li><a href="wishlist.php">WishList</a></li>
                   <li><a class="text-danger" href="logout.php">Logout</a></li>
                 </ul>

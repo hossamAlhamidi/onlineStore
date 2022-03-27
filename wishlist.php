@@ -68,7 +68,7 @@ if(isset($_GET['id'])){
         while($row2 = mysqli_fetch_array($result2))
 
     {
-      echo '  <div class="card text-center col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5  style="""  >'.
+      echo '  <div id="' .$row['pID']. '" class="card clickable text-center col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5"  >'.
       ' <div class="img-height"> <img class="card-img-top img-fluid" src="' . $row2['photo'] . '"/></div> ' .
       ' <div class="card-body">
       <h5 class="card-title">'. $row2["name"].'</h5>
@@ -90,7 +90,16 @@ if(isset($_GET['id'])){
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
 <script>
-    
+       let products_container = document.querySelectorAll(".clickable");
+    for(let product of products_container){
+        product.addEventListener("click",(event)=>{
+            // console.log(event.currentTarget.id,event.target)
+            if(event.target.tagName.toLowerCase()!= "a" && event.target.tagName.toLowerCase()!= "button")
+            if(event.target.tagName.toLowerCase()!="i" )
+            window.location.href = `product_details.php?id=${event.currentTarget.id}`
+        })
+    }
+
 </script>
 </body>
 </html>

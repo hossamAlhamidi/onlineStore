@@ -8,10 +8,10 @@ if(!isset($_SESSION['email'])){
 }
 else if(!isset($_SESSION['phone'])){
     
-    header("LOCATION: account.php");
+    header("LOCATION: profile.php");
 } 
 else {
-
+echo 'checkout info';
 }
 
 

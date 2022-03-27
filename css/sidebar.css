@@ -15,7 +15,7 @@
     border-bottom: 0;
   }
   
-  .slideout-sidebar ul li:hover {
+  .slideout-sidebar ul li a:hover {
     color: rgba(244,244,244,1);
   }
   .slideout-sidebar ul li a {

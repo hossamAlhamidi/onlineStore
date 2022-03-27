@@ -71,7 +71,7 @@ include 'config.php';
 
   </script>
     <?php include 'navbar.php'?>
-    <div class='container-lg my-5'>
+    <div class='container-lg my-5'style="min-height:50vh;">
       <div class="d-flex g-2 justify-content-between direction ">
    <div id="cart" >
    <?php if(isset($_SESSION['email'])){ ?>
