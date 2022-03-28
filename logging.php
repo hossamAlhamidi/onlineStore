@@ -29,6 +29,9 @@ if (isset($_POST["submit"])) {
 		$_SESSION["email"] = $info["email"];
 		$_SESSION["type"] = $info["type"];
 
+		if(isset($info['phone']))
+			$_SESSION["phone"] = $info["phone"];
+
         if($_SESSION["type"] == 0)
 		    header("location: user.php");
         if($_SESSION["type"] == 1)
