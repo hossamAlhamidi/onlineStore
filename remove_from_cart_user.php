@@ -25,6 +25,7 @@ if(!isset($_SESSION))
 
 
 <script>
+  // to update the cart nmuber 
 $(document).ready(function(){
       var email = '<?= $_SESSION['email'] ?>';
       $("#cart").load("fetch_cart.php",{email:email})

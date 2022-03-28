@@ -16,7 +16,7 @@ if(!isset($_SESSION['email'])){
     <link rel="stylesheet" href="./css/signup.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <title>Sign up</title>
+    <title>profile</title>
     <style>
 
     </style>
@@ -45,7 +45,7 @@ if(!isset($_SESSION['email'])){
 
        <div class="form-control-css ">
         <label for="phone-number">Phone Number</label>
-        <input type="text" placeholder="Enter your phone number" id="phone-number" name="phone-number" <?php if(isset($_POST['phoneNumber'])) echo ' value = "'.$_POST['phoneNumber'].'"'  ?> >
+        <input type="text" placeholder="Enter your phone number" id="phone-number" name="phone-number" <?php if(isset($_SESSION['phone'])) echo ' value = "'.$_SESSION['phone'].'"'  ?> >
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small>error msg</small>
@@ -53,7 +53,7 @@ if(!isset($_SESSION['email'])){
 
        <div class="form-control-css ">
         <label for="city">city</label>
-        <input type="text" placeholder="Enter your city" id="city" name="city" <?php if(isset($_POST['city'])) echo ' value = "'.$_POST['city'].'"'  ?> >
+        <input type="text" placeholder="Enter your city" id="city" name="city" <?php if(isset($_SESSION['city'])) echo ' value = "'.$_SESSION['city'].'"'  ?> >
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small>error msg</small>
@@ -61,7 +61,7 @@ if(!isset($_SESSION['email'])){
 
        <div class="form-control-css ">
         <label for="Address">Address</label>
-        <input type="text" placeholder="Enter your home address" id="address" name="address" <?php if(isset($_POST['address'])) echo ' value = "'.$_POST['address'].'"'  ?> >
+        <input type="text" placeholder="Enter your home address" id="address" name="address" <?php if(isset($_SESSION['address'])) echo ' value = "'.$_SESSION['address'].'"'  ?> >
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small>error msg</small>
@@ -98,11 +98,11 @@ if(!isset($_SESSION['email'])){
 
 <?php 
 if (isset($_POST["submit"])) {
-    $email = $_SESSION['email'];
-    $name = $_POST['name'];
-    $phone = $_POST['phone-number'];
-    $city = $_POST['city'];
-    $address = $_POST['address'];
+    $email = test_input($_SESSION['email']);
+    $name = test_input($_POST['name']);
+    $phone = test_input($_POST['phone-number']);
+    $city = test_input($_POST['city']);
+    $address = test_input($_POST['address']);
 
     $sql = "UPDATE user 
     SET name = '$name' , phone = '$phone' , address_city = '$city' , address = '$address'
@@ -116,4 +116,11 @@ if (isset($_POST["submit"])) {
        header("Location: cart.php");
    }
 }
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
 ?>
