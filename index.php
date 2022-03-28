@@ -1,6 +1,8 @@
 <?php
   	session_start();
 
+    include 'logging.php';
+
     if (isset($_SESSION['name'])) {
       if ($_SESSION["type"] == 0)
           header("Location: user.php");
@@ -40,7 +42,7 @@
       </div> -->
       <div class="modal-body">
       <h2 class="modal-title my-5 text-center">Sign in</h5>
-      <form   id="form" action="logging.php" method="POST">
+      <form   id="form" action="" method="POST">
       <div class="form-control-css ">
      <!-- <label for="email">Email</label> -->
      <input type="text" placeholder="Enter your email" id="email" name="email">

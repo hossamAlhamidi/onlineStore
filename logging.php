@@ -2,7 +2,7 @@
 
 include 'config.php';
 
-session_start();
+//session_start();
 
 if (isset($_SESSION['name'])) {
     if ($_SESSION["type"] == 0)
@@ -28,6 +28,13 @@ if (isset($_POST["submit"])) {
 		$_SESSION["name"] = $info["name"];
 		$_SESSION["email"] = $info["email"];
 		$_SESSION["type"] = $info["type"];
+
+		if(isset($info['phone'])){
+			$_SESSION["phone"] = $info["phone"];
+			$_SESSION["address_city"] = $info["address_city"];
+			$_SESSION["address"] = $info["address"];
+			$_SESSION["postcode"] = $info["postcode"];
+		}
 
         if($_SESSION["type"] == 0)
 		    header("location: user.php");

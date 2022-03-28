@@ -16,6 +16,8 @@ if (isset($_SESSION['name'])) {
         header("Location: seller.php");}
 }
 
+include 'logging.php';
+
 
 // $e = false;
 // if (isset($_POST["submit"])) {
@@ -54,7 +56,7 @@ if (isset($_SESSION['name'])) {
 <body id="body">
    <div class="container-css flex-column">
        <a href="index.php" class="my-3 text-bold ">Brand</a>
-       <form  class="form" id="form" action="logging.php" method="POST"> 
+       <form  class="form" id="form" action="" method="POST"> 
            <div class="header">
                <h2>Sign in</h2>
            </div>
