@@ -15,6 +15,11 @@
     border-bottom: 0;
   }
   
-  .slideout-sidebar ul li:hover {
+  .slideout-sidebar ul li a:hover {
     color: rgba(244,244,244,1);
   }
+  .slideout-sidebar ul li a {
+    color:rgba(244,244,244,0.7);;
+    text-decoration:none;
+  }
+ 

@@ -120,7 +120,7 @@ if (isset($_POST["submit"])) {
                 $mail->Body    = 'You have successfully registered ';
                 $mail->send();
            
-              echo "<script>alert('Wow! User Registration Completed.')</script>";
+            //   echo "<script>alert('Wow! User Registration Completed.')</script>";
                 header("Location: signin.php");
 			} else {
 				echo "<script>alert('Woops! Something Wrong Went.')</script>";
