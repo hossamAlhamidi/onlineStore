@@ -193,7 +193,7 @@
           
       </nav>
       <nav>
-      <ul class=" nav nav-tabs mx-auto justify-content-center">
+      <ul class=" nav nav-tabs mx-auto justify-content-center" style="border-bottom: none;">
                 <li class="nav-item">
                   <a class="nav-link text-white " aria-current="page" href="index.php">Home</a>
                 </li>

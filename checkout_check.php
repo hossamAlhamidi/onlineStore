@@ -1,5 +1,5 @@
 <?php 
-
+include 'config.php';
 if(!isset($_SESSION)){
     session_start();
 }
@@ -11,7 +11,8 @@ else if(!isset($_SESSION['phone'])){
     header("LOCATION: profile.php");
 } 
 else {
-echo 'checkout info';
+    header("Location: checkout_page.php");
+
 }
 
 

@@ -29,9 +29,22 @@
 
  
 
-      <header>
+      <!-- <header>
       <h1>Pay Less Earn More</h1>
-      </header>
+      </header> -->
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://i.ibb.co/tbh0st9/tamanna-rumee-lp-Gm415q9-JA-unsplash.jpg" class="d-block w-100" alt="..." style="height:70vh;">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.ibb.co/fqyWT3d/freestocks-3-Q3ts-J01nc-unsplash.jpg" class="d-block w-100" alt="..." style="height:70vh;">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.ibb.co/Ch8jqJw/sharan-pagadala-7-LXP4-Ba-Xvr-Y-unsplash.jpg" class="d-block w-100" alt="..." style="height:70vh;">
+    </div>
+  </div>
+</div>
 
       <section class="shopping ">
 
