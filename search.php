@@ -19,7 +19,19 @@ include 'config.php';
 <body>
   <?php include('navbar.php'); ?>
   <div class="container">
-        <div class="row p-2 ">
+    <?php if(isset($_POST['submit'])){?>
+      <div class="dropdown mt-5">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Sort by
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" id="desc" style="cursor:pointer" >Price high to low</a></li>
+    <li><a class="dropdown-item" id="asc" style="cursor:pointer">Price low to high</a></li>
+    <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+  </ul>
+</div>
+  <?php  }?>
+        <div class="row p-2 search-items ">
 
 <?php
  
@@ -36,40 +48,7 @@ $sql = "SELECT * FROM product WHERE name like '%$search%'";
         {
 
     
-          //   echo  '<div class="card mb-3 p-3 id=""" >
-          //   <div class="row g-0">
-          //     <div class="col-md-3 text-center">
-          //       <img src="' .$row['photo'] . '"" class="img-fluid rounded-start" alt="...">
-          //     </div>
-          //     <div class="col-md-6">
-          //       <div class="card-body">
-          //         <h5 class="card-title">' . $row["name"]. '</h5>
-          //         <p class="card-text">' . $row['description']. '</p>
-          //         </p>
-          //       </div>
-          //     </div>
-          //     <div class="col-md-3 text-center">
-          //       <h5 class="price"> ' . $row['price']. '$</h5>
-                
-          //       <button type="button" class="btn btn-primary w-75 my-3 ">Add to cart</button>
-          //     </div>
-          //   </div>
-          // </div>';
-    //       echo '  <div class=" clickable card col-lg-3 col-sm-6 col-8 mx-auto mx-sm-0 my-5"  id="' .$row['id'] .'"'.'>'.
-    //   ' <div class="img-height"> 
-    //   <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/>
-    //   <button  type="button" id="'.$row["id"].'" class="btn text-danger btn-favorite  ">'. 
-    //   <i class=" far fa-light fa-heart display-6"></i>
-      
-    // '  </button>
-    //   </div> ' .
-    //   ' <div class="card-body">
-    //   <h5 class="card-title">'. $row["name"].'</h5>
-    //   <p class="card-text description">'. $row["description"].'</p>
-    //   <h5 class="card-text">'. $row["price"].'SR</h5>
-    //   <button class="btn btn-primary">Add to cart</button>
-    //   </div>
-    //   </div>';
+        
     echo '  <div class=" clickable card col-lg-3 col-6  mx-sm-0 my-5"  id="' .$row['id'] .'"'.'>'.
     ' <div class="img-height"> 
     <img class="card-img-top img-fluid" src="' . $row['photo'] . '"/>
@@ -120,22 +99,24 @@ echo  '  </button>
     <h5 class="card-title">'. $row["name"].'</h5>
     <p class="card-text description">'. $row["description"].'</p>
     <h5 class="card-text">'. $row["price"].'SR</h5>
-    <button id="' .$row['id'] . '" class="btn btn-primary btn-cart">Add to cart</button>
+    <button id="' .$row['id'] . '" class="btn btn-primary btn-cart" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showInfo()">Add to cart</button>
     </div>
     </div>';
 
 
     }           
 		}
-        else
-        echo"no item";
+        else{
+        echo"<h2 class = 'my-5 text-center text-muted'>no item<h2>";
+        echo "<script> document.querySelector('.dropdown').style.display = 'none' </script>";
+        }
 }
 
 
 ?>
 </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script> -->
 
 <script>
     let products_container = document.querySelectorAll(".clickable");
@@ -148,11 +129,68 @@ echo  '  </button>
         })
     }
 </script>
+<?php if (isset($_POST["submit"])) {?>
+<script>
+    let dropdown = document.querySelectorAll(".dropdown-item");
+    for(let e of dropdown){
+      e.addEventListener("click",(event)=>{
+        var search_keyword = '<?= $search ?>';
+        console.log(search_keyword);
+        $(".search-items").load("search_sort.php",{order:event.target.id,search_keyword:search_keyword},function(data,status){
+          if(status == "success"){
+          //  console.log(data)
+          }
+          if(status == "error"){
+            alert("error in sorting")
+          }
+        })
+      })
+    }
+</script>
+<?php }?>
 
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered container">
+    <div class="modal-content  " style="max-width:500px;margin:auto">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body text-center  " style = "min-height:200px;">
+
+      <div class="modal-info">
+        <!-- <h3 class="text-success">Added to cart</h3> -->
+        
+      </div>
+      <div class="d-flex my-3 justify-content-center align-items-center">
+       <h5 class="text-success me-2">Added to cart</h5>
+       <i class="text-success fas fa-check-circle" style="font-size:1.5rem"></i>
+    </div>
+      <script>
+       function showInfo(){
+         let id = event.currentTarget.id;
+         console.log(id);
+        $(".modal-info").load("get_product_modal.php",{id:id})
+       
+       }
+       </script>
+       <div>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Contiune Shopping</button>
+        <a href="cart.php" type="button" class="btn btn-primary">Checkout</a>
+      </div>
+</div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Contiune Shopping</button>
+        <button type="button" class="btn btn-primary">Checkout</button>
+      </div> -->
+    </div>
+  </div>
+</div>
 
     <script src="./js/favorite.js"></script>
     <?php include 'addToCartAjax.php'; 
      include 'addToCart_non_user.php' ;
     ?>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>
