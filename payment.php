@@ -5,36 +5,81 @@ include 'config.php';
 if(!isset($_SESSION)){
   session_start();
 }
+$email = $_SESSION['email'];
 require_once('vendor/autoload.php');
 \Stripe\Stripe::setApiKey('sk_test_51KlIrDGzyYPgP3RCBZs6nELE5Xx2FHc8Chrik3VRD2ORTpcdW8rK90lqO9IcorzLS71jMTswMp7o77EaZfNqG8qL00xBTUR32g');
+$sql = "select * from cart where email = '$email'";
+$result = mysqli_query($conn,$sql);
+$products_inside_cart = [  ];
+if(mysqli_num_rows($result)>0){
+ while($row = mysqli_fetch_array($result)){
+   $id = $row['pID'];
+   $quantity = $row['quantity'];
 
-$session = \Stripe\Checkout\Session::create([
+   $sql_product = "select * from product where id = $id";
+   $result_product = mysqli_query($conn,$sql_product);
+
+   if(mysqli_num_rows($result_product)>0){
+     while($row2 = mysqli_fetch_array($result_product)){
+       $name = $row2['name'];
+       $price = $row2['price'];
+      
+      
+       $data = [
+        'price_data' => [
+          'currency' => 'aed',
+          'product_data' => [
+            'name' => $name,
+           
+          ],
+          'unit_amount' => $price*100,
+        ],
+        'quantity' => $quantity,
+      ];
+
+      array_push($products_inside_cart,$data);
+      
+     }
+   }
+ }
+}
+else{
+  header("Location:user.php");
+}
+// print_r($products_inside_cart);
+// $products_inside_cart = [ [
+//   'price_data' => [
+//     'currency' => 'usd',
+//     'product_data' => [
+//       'name' => 'shirt',
+     
+//     ],
+//     'unit_amount' => 2000,
+//   ],
+//   'quantity' => 3,
+// ],
+// [
+//   'price_data' => [
+//     'currency' => 'usd',
+//     'product_data' => [
+//       'name' => 'hossam',
+     
+//     ],
+//     'unit_amount' => 1000,
+//   ],
+//   'quantity' => 1,
+// ]];
+
+
+$session_products_info = [
   'payment_method_types' => ['card'],
-  'line_items' => [[
-    'price_data' => [
-      'currency' => 'usd',
-      'product_data' => [
-        'name' => 'shirt',
-       
-      ],
-      'unit_amount' => 2000,
-    ],
-    'quantity' => 3,
-  ],[
-    'price_data' => [
-      'currency' => 'usd',
-      'product_data' => [
-        'name' => 'hossam',
-       
-      ],
-      'unit_amount' => 1000,
-    ],
-    'quantity' => 3,
-  ]],
+  'line_items' => $products_inside_cart
+   ,
   'mode' => 'payment',
   'success_url' => 'http://localhost/onlinestore/success.html',
   'cancel_url' => 'http://localhost/onlinestore/user.php',
-]);
+  ];
+$session = \Stripe\Checkout\Session::create($session_products_info);
 
 ?>
 
@@ -59,7 +104,7 @@ $session = \Stripe\Checkout\Session::create([
      
       
         stripe.redirectToCheckout({
-          sessionId: "<?php echo $session->id; ?>"
+          sessionId: "<?php  echo $session->id; ?>"
        
       });
     </script>
