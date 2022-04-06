@@ -5,6 +5,7 @@ include 'config.php';
 if(!isset($_SESSION)){
   session_start();
 }
+if(isset($_SESSION['email']) && isset($_SESSION['phone'])){
 $email = $_SESSION['email'];
 require_once('vendor/autoload.php');
 \Stripe\Stripe::setApiKey('sk_test_51KlIrDGzyYPgP3RCBZs6nELE5Xx2FHc8Chrik3VRD2ORTpcdW8rK90lqO9IcorzLS71jMTswMp7o77EaZfNqG8qL00xBTUR32g');
@@ -80,7 +81,10 @@ $session_products_info = [
   'cancel_url' => 'http://localhost/onlinestore/user.php',
   ];
 $session = \Stripe\Checkout\Session::create($session_products_info);
-
+}
+else {
+  header("Location:user.php");
+}
 ?>
 
 <html>
