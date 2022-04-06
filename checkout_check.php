@@ -11,7 +11,8 @@ else if(!isset($_SESSION['phone'])){
     header("LOCATION: profile.php");
 } 
 else {
-    header("Location: checkout_page.php");
+    // header("Location: checkout_page.php");
+    header("Location: payment.php");
 
 }
 

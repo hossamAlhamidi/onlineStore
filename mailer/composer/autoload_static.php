@@ -4,13 +4,9 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite3adb4ef2757bc2c864a93bb98ccc88f
+class ComposerStaticInitb896b23253998bb6c099f1408a58bbc1
 {
     public static $prefixLengthsPsr4 = array (
-        'S' => 
-        array (
-            'Stripe\\' => 7,
-        ),
         'P' => 
         array (
             'PHPMailer\\PHPMailer\\' => 20,
@@ -18,10 +14,6 @@ class ComposerStaticInite3adb4ef2757bc2c864a93bb98ccc88f
     );
 
     public static $prefixDirsPsr4 = array (
-        'Stripe\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
-        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
@@ -35,9 +27,9 @@ class ComposerStaticInite3adb4ef2757bc2c864a93bb98ccc88f
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite3adb4ef2757bc2c864a93bb98ccc88f::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite3adb4ef2757bc2c864a93bb98ccc88f::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInite3adb4ef2757bc2c864a93bb98ccc88f::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb896b23253998bb6c099f1408a58bbc1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb896b23253998bb6c099f1408a58bbc1::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitb896b23253998bb6c099f1408a58bbc1::$classMap;
 
         }, null, ClassLoader::class);
     }
