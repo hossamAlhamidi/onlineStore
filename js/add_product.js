@@ -11,13 +11,13 @@ console.log(document.querySelector('#modal'))
 let nameValid = false;
 let descriptionValid = false;
 let priceValid = false;
-let confirmValid = false;
+let imgValid = false;
 form.addEventListener("submit",(event)=>{
     
-    console.log("yes")
+    
     checkInput()
-    console.log(nameValid,descriptionValid,priceValid,confirmValid)
-    if(!nameValid || !descriptionValid || !priceValid){
+    console.log(nameValid,descriptionValid,priceValid,imgValid)
+    if(!nameValid || !descriptionValid || !priceValid ){
         console.log("im inside")
     event.preventDefault();
     }
@@ -56,6 +56,18 @@ function checkInput(){
        setSuccess(description);
        descriptionValid = true
     }
+//   console.log(img.files.length,"len")
+//   console.log(img.files[0],"len")
+//     if(img.files.length == 0 ){
+//         console.log("img 0")
+//         setError(img,"img can not be empty")
+//     }
+
+//     else{
+//        setSuccess(img);
+//       imgValid = true
+//     }
+
 
   
 

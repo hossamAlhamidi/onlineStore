@@ -79,14 +79,16 @@ if(isset($_SESSION['id'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/signup.css">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     
     <title>Edit Product</title>
 </head>
-<body >
+<body id="edit-product">
     
-   <div class="container-css">
+   <div class="container-css flex-column">
+   <a href="index.php" class="my-3 text-bold ">Brand</a>
        <form  class="form" id="form" method="post" action="ED.php" enctype="multipart/form-data">
            <div class="header">
                <h2>Edit Product</h2>
@@ -122,7 +124,8 @@ if(isset($_SESSION['id'])){
 
        <div class="form-control-css ">
         <label for="description">description</label>
-        <input type="text" placeholder="Enter your description" id="description" name="description" value="<?php echo $desc; ?>">
+        <!-- <input type="text" placeholder="Enter your description" id="description" name="description" value="<?php //echo $desc; ?>"> -->
+        <textarea type="text" placeholder="Enter your description" id="description" name="description" ><?php echo $desc;?></textarea>
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small>error msg</small>

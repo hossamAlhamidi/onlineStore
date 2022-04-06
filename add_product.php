@@ -49,15 +49,17 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/signup.css">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     
     <title>Add Product</title>
 </head>
-<body >
+<body id="add-product" >
     
-   <div class="container-css">
-       <form  class="form" id="form" method="post" action="add_product.php" enctype="multipart/form-data">
+   <div class="container-css flex-column mt-0">
+   <a href="index.php" class="my-3 text-bold ">Brand</a>
+       <form  class="form" id="form" method="post" action="add_product.php" enctype="multipart/form-data" autocomplete="off">
            <div class="header">
                <h2>Add Product</h2>
            </div>
@@ -88,7 +90,7 @@ if (isset($_POST['submit'])) {
 
        <div class="form-control-css ">
         <label for="img">image</label>
-        <input type="file" id="img" name="img">
+        <input type="file" accept="image/*" id="img" name="img" required>
         <!-- accept="image/*" -->
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
@@ -97,7 +99,8 @@ if (isset($_POST['submit'])) {
 
        <div class="form-control-css ">
         <label for="description">description</label>
-        <input type="text" placeholder="Enter your description" id="description" name="description">
+        <!-- <input type="text" placeholder="Enter your description" id="description" name="description"> -->
+        <textarea type="text" placeholder="Enter your description" id="description" name="description"></textarea>
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
         <small>error msg</small>
@@ -127,7 +130,7 @@ if (isset($_POST['submit'])) {
         
        </div> -->
        <div>
-           <button id="submit" name="submit" type="submit" >Add</button>
+           <button id="submit" class="my-5" name="submit" type="submit" >Add</button>
            
        
        </div>
@@ -170,7 +173,7 @@ if (isset($_POST['submit'])) {
         <button  id="close-btn"type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h2 class="text-success text-center">Successful</h2>
+        <h2 class="text-success text-center">Product Added</h2>
       </div>
       <div class="modal-footer">
         <button id="close"type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -2,7 +2,7 @@
 
 include 'config.php';
 
-$sql = "select * from product ";
+$sql = "select * from product order by id desc LIMIT 30 ";
 $result = mysqli_query($conn, $sql);
 echo ' <div class="container px-5">
 <h5 class="title">New in</h5>

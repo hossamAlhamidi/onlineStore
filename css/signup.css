@@ -28,7 +28,7 @@
     position: relative;
     
 }
-.form-control-css input{
+.form-control-css input ,.form-control-css textarea{
     display: block;
     width: 100%;
     outline: 0;
@@ -76,10 +76,10 @@
     visibility: hidden;
     
 }
-.form-control-css.success input{
+.form-control-css.success input , .form-control-css.success textarea{
   border-color:#2ecc71;
 }
-.form-control-css.error input{
+.form-control-css.error input , .form-control-css.error textarea{
     border-color:#e74c3c
   }
 .form-control-css.success > i.fa-check-circle{
@@ -108,7 +108,7 @@
     border:2px solid #7C9473;
     cursor:pointer;
 }
-.form-control-css input:focus{
+.form-control-css input:focus , .form-control-css textarea:focus{
     border-color: lightskyblue;
     box-shadow: 0 2px 10px lightskyblue;;
 }

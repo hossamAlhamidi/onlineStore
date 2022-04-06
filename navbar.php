@@ -12,90 +12,11 @@
     <link rel="stylesheet" href="./css/search.css">
     <link rel="stylesheet" href="./css/sidebar.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <title>Document</title>
 </head>
 <body>
-    <!-- <nav class="navbar navbar-expand-sm navbar-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Brand</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-          
-              <div class=" search mx-auto mt-2">
-    <div class="wrapper   ">
-      <form method="post" action="search.php">
-        <input type="search" name="search" id="search"  placeholder="What are you looking for">
-        <button href="search.php" id="search-btn" name="submit" type = "submit" class="btn-custome btn "><i class="fas fa-search"></i></bu>
-      </form>
-
-     <div class = "results">
-    
-
-     </div>
-
-    </div>
-     
-    <div class="output text-center">
-
-
-    </div>
-    </div>
-              <div >
-             
-                <button class="btn">
-                  <i style="font-size:1.5rem" class="fa fa-shopping-cart"></i>
-                </button>
-                <a href="signin.php" class="btn">
-                  <i style="font-size:1.5rem" class="fas fa-user"></i>
-                </a>
-            
-                <?php
-            //    if(isset($_SESSION['email'])){
-            //     echo " <script> console.log('email')</script>";
-            //      if($_SESSION["type"] == "0"){
-            //       echo " <script> console.log('type 1')</script>";
-            //   echo '  <button class="btn">
-            //       <i class="fa fa-shopping-cart"></i>
-            //     </button>
-            //     <a href="signin.php" class="btn">
-            //       <i class="fas fa-user"></i>
-            //     </a>
-            // </div> ';}
-            //    }
-            //    else{
-            //     echo " <script> console.log('else')</script>";
-            //      echo ' <a href="become_seller.php" type="button" class="btn btn-outline-dark">Seller</a>
-            //      <button class="btn">
-            //        <i class="fa fa-shopping-cart"></i>
-            //      </button>
-            //      <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-            //        <i class="fas fa-user"></i>
-            //      </a>';
-            //    }
-            ?>
-          </div>
-        </div>
-            </div>
-          
-      </nav>
-      <nav>
-      <ul class=" nav nav-tabs mx-auto justify-content-center">
-                <li class="nav-item">
-                  <a class="nav-link text-white " aria-current="page" href="index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Hot Sale</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Categories</a>
-                </li>
-                
-              
-              </ul>
-      </nav> -->
-
+  
 
 
 
@@ -109,7 +30,7 @@
           
               <div class=" search mx-auto mt-2">
     <div class="wrapper   ">
-      <form method="post" action="search.php">
+      <form method="post" action="search.php" autocomplete="off">
         <input type="search" name="search" id="search"  placeholder="What are you looking for">
         <button href="search.php" id="search-btn" name="submit" type = "submit" class="btn-custome btn "><i class="fas fa-search"></i></bu>
       </form>
@@ -130,7 +51,7 @@
              <?php
               if(isset($_SESSION['name'])){
                 if($_SESSION['type']==0){
-                echo' <a href="become_seller.php" type="button" class="btn btn-outline-dark">Seller</a>';
+                echo' <a href="become_seller.php" type="button" class="btn mx-1 btn-outline-dark">Seller</a>';
                 }
               }
              ?>
@@ -170,7 +91,7 @@
                     echo '</i> </a> ';
              }
              else if($_SESSION['type']==1){
-               echo '<a href="manage_product.php" type="button" class="btn btn-outline-dark">Manage Product</a>';
+               echo '<a href="manage_product.php" type="button" class="btn btn-outline-dark">Manage Products</a>';
              }
 
                 ?>
@@ -181,8 +102,8 @@
                   <i style="font-size:1.5rem" class="fas fa-user"></i>
                 </a>';}
                 else if($_SESSION['type'] == 0 || $_SESSION['type'] == 1){
-                  echo '  <a class="btn" style="font-size:1.5rem" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                  <i class="fas fa-user"></i>
+                  echo '  <a class="btn" style="font-size:1.75rem" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                  <i class="bi bi-person-circle"></i>
                 </a>';
                 }
                 ?>
