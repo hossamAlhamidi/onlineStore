@@ -31,7 +31,7 @@ include 'config.php';
       </div> -->
       <div class="modal-body">
       <h2 class="modal-title my-5 text-center">please Sign in</h5>
-      <form   id="form" action="" method="POST">
+      <form   id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
       <div class="form-control-css ">
      <!-- <label for="email">Email</label> -->
      <input type="text" placeholder="Enter your email" id="email" name="email">
@@ -87,10 +87,15 @@ include 'config.php';
 
 <?php
  
-
+ function test_input($var) {
+  $var = trim($var);
+  $var = stripslashes($var);
+  $var = htmlspecialchars($var);
+  return $var;
+}
 
 if (isset($_POST["submit"])) {
-$search = $_POST['search'];
+$search = test_input($_POST['search']);
 $sql = "SELECT * FROM product WHERE name like '%$search%'";
 		$result = mysqli_query($conn, $sql);
 

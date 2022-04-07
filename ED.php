@@ -3,16 +3,26 @@ include 'config.php';
 
 session_start();
 
-
+if(time()-$_SESSION["login_time_stamp"] > (60*60*5)) {
+  session_unset();
+  session_destroy();
+  header("Location:signin.php");
+}
 
 if (!isset($_SESSION['name']))
         header("LOCATION: signin.php");
 else if ($_SESSION["type"] == 0)
         header("LOCATION: user.php");
 
+  function test_input($var) {
+    $var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
+  }
 
 if(isset($_GET['id'])){
-$_SESSION['id'] = $_GET['id'];
+$_SESSION['id'] = test_input($_GET['id']);
 }
 $IDP=$_SESSION['id'] ;
 if(isset($_SESSION['id'])){
@@ -28,9 +38,9 @@ if(isset($_SESSION['id'])){
     if (isset($_POST['submit'])) {
       
 
-      $prodname = $_POST["name"];
-      $price = $_POST["price"];
-      $desc = $_POST['description'];
+      $prodname = test_input($_POST["name"]);
+      $price = test_input($_POST["price"]);
+      $desc = test_input($_POST['description']);
   
       // $img = "imgs/products/" . $_FILES['img']["name"];
       // move_uploaded_file($_FILES['img']["tmp_name"], $img);
@@ -89,7 +99,7 @@ if(isset($_SESSION['id'])){
     
    <div class="container-css flex-column">
    <a href="index.php" class="my-3 text-bold ">Brand</a>
-       <form  class="form" id="form" method="post" action="ED.php" enctype="multipart/form-data">
+       <form  class="form" id="form" method="post" action="<?php echo htmlspecialchars("ED.php");?>" enctype="multipart/form-data">
            <div class="header">
                <h2>Edit Product</h2>
            </div>

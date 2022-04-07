@@ -1,6 +1,14 @@
 <?php 
 include 'config.php';
-$email = $_POST['email'];
+
+function test_input($var) {
+  $var = trim($var);
+  $var = stripslashes($var);
+  $var = htmlspecialchars($var);
+  return $var;
+}
+
+$email = test_input($_POST['email']);
 $sql = "select * from cart where email = '$email' ";
 $result_select = mysqli_query($conn,$sql);
 if(mysqli_num_rows($result_select)!=0){

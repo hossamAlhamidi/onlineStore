@@ -2,9 +2,16 @@
 
 include 'config.php';
 
+function test_input($var) {
+  $var = trim($var);
+  $var = stripslashes($var);
+  $var = htmlspecialchars($var);
+  return $var;
+}
+
 $quantity = 1;
 if(isset($_POST['arr_id'])){
-$arr = $_POST['arr_id'];  // has duplicate
+$arr = test_input($_POST['arr_id']);  // has duplicate
 
 $arr_id = array_unique($arr);
 

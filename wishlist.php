@@ -2,11 +2,24 @@
 session_start();
 include 'config.php';
 
+if(time()-$_SESSION["login_time_stamp"] > (60*60*5)) {
+  session_unset();
+  session_destroy();
+  header("Location:signin.php");
+}
+
+function test_input($var) {
+  $var = trim($var);
+  $var = stripslashes($var);
+  $var = htmlspecialchars($var);
+  return $var;
+}
+
 if(isset($_POST['id'])){
   echo'yess';
-    $id = $_POST['id'];
+    $id = test_input($_POST['id']);
     $_SESSION['wishlist_pid'] = $id;
-    $email = $_SESSION['email'];
+    $email = test_input($_SESSION['email']);
     echo $id;
     echo $email;
     
@@ -25,12 +38,12 @@ if(isset($_POST['id'])){
 }
 
 if(isset($_GET['id'])){
-    $IDPD = $_GET['id'];
+    $IDPD = test_input($_GET['id']);
     $request  = "DELETE FROM wishlist WHERE pID ='".$IDPD."'";
     $result = mysqli_query($conn, $request);
       // header("location: manage_product.php");
     
-  }
+}
 
 ?>
 

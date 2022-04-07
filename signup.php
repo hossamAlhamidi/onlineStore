@@ -17,6 +17,12 @@ session_start();
     //     header("Location: seller.php");
 // }
 
+function test_input($var) {
+    $var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +38,7 @@ session_start();
 <body id="body">
    <div class="container-css flex-column">
    <a href="index.php" class="my-3 text-bold ">Brand</a>
-       <form  class="form" id="form" action="" method="POST">
+       <form  class="form" id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
            <div class="header">
                <h2>Create Account</h2>
            </div>
@@ -98,10 +104,10 @@ session_start();
 <?php
 
 if (isset($_POST["submit"])) {
-	$username = $_POST["username"];
-	$email = $_POST["email"];
-	$password = md5($_POST["password"]);
-	$cpassword = md5($_POST['cpassword']);
+	$username = test_input($_POST["username"]);
+	$email = test_input($_POST["email"]);
+	$password = md5(test_input($_POST["password"]));
+	$cpassword = md5(test_input($_POST['cpassword']));
 	$type = 0;
 	
 

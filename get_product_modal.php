@@ -1,7 +1,15 @@
 <?php 
 
 include 'config.php';
-$id = $_POST['id'];
+
+function test_input($var) {
+    $var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
+}
+
+$id = test_input($_POST['id']);
 $sql = "select * from product where id = $id";
 $result = mysqli_query($conn,$sql);
 

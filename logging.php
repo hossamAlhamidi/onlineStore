@@ -11,11 +11,20 @@ if (isset($_SESSION['name'])) {
         header("Location: seller.php");
 }
 
+function test_input($var) {
+	$var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
+}
+
 $e = false;
 
 if (isset($_POST["submit"])) {
-	$email = $_POST["email"];
-	$password = md5($_POST["password"]);
+	$email = test_input($_POST["email"]);
+	$password = md5(test_input($_POST["password"]));
+
+	$_SESSION["login_time_stamp"] = time(); 
 
 	$con = new PDO('mysql:host=localhost;dbname=onlineshoppingsystem', "root", "", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 

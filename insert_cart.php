@@ -2,12 +2,17 @@
 include 'config.php';
 // session_start();
 
-
+function test_input($var) {
+  $var = trim($var);
+  $var = stripslashes($var);
+  $var = htmlspecialchars($var);
+  return $var;
+}
 
 if(isset($_POST['id'])){  
   echo 'insert cart yes';
-  $id = $_POST['id'];
-  $email = $_POST['email'];
+  $id = test_input($_POST['id']);
+  $email = test_input($_POST['email']);
   $sql_price = "select price from product where id = $id";
   $result_price = mysqli_query($conn,$sql_price);
   $row_price = mysqli_fetch_array($result_price);

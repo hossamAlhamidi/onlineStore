@@ -6,6 +6,11 @@ if(!isset($_SESSION['email'])){
     header("Location: signin.php");
 }
 
+if(time()-$_SESSION["login_time_stamp"] > (60*60*5)) {
+    session_unset();
+    session_destroy();
+    header("Location:signin.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +29,7 @@ if(!isset($_SESSION['email'])){
 <body id="body">
    <div class="container-css p-4 flex-column">
    <a href="index.php" class="my-3 text-bold ">Brand</a>
-       <form  class="form" id="form" action="" method="POST">
+       <form  class="form" id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
           
     <div class="padding">
     <div class="form-control-css ">
@@ -117,10 +122,10 @@ if (isset($_POST["submit"])) {
    }
 }
 
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
+function test_input($var) {
+    $var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
   }
 ?>

@@ -3,6 +3,12 @@
 
   session_start();
 
+  if(time()-$_SESSION["login_time_stamp"] > (60*60*5)) {
+    session_unset();
+    session_destroy();
+    header("Location:signin.php");
+  }
+
   error_reporting(0);
 
   if (!isset($_SESSION['name']))
@@ -11,25 +17,32 @@
       header("LOCATION: user.php");
 
 
+  function test_input($var) {
+    $var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
+  }
       
-if (isset($_POST['submit'])) {
+  if (isset($_POST['submit'])) {
 
-  $prodname = $_POST["name"];
-	$price = $_POST["price"];
-	$desc = $_POST['description'];
+    $prodname = test_input($_POST["name"]);
+	  $price = test_input($_POST["price"]);
+	  $desc = test_input($_POST['description']);
 
-  $img_name = $_FILES['img']['name'];
-  $img_temp = $_FILES['img']['tmp_name'];
 
-  $img_ex = explode('.', $img_name);
-	$img_ex_acc = strtolower(end($img_ex));
+    $img_name = $_FILES['img']['name'];
+    $img_temp = $_FILES['img']['tmp_name'];
 
-  $allowed_ex = array("jpg", "jpeg", "png"); 
+    $img_ex = explode('.', $img_name);
+	  $img_ex_acc = strtolower(end($img_ex));
 
-	if (in_array($img_ex_acc, $allowed_ex)) {
-		$new_img_name = uniqid("IMG-", true).'.'.$img_ex_acc;
-		$img_destination = 'imgs/products/'. $new_img_name;
-		move_uploaded_file($img_temp, $img_destination);
+    $allowed_ex = array("jpg", "jpeg", "png"); 
+
+	  if (in_array($img_ex_acc, $allowed_ex)) {
+		  $new_img_name = uniqid("IMG-", true).'.'.$img_ex_acc;
+		  $img_destination = 'imgs/products/'. $new_img_name;
+		  move_uploaded_file($img_temp, $img_destination);
     }
 
     $useremail = $_SESSION["email"];
@@ -38,7 +51,7 @@ if (isset($_POST['submit'])) {
     VALUES ('$useremail', '$prodname', '$price', '$desc', '$img_destination')";
     $result = mysqli_query($conn, $sql);
 
-}
+  }
 
 ?>
 
@@ -59,7 +72,7 @@ if (isset($_POST['submit'])) {
     
    <div class="container-css flex-column mt-0">
    <a href="index.php" class="my-3 text-bold ">Brand</a>
-       <form  class="form" id="form" method="post" action="add_product.php" enctype="multipart/form-data" autocomplete="off">
+       <form  class="form" id="form" method="post" action="<?php echo htmlspecialchars("add_product.php");?>" enctype="multipart/form-data" autocomplete="off">
            <div class="header">
                <h2>Add Product</h2>
            </div>

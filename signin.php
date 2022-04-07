@@ -56,7 +56,7 @@ include 'logging.php';
 <body id="body">
    <div class="container-css flex-column">
        <a href="index.php" class="my-3 text-bold ">Brand</a>
-       <form  class="form" id="form" action="" method="POST"> 
+       <form  class="form" id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"> 
            <div class="header">
                <h2>Sign in</h2>
            </div>
