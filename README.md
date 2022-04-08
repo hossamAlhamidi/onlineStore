@@ -1,7 +1,7 @@
 # onlineStore
 
-#using scrum methodolog <br>
+# using scrum methodolog <br>
 https://trello.com/b/4x31A3Bd/online-shopping-system
 
-#deployment link <br>
+# deployment link <br>
 here
