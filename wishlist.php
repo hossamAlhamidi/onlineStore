@@ -112,8 +112,7 @@ if(isset($_GET['id'])){
             window.location.href = `product_details.php?id=${event.currentTarget.id}`
         })
     }
-
+// ss
 </script>
-<!-- ss -->
 </body>
 </html>
