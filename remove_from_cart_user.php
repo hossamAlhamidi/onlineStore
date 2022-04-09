@@ -1,19 +1,19 @@
 <?php 
 include 'config.php';
 
-function test_input($var) {
-  $var = trim($var);
-  $var = stripslashes($var);
-  $var = htmlspecialchars($var);
-  return $var;
-}
+// function test_input($var) {
+//   $var = trim($var);
+//   $var = stripslashes($var);
+//   $var = htmlspecialchars($var);
+//   return $var;
+// }
 
 if(!isset($_SESSION)) 
     { 
         session_start(); 
     } 
 
-  $id = test_input($_POST['id']);
+  $id = $_POST['id'];
   $email = $_SESSION['email'];
   $sql_remove = "delete from cart where pID = $id and email = '$email'"  ;
   mysqli_query($conn,$sql_remove);

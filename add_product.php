@@ -3,11 +3,12 @@
 
   session_start();
 
-  if(time()-$_SESSION["login_time_stamp"] > (60*60*5)) {
-    session_unset();
-    session_destroy();
-    header("Location:signin.php");
-  }
+  if(isset($_SESSION['name']))
+    if(time()-$_SESSION["login_time_stamp"] > (60*60*5)) {
+      session_unset();
+      session_destroy();
+      header("Location:signin.php");
+    }
 
   error_reporting(0);
 

@@ -85,7 +85,7 @@ function test_input($var) {
 </div>
     <?php
     include 'config.php';
-    $id = test_input($_GET['id']);
+    $id = $_GET['id'];
     $sql = "select * from product where id = '" . "$id '";
 $result = mysqli_query($conn, $sql);
 

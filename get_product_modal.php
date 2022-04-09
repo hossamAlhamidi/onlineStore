@@ -2,14 +2,14 @@
 
 include 'config.php';
 
-function test_input($var) {
-    $var = trim($var);
-    $var = stripslashes($var);
-    $var = htmlspecialchars($var);
-    return $var;
-}
+// function test_input($var) {
+//     $var = trim($var);
+//     $var = stripslashes($var);
+//     $var = htmlspecialchars($var);
+//     return $var;
+// }
 
-$id = test_input($_POST['id']);
+$id = $_POST['id'];
 $sql = "select * from product where id = $id";
 $result = mysqli_query($conn,$sql);
 

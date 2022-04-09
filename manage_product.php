@@ -27,7 +27,7 @@
   // }
 
   if(isset($_GET['id'])){
-    $IDPD = test_input($_GET['id']);
+    $IDPD = $_GET['id'];
     include 'config.php';
     $request  = "DELETE FROM product WHERE id ='".$IDPD."'";
     $result = mysqli_query($conn, $request);

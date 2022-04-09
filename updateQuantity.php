@@ -1,16 +1,16 @@
 <?php 
 include 'config.php';
 
-function test_input($var) {
-    $var = trim($var);
-    $var = stripslashes($var);
-    $var = htmlspecialchars($var);
-    return $var;
-}
+// function test_input($var) {
+//     $var = trim($var);
+//     $var = stripslashes($var);
+//     $var = htmlspecialchars($var);
+//     return $var;
+// }
 
-$val = trim($_POST['val']);
-$id = trim($_POST['id']);
-$email= trim($_POST['email']);
+$val = $_POST['val'];
+$id = $_POST['id'];
+$email= $_POST['email'];
 $sql_quantity = "select quantity from cart where pID = $id and email = '$email'";
 $sql_price = "select price from product where id = $id";
 $result_quantity = mysqli_query($conn,$sql_quantity);

@@ -26,13 +26,19 @@ if (isset($_POST["submit"])) {
 
 	$_SESSION["login_time_stamp"] = time(); 
 
-	$con = new PDO('mysql:host=localhost;dbname=onlineshoppingsystem', "root", "", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+	//$con = new PDO('mysql:host=localhost;dbname=onlineshoppingsystem', "root", "", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-	$request = $con->query("SELECT * FROM user WHERE email = '".$email."' AND PWD = '".$password."'");
+	//$request = $con->query("SELECT * FROM user WHERE email = '".$email."' AND PWD = '".$password."'");
 
+	$sql = "SELECT * FROM user WHERE email = '$email' AND PWD = '$password'";
+	$request = mysqli_query($conn, $sql);
 
-	if ($request->rowCount() == 1) {
-		$info = $request->fetch();
+	//if ($request->rowCount() == 1) {
+		//$info = $request->fetch();
+	if ($request->num_rows == 1) { 
+		$info = mysqli_fetch_assoc($request);
+		// $result = $request->get_result();
+		// $info = $result->fetch_assoc();
 
 		$_SESSION["name"] = $info["name"];
 		$_SESSION["email"] = $info["email"];
