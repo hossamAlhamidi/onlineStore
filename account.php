@@ -10,6 +10,7 @@ if(time()-$_SESSION["login_time_stamp"] > (60*60*5)) {
   session_destroy();
   header("Location:signin.php");
 }
+
 ?>
 
 <!DOCTYPE html>
