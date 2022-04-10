@@ -1,2 +1,4 @@
 config.php
 vendor
+/vendor/
+/vendor/**/.git
