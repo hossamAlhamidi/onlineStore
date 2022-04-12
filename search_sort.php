@@ -3,16 +3,16 @@ if(isset($_SESSION))
 session_start();
 include 'config.php';
 
-function test_input($var) {
-    $var = trim($var);
-    $var = stripslashes($var);
-    $var = htmlspecialchars($var);
-    return $var;
-}
+// function test_input($var) {
+//     $var = trim($var);
+//     $var = stripslashes($var);
+//     $var = htmlspecialchars($var);
+//     return $var;
+// }
 
 if(isset($_POST['order'])){
-    $order = test_input($_POST['order']);
-    $search_keyword = test_input($_POST['search_keyword']);
+    $order = $_POST['order'];
+    $search_keyword = $_POST['search_keyword'];
     $sql = "SELECT * FROM product WHERE name like '%$search_keyword%'  ORDER BY price $order";
     $result = mysqli_query($conn , $sql);
 

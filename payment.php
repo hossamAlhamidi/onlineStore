@@ -77,8 +77,8 @@ $session_products_info = [
   'line_items' => $products_inside_cart
    ,
   'mode' => 'payment',
-  'success_url' => 'http://localhost/onlinestore/success.html',
-  'cancel_url' => 'http://localhost/onlinestore/user.php',
+  'success_url' => 'https://onlinestore-ss-ksu.herokuapp.com/success.html',
+  'cancel_url' => 'https://onlinestore-ss-ksu.herokuapp.com/user.php',
   ];
 $session = \Stripe\Checkout\Session::create($session_products_info);
 }
