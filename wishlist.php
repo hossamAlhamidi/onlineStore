@@ -38,7 +38,7 @@ if(isset($_POST['id'])){
 }
 
 if(isset($_GET['id'])){
-    $IDPD = test_input($_GET['id']);
+    $IDPD = $_GET['id'];
     $request  = "DELETE FROM wishlist WHERE pID ='".$IDPD."'";
     $result = mysqli_query($conn, $request);
       // header("location: manage_product.php");
