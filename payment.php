@@ -77,8 +77,8 @@ $session_products_info = [
   'line_items' => $products_inside_cart
    ,
   'mode' => 'payment',
-  // 'success_url' => 'https://onlinestoredev.herokuapp.com/success.html',
-  // 'cancel_url' => 'https://onlinestoredev.herokuapp.com/user.php',
+  'success_url' => 'https://onlinestoredev.herokuapp.com/success.html',
+  'cancel_url' => 'https://onlinestoredev.herokuapp.com/user.php',
   ];
 $session = \Stripe\Checkout\Session::create($session_products_info);
 }
@@ -119,6 +119,7 @@ else {
   } else if (response.paymentIntent && response.paymentIntent.status === 'succeeded') {
     // Handle successful payment here
     window.location.href = "success.php"
+    console.log("hell yes")
   }
 });
     </script>
