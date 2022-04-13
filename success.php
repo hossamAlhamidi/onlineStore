@@ -1,3 +1,17 @@
+<?php 
+include 'config.php';
+if(isset($_SESSION)){
+  session_start();
+}
+echo $_GET['session_id'];
+if(!isset($_SESSION['email']) && !isset($_SESSION['phone']) && !isset($_GET['session_id'])){
+  header("Location:user.php");
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
