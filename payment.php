@@ -77,7 +77,7 @@ $session_products_info = [
   'line_items' => $products_inside_cart
    ,
   'mode' => 'payment',
-  'success_url' => 'https://onlinestoredev.herokuapp.com/success.html',
+  'success_url' => 'https://onlinestoredev.herokuapp.com/success.php',
   'cancel_url' => 'https://onlinestoredev.herokuapp.com/user.php',
   ];
 $session = \Stripe\Checkout\Session::create($session_products_info);
@@ -112,14 +112,11 @@ else {
        
       });
 
-      stripe.confirmCardPayment(clientSecret).then(function(response) {
-  if (response.error) {
-    // Handle error here
-    window.location.href = "user.php"
-  } else if (response.paymentIntent && response.paymentIntent.status === 'succeeded') {
-    // Handle successful payment here
-    window.location.href = "success.php"
-    console.log("hell yes")
+      stripe.retrievePaymentIntent(clientSecret).then(function(response) {
+  if (response.paymentIntent && response.paymentIntent.status === 'succeeded') {
+    console.log("yes");
+  } else {
+    // Handle unsuccessful, processing, or canceled payments and API errors here
   }
 });
     </script>
