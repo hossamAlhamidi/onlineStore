@@ -7,7 +7,7 @@ include 'config.php';
 // error_reporting(0);
 
 session_start();
-
+header("Location:index.php");
 // if (isset($_SESSION['username'])) {
 //     if ($_SESSION["type"] == 0)
 //         header("Location: user.php");
