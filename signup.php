@@ -119,12 +119,12 @@ if (isset($_POST["submit"])) {
 					VALUES ('$username', '$email', '$password', '$type', null, null, null, null)";
 			$result = mysqli_query($conn, $sql);
 			if (isset($result)) {
-                // require_once("mail.php");
-                // $mail->setFrom('WebProject9091@gmail.com',"hossam");
-                // $mail->addAddress($email);
-                // $mail->Subject = 'Register notification';
-                // $mail->Body    = 'You have successfully registered ';
-                // $mail->send();
+                require_once("mail.php");
+                $mail->setFrom('WebProject9091@gmail.com',"hossam");
+                $mail->addAddress($email);
+                $mail->Subject = 'Register notification';
+                $mail->Body    = 'You have successfully registered ';
+                $mail->send();
            
             //   echo "<script>alert('Wow! User Registration Completed.')</script>";
                 header("Location: signin.php");
@@ -133,11 +133,7 @@ if (isset($_POST["submit"])) {
 			}
 		} else {
 			echo "<script>
-            // let div = document.createElement('div')
-            // div.textContent = '  Sorry we could not find your account!'
-            // div.classList.add('alert','alert-danger')
-            // div.setAttribute('role','alert')
-            // document.querySelector('.padding').prepend(div)
+           
            let msg =  document.querySelector('#email-msg')
             console.log(msg.textContent)
             msg.textContent = 'Email already exist'
@@ -146,11 +142,7 @@ if (isset($_POST["submit"])) {
 		}	
 	} else {
         echo "<script>
-        // let div = document.createElement('div')
-        // div.textContent = '  Sorry we could not find your account!'
-        // div.classList.add('alert','alert-danger')
-        // div.setAttribute('role','alert')
-        // document.querySelector('.padding').prepend(div)
+      
        let msg =  document.querySelector('#password-msg')
         console.log(msg.textContent)
         msg.textContent = 'Password does not match'
