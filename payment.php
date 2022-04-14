@@ -113,13 +113,13 @@ else {
        
       });
 
-      stripe.retrievePaymentIntent('sk_test_51KlIrDGzyYPgP3RCBZs6nELE5Xx2FHc8Chrik3VRD2ORTpcdW8rK90lqO9IcorzLS71jMTswMp7o77EaZfNqG8qL00xBTUR32g').then(function(response) {
-  if (response.paymentIntent && response.paymentIntent.status === 'succeeded') {
-    console.log("yes yes");
-  } else {
-    // Handle unsuccessful, processing, or canceled payments and API errors here
-  }
-});
+//       stripe.retrievePaymentIntent(clientSecret).then(function(response) {
+//   if (response.paymentIntent && response.paymentIntent.status === 'succeeded') {
+//     console.log("yes yes");
+//   } else {
+//     // Handle unsuccessful, processing, or canceled payments and API errors here
+//   }
+// });
     </script>
   </body>
 </html>

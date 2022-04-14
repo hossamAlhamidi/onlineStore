@@ -6,7 +6,18 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if(isset($_SESSION['email']) && isset($_SESSION['phone']) && isset($_GET['session_id']) &&  isset($_SESSION["payment"])){
- 
+  $email = $_SESSION['email'];
+  $sql_cart = "select * from cart where email = '$email'";
+  $result_cart = mysqli_query($conn,$sql_cart);
+  if($result){
+    while($row = mysqli_fetch_array($result_cart)){
+      $id = $row['pID'];
+ $sql_insert = "INSERT INTO orders_history(email,pID) VALUES('$email',$id)";
+ mysqli_query($conn,$sql_insert);
+    }
+  $sql_delete = "delete from cart where email = '$email'";
+  mysqli_query($conn,$sql_delete);
+  }
 }
 else {
   header("Location:user.php");
