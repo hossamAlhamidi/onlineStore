@@ -4,7 +4,10 @@ if(isset($_SESSION)){
   session_start();
 }
 
-if(!isset($_SESSION['email']) && !isset($_SESSION['phone']) && !isset($_GET['session_id'])&&! isset($_SESSION["payment"])){
+if(isset($_SESSION['email']) && isset($_SESSION['phone']) && isset($_GET['session_id'])&&  isset($_SESSION["payment"])){
+  echo "inside";
+}
+else {
   header("Location:user.php");
 }
 // if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
