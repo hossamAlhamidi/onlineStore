@@ -1,10 +1,11 @@
 <?php 
 include 'config.php';
-if(isset($_SESSION)){
+if (session_status() === PHP_SESSION_NONE) {
   session_start();
+  echo $_SESSION["payment"];
 }
 
-if(isset($_SESSION['email']) && isset($_SESSION['phone']) && isset($_GET['session_id'])&&  isset($_SESSION["payment"])){
+if(isset($_SESSION['email']) && isset($_SESSION['phone']) && isset($_GET['session_id']) &&  isset($_SESSION["payment"])){
   echo "inside";
 }
 else {
