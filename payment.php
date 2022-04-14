@@ -78,7 +78,7 @@ $session_products_info = [
    ,
   'mode' => 'payment',
   'success_url' => 'https://onlinestoredev.herokuapp.com/success.php?session_id={CHECKOUT_SESSION_ID}',
-  'cancel_url' => 'https://onlinestoredev.herokuapp.com/user.php',
+  'cancel_url' => 'https://onlinestoredev.herokuapp.com/payment_error.php',
   ];
 $session = \Stripe\Checkout\Session::create($session_products_info);
 $_SESSION["payment"]="yes";
