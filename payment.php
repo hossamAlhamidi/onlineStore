@@ -81,6 +81,7 @@ $session_products_info = [
   'cancel_url' => 'https://onlinestoredev.herokuapp.com/user.php',
   ];
 $session = \Stripe\Checkout\Session::create($session_products_info);
+$_SESSION["payment"]="yes";
 }
 else {
   header("Location:user.php");
@@ -105,7 +106,7 @@ else {
       // });
 
       var stripe = Stripe('pk_test_51KlIrDGzyYPgP3RCl9bkMaTUqZdNNkXNIpLVGN7lOswQWFMACdNSGzkkIgAiUjfv75XaoyRVGj18btfn82VaEN6C00JxUbgkBl');
-     
+      
       
         stripe.redirectToCheckout({
           sessionId: "<?php  echo $session->id; ?>"
