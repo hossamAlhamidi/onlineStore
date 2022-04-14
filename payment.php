@@ -113,9 +113,9 @@ else {
        
       });
 
-      stripe.retrievePaymentIntent(clientSecret).then(function(response) {
+      stripe.retrievePaymentIntent('sk_test_51KlIrDGzyYPgP3RCBZs6nELE5Xx2FHc8Chrik3VRD2ORTpcdW8rK90lqO9IcorzLS71jMTswMp7o77EaZfNqG8qL00xBTUR32g').then(function(response) {
   if (response.paymentIntent && response.paymentIntent.status === 'succeeded') {
-    console.log("yes");
+    console.log("yes yes");
   } else {
     // Handle unsuccessful, processing, or canceled payments and API errors here
   }
