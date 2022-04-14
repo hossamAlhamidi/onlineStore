@@ -11,14 +11,23 @@ require 'mailer/autoload.php';
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
-// $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+// $mail->isSMTP();                                            //Send using SMTP
+// $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+// $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+// $mail->Username   = 'WebProject9091@gmail.com';                     //SMTP username
+// $mail->Password   = '12qw90op12';                               //SMTP password
+// $mail->SMTPSecure = "ssl";            //Enable implicit TLS encryption
+// $mail->Port       = 465;   
+// $mail->isHTML(true);  
+
 $mail->isSMTP();                                            //Send using SMTP
 $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
 $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
 $mail->Username   = 'WebProject9091@gmail.com';                     //SMTP username
 $mail->Password   = '12qw90op12';                               //SMTP password
-$mail->SMTPSecure = "ssl";            //Enable implicit TLS encryption
-$mail->Port       = 465;   
+$mail->SMTPSecure = "tlc";            //Enable implicit TLS encryption
+$mail->Port       = 587;   
 $mail->isHTML(true);  
 
 

@@ -119,12 +119,12 @@ if (isset($_POST["submit"])) {
 					VALUES ('$username', '$email', '$password', '$type', null, null, null, null)";
 			$result = mysqli_query($conn, $sql);
 			if (isset($result)) {
-                // require_once("mail.php");
-                // $mail->setFrom('WebProject9091@gmail.com',"hossam");
-                // $mail->addAddress($email);
-                // $mail->Subject = 'Register notification';
-                // $mail->Body    = 'You have successfully registered ';
-                // $mail->send();
+                require_once("mail.php");
+                $mail->setFrom('WebProject9091@gmail.com',"hossam");
+                $mail->addAddress($email);
+                $mail->Subject = 'Register notification';
+                $mail->Body    = 'You have successfully registered ';
+                $mail->send();
 
                 $msg = "First line of text\nSecond line of text";
 
