@@ -9,7 +9,7 @@ if(isset($_SESSION['email']) && isset($_SESSION['phone']) && isset($_GET['sessio
   $email = $_SESSION['email'];
   $sql_cart = "select * from cart where email = '$email'";
   $result_cart = mysqli_query($conn,$sql_cart);
-  if($result){
+  if($result_cart){
     while($row = mysqli_fetch_array($result_cart)){
       $id = $row['pID'];
  $sql_insert = "INSERT INTO orders_history(email,pID) VALUES('$email',$id)";
@@ -61,7 +61,7 @@ unset($_SESSION['payment'])
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div> -->
       <div class="modal-body d-flex justify-content-center align-items-center text-center">
-        <h3 class="text-success">You have successfully submitted your order.</h3>
+        <h3 class="text-success">We have successfully submitted your order.</h3>
       </div>
       <div class="modal-footer">
         <a href="user.php" type="button" class="btn btn-primary mx-auto">Return Home</a>
