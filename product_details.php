@@ -444,7 +444,7 @@ while($col = mysqli_fetch_array($Send))
 if($Traget !=false ){
   $email = $_SESSION['email'];
   $review_only_one = "select * from review where email = '$email' and product_id =$id";
-  $review_onlye_one_result = mysqli_conncet($conn,$review_only_one);
+  $review_onlye_one_result = mysqli_query($conn,$review_only_one);
   if(mysqli_num_rows($review_onlye_one_result)==0)
   {
 echo <<<W
