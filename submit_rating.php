@@ -14,14 +14,15 @@ if(isset($_POST["rating_data"]))
 		$user_name = test_input($_POST["user_name"]);
 		$user_rating = test_input($_POST['rating_data']);
 		$user_review = test_input($_POST["user_review"]);
+		$user_email = test_input($_POST["email"]);
 		$datetime = time();
 		 
 	  
 	
 	$sql = "
 	INSERT INTO review 
-	(product_id,user_name, user_rating, user_review, datetime) 
-	VALUES ('$product_id','$user_name','$user_rating' ,'$user_review' ,'$datetime')";
+	(product_id,user_name, user_rating, user_review, datetime,email) 
+	VALUES ('$product_id','$user_name','$user_rating' ,'$user_review' ,'$datetime','$user_email')";
 	$statement = mysqli_query($conn, $sql);
 	
 	//$statement->execute($data);

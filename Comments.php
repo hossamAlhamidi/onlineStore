@@ -1,3 +1,9 @@
+<?php 
+if(!isset($_SESSION)){
+    session_start();
+}
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -84,6 +90,7 @@ $(document).ready(function(){
 	var rating_data = 0;
     // var product_id = parseInt(<?php //echo $_SESSION['product_id']; ?>);
     var product_id = parseInt(<?php echo $_GET['id']; ?>);
+    var email = <?php echo $_SESSION['email'] ;?>
     
 //when the user click on the button the code will execute 
     $('#add_review').click(function(){
@@ -156,7 +163,7 @@ $(document).ready(function(){
             $.ajax({
                 url:"submit_rating.php",
                 method:"POST",
-                data:{product_id:product_id,rating_data:rating_data, user_name:user_name, user_review:user_review},
+                data:{product_id:product_id,rating_data:rating_data, user_name:user_name, user_review:user_review,email:email},
                 success:function(data)
                 {
                     // header("Location:product_details.php"); 
