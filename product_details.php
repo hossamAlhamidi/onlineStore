@@ -442,10 +442,15 @@ while($col = mysqli_fetch_array($Send))
     }
   }}
 if($Traget !=false ){
+  $email = $_SESSION['email'];
+  $review_only_one = "select * from review where email = '$email' and product_id =$id";
+  $review_onlye_one_result = mysqli_conncet($conn,$review_only_one);
+  if(mysqli_num_rows($review_onlye_one_result)==0)
+  {
 echo <<<W
     				<div class="col-sm-4 text-center" id = "Hide">
     					<h3 class="mt-4 mb-3">Write Review Here</h3>
-    					<button type="button" name="add_review" id="add_review" class="btn btn-primary" onClick="action();" >Review</button>
+    					<button type="button" name="add_review" id="add_review" class="btn btn-primary" >Review</button>
     				</div>
     			</div>
     		</div>
@@ -454,6 +459,7 @@ echo <<<W
     </div> 
     
 W;
+  }
 
 }
 else{
