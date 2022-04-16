@@ -1,10 +1,16 @@
 <?php
-  	session_start();
+  session_start();
     
-    if (!isset($_SESSION['name']))
-        header("LOCATION: signin.php");
-    else if ($_SESSION["type"] == 1)
-        header("LOCATION: seller.php");
+  if (!isset($_SESSION['name']))
+      header("LOCATION: signin.php");
+  else if ($_SESSION["type"] == 1)
+      header("LOCATION: seller.php");
+
+  if(time()-$_SESSION["login_time_stamp"] > (60*60*5)) {
+      session_unset();
+      session_destroy();
+      header("Location:signin.php");
+  }
 
   //   if (isset($_SESSION['username'])) {
   //     if(isset($_SESSION['type']==0))

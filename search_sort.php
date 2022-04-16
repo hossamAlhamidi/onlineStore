@@ -3,6 +3,12 @@ if(isset($_SESSION))
 session_start();
 include 'config.php';
 
+// function test_input($var) {
+//     $var = trim($var);
+//     $var = stripslashes($var);
+//     $var = htmlspecialchars($var);
+//     return $var;
+// }
 
 if(isset($_POST['order'])){
     $order = $_POST['order'];

@@ -1,5 +1,13 @@
 <?php 
 include 'config.php';
+
+// function test_input($var) {
+//     $var = trim($var);
+//     $var = stripslashes($var);
+//     $var = htmlspecialchars($var);
+//     return $var;
+// }
+
 $val = $_POST['val'];
 $id = $_POST['id'];
 $email= $_POST['email'];

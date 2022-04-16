@@ -1,6 +1,14 @@
 <?php 
 
 include 'config.php';
+
+// function test_input($var) {
+//     $var = trim($var);
+//     $var = stripslashes($var);
+//     $var = htmlspecialchars($var);
+//     return $var;
+// }
+
 $id = $_POST['id'];
 $sql = "select * from product where id = $id";
 $result = mysqli_query($conn,$sql);

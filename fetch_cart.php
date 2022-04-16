@@ -1,5 +1,13 @@
 <?php 
 include 'config.php';
+
+// function test_input($var) {
+//   $var = trim($var);
+//   $var = stripslashes($var);
+//   $var = htmlspecialchars($var);
+//   return $var;
+// }
+
 $email = $_POST['email'];
 $sql = "select * from cart where email = '$email' ";
 $result_select = mysqli_query($conn,$sql);

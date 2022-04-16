@@ -1,5 +1,18 @@
 <?php 
 session_start();
+
+if(isset($_SESSION['name']))
+  if(time()-$_SESSION["login_time_stamp"] > (60*60*5)) {
+    session_unset();
+    session_destroy();
+    header("Location:signin.php");
+  }
+function test_input($var) {
+  $var = trim($var);
+  $var = stripslashes($var);
+  $var = htmlspecialchars($var);
+  return $var;
+}
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +71,7 @@ session_start();
       </div> -->
       <div class="modal-body">
       <h2 class="modal-title my-5 text-center">please Sign in</h5>
-      <form   id="form" action="" method="POST">
+      <form   id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
       <div class="form-control-css ">
      <!-- <label for="email">Email</label> -->
      <input type="text" placeholder="Enter your email" id="email" name="email">

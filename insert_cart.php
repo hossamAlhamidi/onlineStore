@@ -2,7 +2,12 @@
 include 'config.php';
 // session_start();
 
-
+// function test_input($var) {
+//   $var = trim($var);
+//   $var = stripslashes($var);
+//   $var = htmlspecialchars($var);
+//   return $var;
+// }
 
 if(isset($_POST['id'])){  
   echo 'insert cart yes';

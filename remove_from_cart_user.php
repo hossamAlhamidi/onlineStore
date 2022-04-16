@@ -1,5 +1,13 @@
 <?php 
 include 'config.php';
+
+// function test_input($var) {
+//   $var = trim($var);
+//   $var = stripslashes($var);
+//   $var = htmlspecialchars($var);
+//   return $var;
+// }
+
 if(!isset($_SESSION)) 
     { 
         session_start(); 

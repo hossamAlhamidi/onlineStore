@@ -11,19 +11,31 @@ if (isset($_SESSION['name'])) {
         header("Location: seller.php");
 }
 
+function test_input($var) {
+	$var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
+}
+
 $e = false;
 
 if (isset($_POST["submit"])) {
-	$email = $_POST["email"];
-	$password = md5($_POST["password"]);
+	$email = test_input($_POST["email"]);
+	$password = md5(test_input($_POST["password"]));
 
-	$con = new PDO('mysql:host=localhost;dbname=onlineshoppingsystem', "root", "", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+	$_SESSION["login_time_stamp"] = time(); 
 
-	$request = $con->query("SELECT * FROM user WHERE email = '".$email."' AND PWD = '".$password."'");
+	// $con = new PDO('mysql:host=localhost;dbname=onlineshoppingsystem', "root", "", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+	// $request = $con->query("SELECT * FROM user WHERE email = '".$email."' AND PWD = '".$password."'");
 
+	$sql = "SELECT * FROM user WHERE email = '$email' AND PWD = '$password'";
+	$request = mysqli_query($conn, $sql);
 
-	if ($request->rowCount() == 1) {
-		$info = $request->fetch();
+	//if ($request->rowCount() == 1) {
+		//$info = $request->fetch();
+	if ($request->num_rows == 1) { 
+		$info = mysqli_fetch_assoc($request);
 
 		$_SESSION["name"] = $info["name"];
 		$_SESSION["email"] = $info["email"];

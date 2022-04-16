@@ -30,7 +30,7 @@
           
               <div class=" search mx-auto mt-2">
     <div class="wrapper   ">
-      <form method="post" action="search.php" autocomplete="off">
+      <form method="post" action="<?php echo htmlspecialchars("search.php");?>" autocomplete="off">
         <input type="search" name="search" id="search"  placeholder="What are you looking for">
         <button href="search.php" id="search-btn" name="submit" type = "submit" class="btn-custome btn "><i class="fas fa-search"></i></bu>
       </form>

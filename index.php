@@ -42,7 +42,7 @@
       </div> -->
       <div class="modal-body">
       <h2 class="modal-title my-5 text-center">please Sign in</h5>
-      <form   id="form" action="" method="POST">
+      <form   id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
       <div class="form-control-css ">
      <!-- <label for="email">Email</label> -->
      <input type="text" placeholder="Enter your email" id="email" name="email">

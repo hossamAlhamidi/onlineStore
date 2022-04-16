@@ -1,6 +1,13 @@
 <?php
 include 'config.php';
 session_start();
+
+if(time()-$_SESSION["login_time_stamp"] > (60*60*5)) {
+  session_unset();
+  session_destroy();
+  header("Location:signin.php");
+}
+
 if (!isset($_SESSION['phone']) && !isset($_SESSION['email']))
         header("LOCATION: user.php");
 

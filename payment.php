@@ -77,10 +77,11 @@ $session_products_info = [
   'line_items' => $products_inside_cart
    ,
   'mode' => 'payment',
-  'success_url' => 'http://localhost/onlinestore/success.html',
-  'cancel_url' => 'http://localhost/onlinestore/user.php',
+  'success_url' => 'https://onlinestoredev.herokuapp.com/success.php?session_id={CHECKOUT_SESSION_ID}',
+  'cancel_url' => 'https://onlinestoredev.herokuapp.com/payment_error.php',
   ];
 $session = \Stripe\Checkout\Session::create($session_products_info);
+$_SESSION["payment"]="yes";
 }
 else {
   header("Location:user.php");
@@ -105,12 +106,20 @@ else {
       // });
 
       var stripe = Stripe('pk_test_51KlIrDGzyYPgP3RCl9bkMaTUqZdNNkXNIpLVGN7lOswQWFMACdNSGzkkIgAiUjfv75XaoyRVGj18btfn82VaEN6C00JxUbgkBl');
-     
+      
       
         stripe.redirectToCheckout({
           sessionId: "<?php  echo $session->id; ?>"
        
       });
+
+//       stripe.retrievePaymentIntent(clientSecret).then(function(response) {
+//   if (response.paymentIntent && response.paymentIntent.status === 'succeeded') {
+//     console.log("yes yes");
+//   } else {
+//     // Handle unsuccessful, processing, or canceled payments and API errors here
+//   }
+// });
     </script>
   </body>
 </html>

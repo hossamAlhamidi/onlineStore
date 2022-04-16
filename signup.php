@@ -17,6 +17,12 @@ session_start();
     //     header("Location: seller.php");
 // }
 
+function test_input($var) {
+    $var = trim($var);
+    $var = stripslashes($var);
+    $var = htmlspecialchars($var);
+    return $var;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +38,7 @@ session_start();
 <body id="body">
    <div class="container-css flex-column">
    <a href="index.php" class="my-3 text-bold ">Brand</a>
-       <form  class="form" id="form" action="" method="POST">
+       <form  class="form" id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
            <div class="header">
                <h2>Create Account</h2>
            </div>
@@ -98,10 +104,10 @@ session_start();
 <?php
 
 if (isset($_POST["submit"])) {
-	$username = $_POST["username"];
-	$email = $_POST["email"];
-	$password = md5($_POST["password"]);
-	$cpassword = md5($_POST['cpassword']);
+	$username = test_input($_POST["username"]);
+	$email = test_input($_POST["email"]);
+	$password = md5(test_input($_POST["password"]));
+	$cpassword = md5(test_input($_POST['cpassword']));
 	$type = 0;
 	
 
@@ -112,13 +118,21 @@ if (isset($_POST["submit"])) {
 			$sql = "INSERT INTO user (name, email, PWD, type, phone,  address_city, address, postcode)
 					VALUES ('$username', '$email', '$password', '$type', null, null, null, null)";
 			$result = mysqli_query($conn, $sql);
-			if ($result) {
-                require_once("mail.php");
-                $mail->setFrom('WebProject9091@gmail.com',"hossam");
-                $mail->addAddress($email);
-                $mail->Subject = 'Register notification';
-                $mail->Body    = 'You have successfully registered ';
-                $mail->send();
+			if (isset($result)) {
+                // require_once("mail.php");
+                // $mail->setFrom('WebProject9091@gmail.com',"hossam");
+                // $mail->addAddress($email);
+                // $mail->Subject = 'Register notification';
+                // $mail->Body    = 'You have successfully registered ';
+                // $mail->send();
+
+                $msg = "First line of text\nSecond line of text";
+
+                // use wordwrap() if lines are longer than 70 characters
+                $msg = wordwrap($msg,70);
+
+                // send email
+                mail($email,"Successfully registered ",$msg);
            
             //   echo "<script>alert('Wow! User Registration Completed.')</script>";
                 header("Location: signin.php");
@@ -127,11 +141,7 @@ if (isset($_POST["submit"])) {
 			}
 		} else {
 			echo "<script>
-            // let div = document.createElement('div')
-            // div.textContent = '  Sorry we could not find your account!'
-            // div.classList.add('alert','alert-danger')
-            // div.setAttribute('role','alert')
-            // document.querySelector('.padding').prepend(div)
+           
            let msg =  document.querySelector('#email-msg')
             console.log(msg.textContent)
             msg.textContent = 'Email already exist'
@@ -140,11 +150,7 @@ if (isset($_POST["submit"])) {
 		}	
 	} else {
         echo "<script>
-        // let div = document.createElement('div')
-        // div.textContent = '  Sorry we could not find your account!'
-        // div.classList.add('alert','alert-danger')
-        // div.setAttribute('role','alert')
-        // document.querySelector('.padding').prepend(div)
+      
        let msg =  document.querySelector('#password-msg')
         console.log(msg.textContent)
         msg.textContent = 'Password does not match'
