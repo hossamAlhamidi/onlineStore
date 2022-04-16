@@ -4,10 +4,16 @@
 include 'config.php';
 if(isset($_POST["rating_data"]))
 {
-		$product_id = $_POST["product_id"];
-		$user_name = $_POST["user_name"];
-		$user_rating = $_POST['rating_data'];
-		$user_review = $_POST["user_review"];
+		// $product_id = $_POST["product_id"];
+		// $user_name = $_POST["user_name"];
+		// $user_rating = $_POST['rating_data'];
+		// $user_review = $_POST["user_review"];
+		// $datetime = time();
+
+		$product_id = test_input($_POST["product_id"]);
+		$user_name = test_input($_POST["user_name"]);
+		$user_rating = test_input($_POST['rating_data']);
+		$user_review = test_input($_POST["user_review"]);
 		$datetime = time();
 		 
 	  
@@ -119,5 +125,11 @@ if(isset($_POST["rating_data"]))
 // 	echo json_encode($datetime);
 	
 // }
-
+function test_input($var) {
+	$var = trim($var);
+	$var = stripslashes($var);
+	$var = htmlspecialchars($var);
+	return $var;
+  }
+  
 ?>
