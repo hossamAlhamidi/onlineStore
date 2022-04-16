@@ -24,7 +24,7 @@
 require 'vendor/autoload.php';
 use Mailgun\Mailgun;
 # Instantiate the client.
-$mgClient = Mailgun::create('43adcbd7bc7d6f933829b0a15dbf763b-162d1f80-089c134a');
+$mgClient = Mailgun::create('key-9786e45a435df7df972acb7aa5ed8a94');
 // $mgClient = new Mailgun('43adcbd7bc7d6f933829b0a15dbf763b-162d1f80-089c134a');
 $domain = "sandbox9cc74cb140c84e2d9ca2392712ff3291.mailgun.org";
 # Make the call to the client.
