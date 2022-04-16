@@ -167,10 +167,9 @@ $(document).ready(function(){
                 }
                 
             })
-            window.location.href = "product_details.php?id="+<?= $product_id ?> ; 
         }
         
-        //   window.location.href = "product_details.php?id="+<?php // $product_id ?> ; 
+          window.location.href = "product_details.php?id="+<?php echo $product_id ; ?> ; 
         
         
 
