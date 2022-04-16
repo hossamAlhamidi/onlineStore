@@ -125,7 +125,7 @@ if (isset($_POST["submit"])) {
                 // $mail->Subject = 'Register notification';
                 // $mail->Body    = 'You have successfully registered ';
                 // $mail->send();
-                if(strtolower($email) == "hossamalhamidi@gmail.com" || strtolower($email) == "hossam@nrt.sa"){
+                if(strtolower($email) == "hossamalhamidi@gmail.com" || strtolower($email) == "blue10wave@gmail.com"){
                 $result = $mgClient->messages()->send($domain, array(
                     'from'	=> 'Excited User <mailgun@sandbox9cc74cb140c84e2d9ca2392712ff3291.mailgun.org>',
                     'to'	=> "Baz $email>",
