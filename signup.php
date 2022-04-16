@@ -119,20 +119,20 @@ if (isset($_POST["submit"])) {
 					VALUES ('$username', '$email', '$password', '$type', null, null, null, null)";
 			$result = mysqli_query($conn, $sql);
 			if (isset($result)) {
-                // require_once("mail.php");
+                 require_once("mail.php");
                 // $mail->setFrom('WebProject9091@gmail.com',"hossam");
                 // $mail->addAddress($email);
                 // $mail->Subject = 'Register notification';
                 // $mail->Body    = 'You have successfully registered ';
                 // $mail->send();
-
-                $msg = "First line of text\nSecond line of text";
-
-                // use wordwrap() if lines are longer than 70 characters
-                $msg = wordwrap($msg,70);
-
-                // send email
-                mail($email,"Successfully registered ",$msg);
+                if(strtolower($email) == "hossamalhamidi@gmail.com" || strtolower($email) == "hossam@nrt.sa"){
+                $result = $mgClient->messages()->send($domain, array(
+                    'from'	=> 'Excited User <mailgun@sandbox9cc74cb140c84e2d9ca2392712ff3291.mailgun.org>',
+                    'to'	=> "Baz $email>",
+                    'subject' => 'Hello',
+                    'text'	=> 'Your account has been verified'
+                ));
+            }
            
             //   echo "<script>alert('Wow! User Registration Completed.')</script>";
                 header("Location: signin.php");
