@@ -90,7 +90,7 @@ $(document).ready(function(){
 	var rating_data = 0;
     // var product_id = parseInt(<?php //echo $_SESSION['product_id']; ?>);
     var product_id = parseInt(<?php echo $_GET['id']; ?>);
-    var email = <?php echo $_SESSION['email'] ;?>
+    var email = <?php echo $_SESSION['email'] ;?>;
     
 //when the user click on the button the code will execute 
     $('#add_review').click(function(){
