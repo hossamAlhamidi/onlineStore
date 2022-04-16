@@ -455,7 +455,6 @@ echo <<<W
     			</div>
     		</div>
     	</div>
-    	//<div class="mt-5" id="review_content"></div>
     </div> 
     
 W;
