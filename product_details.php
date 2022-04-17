@@ -277,7 +277,8 @@ if($total_review==0){
 }else{
 
  $average_rating = number_format($total_user_rating / $total_review);
-
+ $add_rate = "UPDATE product set rate=$average_rating where id = $id ";
+ mysqli_query($add_rate);
 }
 $FiveBar=0;
 $FourBar =0;
