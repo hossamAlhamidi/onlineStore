@@ -277,8 +277,8 @@ if($total_review==0){
 }else{
 
  $average_rating = number_format($total_user_rating / $total_review);
- $add_rate = "UPDATE product set rate=$average_rating where id = $id ";
- mysqli_query($add_rate);
+//  $add_rate = "UPDATE product set rate=$average_rating where id = $id ";
+//  mysqli_query($add_rate);
 }
 $FiveBar=0;
 $FourBar =0;
@@ -443,11 +443,11 @@ while($col = mysqli_fetch_array($Send))
     }
   }}
 if($Traget !=false ){
-  $email = $_SESSION['email'];
-  $review_only_one = "select * from review where email = '$email' and product_id =$id";
-  $review_onlye_one_result = mysqli_query($conn,$review_only_one);
-  if(mysqli_num_rows($review_onlye_one_result)==0)
-  {
+  // $email = $_SESSION['email'];
+  // $review_only_one = "select * from review where email = '$email' and product_id =$id";
+  // $review_onlye_one_result = mysqli_query($conn,$review_only_one);
+  // if(mysqli_num_rows($review_onlye_one_result)==0)
+  // {
 echo <<<W
     				<div class="col-sm-4 text-center" id = "Hide">
     					<h3 class="mt-4 mb-3">Write Review Here</h3>
@@ -459,17 +459,17 @@ echo <<<W
     </div> 
     
 W;
-  }
-  else {
-    echo <<<W
+  // }
+//   else {
+//     echo <<<W
     			
-    </div>
-  </div>
-</div>
+//     </div>
+//   </div>
+// </div>
 
-</div> 
-W;
-  }
+// </div> 
+// W;
+//   }
 
 }
 else{
