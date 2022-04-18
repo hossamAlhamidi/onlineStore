@@ -4,6 +4,7 @@
         "stripe/stripe-php": "^7.121",
         "mailgun/mailgun-php": "^3.5",
         "symfony/http-client": "^6.0",
-        "nyholm/psr7": "^1.5"
+        "nyholm/psr7": "^1.5",
+        "aws/aws-sdk-php": "^3.219"
     }
 }
