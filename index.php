@@ -85,14 +85,11 @@
       </header> -->
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://i.ibb.co/tbh0st9/tamanna-rumee-lp-Gm415q9-JA-unsplash.jpg" class="d-block w-100" alt="..." style="height:70vh;">
+  <img src="./imgs/1.jpg" class="d-block w-100" alt="..." style="height:70vh;">
     </div>
+
     <div class="carousel-item">
-      <img src="https://i.ibb.co/fqyWT3d/freestocks-3-Q3ts-J01nc-unsplash.jpg" class="d-block w-100" alt="..." style="height:70vh;">
-    </div>
-    <div class="carousel-item">
-      <img src="https://i.ibb.co/Ch8jqJw/sharan-pagadala-7-LXP4-Ba-Xvr-Y-unsplash.jpg" class="d-block w-100" alt="..." style="height:70vh;">
+      <img src="./imgs/2.jpg" class="d-block w-100" alt="..." style="height:70vh;">
     </div>
   </div>
 </div>
@@ -100,7 +97,7 @@
       <section class="shopping ">
 
         <div class="container px-5 mt-5">
-            <h5 class="title">Categories</h5>
+            <h5 id="categories" class="title">Categories</h5>
             <div class="horizontal-scroll position-relative">
               <button  data="new" type="button" class="btn btn-scroll-left" ><i class="fas fa-chevron-left"></i></button>
               <button  data="new" type="button"  class="btn btn-scroll-right"><i class="fas fa-chevron-right"></i></button>

@@ -4,8 +4,10 @@
 }
 #body{
     margin: 0;
-    background-color: #7C9473 !important;
+    background-color: var(--light_blue) !important;
     font-family: fira sans , sans-serif !important;
+    --dark_blue:#131921;
+    --light_blue:#232f3e;
 }
 
 .container-css{
@@ -101,11 +103,11 @@
     margin: auto;
     font-weight: bold;
     font-size: 1rem;
-    background-color: #7C9473;
+    background-color: var(--light_blue);
     color:white;
     padding:10px;
     border-radius: 4px;
-    border:2px solid #7C9473;
+    border:2px solid var(--light_blue);
     cursor:pointer;
 }
 .form-control-css input:focus , .form-control-css textarea:focus{

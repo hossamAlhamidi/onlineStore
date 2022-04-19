@@ -9,7 +9,7 @@ echo ' <div class="container px-5">
 <div class="horizontal-scroll position-relative">
 <button  data="top" type="button"-lg class="btn btn-scroll-left" ><i class="fas fa-chevron-left"></i></button>
 <button  data="top" type="button"  class=" btn btn-scroll-right"><i class="fas fa-chevron-right"></i></button>
-<div class="products top mb-5 story-container">
+<div class="products top mb-5 story-container bg-white">
 
 ';
 

@@ -22,7 +22,7 @@
 
       <nav class="navbar navbar-expand-sm navbar-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#" style = "font-family:Cursive;">La Galérie</a>
+          <a class="navbar-brand" href="user.php" style = "font-family:Cursive;">La Galérie</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -51,7 +51,7 @@
              <?php
               if(isset($_SESSION['name'])){
                 if($_SESSION['type']==0){
-                echo' <a href="become_seller.php" type="button" class="btn mx-1 btn-outline-dark">Seller</a>';
+                echo' <a style="color:#f2f2f2" href="become_seller.php" type="button" class="btn mx-1 btn-outline-dark">Seller</a>';
                 }
               }
              ?>
@@ -91,7 +91,7 @@
                     echo '</i> </a> ';
              }
              else if($_SESSION['type']==1){
-               echo '<a href="manage_product.php" type="button" class="btn btn-outline-dark">Manage Products</a>';
+               echo '<a style="color:#f2f2f2" href="manage_product.php" type="button" class="btn btn-outline-dark">Manage Products</a>';
              }
 
                 ?>
@@ -113,7 +113,7 @@
             </div>
           
       </nav>
-      <nav>
+      <nav class="second">
       <ul class=" nav nav-tabs mx-auto justify-content-center" style="border-bottom: none;">
                 <li class="nav-item">
                   <a class="nav-link text-white " aria-current="page" href="index.php">Home</a>
@@ -122,14 +122,14 @@
                   <a class="nav-link text-white" href="#">Hot Sale</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Categories</a>
+                  <a class="nav-link text-white" href="#categories">Categories</a>
                 </li>
                 
               
               </ul>
       </nav>
 
-      <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas offcanvas-end " style="background-color:#232f3e;" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title text-white" id="offcanvasExampleLabel">Brand</h5>
           <button type="button" class="btn-close text-reset bg-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -138,7 +138,7 @@
             <div class="slideout-sidebar">
                 <ul>
                   <li><a href="account.php">Account</a></li>
-                  <li><a href="#">Payment</a></li>
+                  <!-- <li><a href="#">Payment</a></li> -->
                   <li><a href="wishlist.php">WishList</a></li>
                   <li><a class="text-danger" href="logout.php">Logout</a></li>
                 </ul>

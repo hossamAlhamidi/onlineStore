@@ -7,6 +7,8 @@ body{
 	margin:0;
 	padding:0;
 	box-sizing: border-box;
+	--dark_blue:#131921;
+    --light_blue:#232f3e;
 }
 .container{
 	max-width: 1170px;
@@ -20,7 +22,8 @@ ul{
 	list-style: none;
 }
 .footer{
-	background-color: #7C9473;
+	/* background-color: #7C9473; */
+	background-color: var(--light_blue);
     padding: 70px 0;
 }
 .footer-col{
@@ -88,10 +91,10 @@ ul{
 }
 
 }
-@media(max-width: 574px){
+/* @media(max-width: 574px){
   .footer-col{
     width: 100%;
-}
+} */
 }
 
 

@@ -79,7 +79,7 @@ if(!isset($_SESSION)){
     color:white !important;
 }
 .btn-cart{
-    color:#0b5ed7 !important;
+    color:#f2f2f2 !important;
 }
 </style>
 

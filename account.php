@@ -39,7 +39,7 @@ if(time()-$_SESSION["login_time_stamp"] > (60*60*5)) {
 </head>
 <body>
     <?php include 'navbar.php';?>
-    <div class="container my-5">
+    <div class="container my-5" style="min-height:300px">
       <div class="row p-2   justify-content-center ">
 
       <div id="profile" class="card border col-lg-3 col-5 mx-auto mx-sm-2 mb-1" style="">
@@ -90,5 +90,7 @@ if(time()-$_SESSION["login_time_stamp"] > (60*60*5)) {
         location.href = "profile.php";
     })
     </script>
+
+    <?php include 'footer.php'; ?>
 </body>
 </html>

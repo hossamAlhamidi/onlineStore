@@ -70,7 +70,7 @@ include 'config.php';
 </div>
 
   <?php include('navbar.php'); ?>
-  <div class="container">
+  <div class="container" style="min-height:400px">
     <?php if(isset($_POST['submit'])){?>
       <div class="dropdown mt-5">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -243,7 +243,9 @@ echo  '  </button>
     </div>
   </div>
 </div>
-
+<?php include 'footer.php'; 
+      
+    ?>
 <?php if(isset($_SESSION['email'])){ ?>
     <script src="./js/favorite.js"></script>
     <?php } ?>
